@@ -1,10 +1,17 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Home.module.scss';
 import logo from 'public/logo.png';
 import homePic from 'public/home-pic.jpg';
 import { BiRightArrowCircle } from 'react-icons/bi';
+import { FaChevronCircleRight } from 'react-icons/fa';
+import { BsGlobe2 } from 'react-icons/bs';
+
+import { ReactNode } from 'react';
+
+const workElemHeaderIconSize = 35;
+const red1 = '#a12027';
 
 const Home: NextPage = () => {
   const loremIpsum1 = `Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -59,27 +66,117 @@ const Home: NextPage = () => {
       </header>
 
       <main className={styles.main}>
-        <div style={{ width: '100%', minHeight: '300px' }}>
-          <Image // TODO
-            src={homePic}
-            alt="Stock photo"
-          />
+        <div style={{ width: '100%' }}>
+          <h2 style={{ fontWeight: 700 }}>OBLASTI RADA</h2>
         </div>
 
-        <h2>What we do</h2>
+        <p>
+          Od 1998. pružamo podršku internacionalnim i domaćim klijentima iz
+          različitih privrednih oblasti u osnivanju, izgradnji i razvoju
+          njihovih investicija u Srbiji. Negovanjem individualnog pristupa, s
+          klijentom gradimo odnos uzajamnog poverenja i saradnje usmerene na
+          rezultate. Važno nam je da razumemo poslovnu filozofiju, ciljeve i
+          interese klijenta kako bismo mu pružili personalizovanu pravnu uslugu
+          koja odgovara njegovim potrebama. Znamo da su stručnost, fleksibilnost
+          i kreativnost nužni za prevazilaženje izazova u dinamičnom poslovnom
+          okruženju.
+        </p>
 
-        {Array.from(Array(3).keys()).map((i) => (
-          <p key={i}>{loremIpsum1}</p>
-        ))}
+        <p>
+          Zbog toga nam je stalo da klijentu pružimo profesionalne, fokusirane,
+          pragmatične i pouzdane pravne usluge i savete koji će mu pomoći da se
+          spremno i odlučno nosi sa poslovnim izazovima u kompleksnom privrednom
+          ambijentu.
+        </p>
 
-        {Array.from(Array(8).keys()).map((i) => (
-          <WorkAreaCard
-            key={i}
-            title="asd"
-            content={loremIpsum1.substring(0, 60)}
-            link="https:www.google.com"
-          />
-        ))}
+        <p>
+          Reputaciju pouzdanog, stručnog i uspešnog pravnog savetnika stekli smo
+          znanjem, iskustvom, savesnošću i visokim standardima. Verujemo da se
+          naš uspeh ogleda u rezultatima naših klijenata.
+        </p>
+
+        <div className="work-areas-grid">
+          <WorkAreaCard link="https:www.google.com">
+            <BsGlobe2 size={workElemHeaderIconSize} />
+            <h3>Korporativno pravo/M&A</h3>
+            <p>
+              Savetujemo klijente u pripremnoj fazi odlučivanja o investiciji,
+              sastavljamo i pripremamo potrebna..
+            </p>
+          </WorkAreaCard>
+
+          <WorkAreaCard link="https:www.google.com">
+            <BsGlobe2 size={workElemHeaderIconSize} />
+            <h3>Privredno pravo</h3>
+            <p>
+              Imamo sveobuhvatno poznavanje međunarodnog i domaćeg ugovornog
+              prava, standarda ugovaranja i poslovnih..
+            </p>
+          </WorkAreaCard>
+
+          <WorkAreaCard link="https:www.google.com">
+            <BsGlobe2 size={workElemHeaderIconSize} />
+            <h3>Građenje</h3>
+            <p>
+              Pružamo podršku investitorima u razvoju greenfield investicija i
+              drugih vidova ulaganja u projekte izgradnje..
+            </p>
+          </WorkAreaCard>
+
+          <WorkAreaCard link="https:www.google.com">
+            <BsGlobe2 size={workElemHeaderIconSize} />
+            <h3>
+              Antimonopolsko pravo <br />
+              Pravo konkurencije
+            </h3>
+            <p>
+              Savetujemo klijente u pitanjima konkurencije u vezi sa spajanjem
+              pripajanjem i zajedničkim ulaganjima..
+            </p>
+          </WorkAreaCard>
+
+          <WorkAreaCard link="https:www.google.com">
+            <BsGlobe2 size={workElemHeaderIconSize} />
+            <h3>
+              Radno pravo <br />
+              Boravišna i radna dozvola
+            </h3>
+            <p>
+              Sastavljamo pravilnike, ugovore, rešenja i druga akta iz oblasti
+              radnih odnosa i pružamo pravnu podršku..
+            </p>
+          </WorkAreaCard>
+
+          <WorkAreaCard link="https:www.google.com">
+            <BsGlobe2 size={workElemHeaderIconSize} />
+            <h3>
+              Intelektualna svojina <br />
+              Industrija zabave/IT
+            </h3>
+            <p>
+              Pružamo usluge savetovanja i zastupanja međunarodnih i domaćih
+              pravnih subjekata i fizičkih lica u stvarima..
+            </p>
+          </WorkAreaCard>
+
+          <WorkAreaCard link="https:www.google.com">
+            <BsGlobe2 size={workElemHeaderIconSize} />
+            <h3>Porezi, carine i devizno poslovanje</h3>
+            <p>
+              Pružamo podršku investitorima u razvoju greenfield investicija i
+              drugih vidova ulaganja u projekte izgradnje..
+            </p>
+          </WorkAreaCard>
+
+          <WorkAreaCard link="https:www.google.com">
+            <BsGlobe2 size={workElemHeaderIconSize} />
+            <h3>Zaštita podataka o ličnosti</h3>
+            <p>
+              Pomažemo klijentima da obradu podataka o ličnosti usklade sa GDPR
+              i pravilima koja su na snazi u Republici Srbiji..
+            </p>
+          </WorkAreaCard>
+        </div>
 
         <h2>News</h2>
 
@@ -96,21 +193,24 @@ const Home: NextPage = () => {
 };
 
 function WorkAreaCard({
-  title,
-  content,
   link,
+  children,
 }: {
-  title: string;
-  content: string;
   link: string; // TODO: Url?
+  children: ReactNode;
 }): JSX.Element {
   return (
     <div className="work-area-card" /* style={{ cursor: 'pointer' }} */>
-      <h3>{title}</h3>
-      <p>{content}</p>
-      <a href={link} style={{ float: 'right' }}>
-        <BiRightArrowCircle />
-      </a>
+      {children}
+      <div style={{ width: '80%', float: 'right' }}>
+        <a
+          className="work-area-right-arrow"
+          href={link}
+          style={{ float: 'right' }}
+        >
+          <FaChevronCircleRight size={30} />
+        </a>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,62 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: avenir -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  font-family: avenir;
+  /* letter-spacing: 1px; */
+  box-sizing: border-box;
+  line-height: 26.4px;
+  color: rgb(51, 51, 51);
+  margin: 0 0 1rem 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.work-area-card {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.work-area-card > h3,
+.work-area-card > p {
+  text-align: center;
+  /* max-width: 60%; */
+}
+
+.work-area-card > svg {
+  color: #a12027;
+}
+
+.work-area-right-arrow {
+  color: #a12027;
+}
+
+$breakpoint-tablet: 768px;
+
+.work-areas-grid {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(1, 1fr);
+  // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
