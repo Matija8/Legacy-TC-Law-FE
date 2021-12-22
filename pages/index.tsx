@@ -66,36 +66,36 @@ const Home: NextPage = () => {
       </header>
 
       <main className={styles.main}>
-        <div style={{ width: '100%' }}>
+        <section style={{ width: '100%' }}>
           <h2 style={{ fontWeight: 700 }}>OBLASTI RADA</h2>
-        </div>
 
-        <p>
-          Od 1998. pružamo podršku internacionalnim i domaćim klijentima iz
-          različitih privrednih oblasti u osnivanju, izgradnji i razvoju
-          njihovih investicija u Srbiji. Negovanjem individualnog pristupa, s
-          klijentom gradimo odnos uzajamnog poverenja i saradnje usmerene na
-          rezultate. Važno nam je da razumemo poslovnu filozofiju, ciljeve i
-          interese klijenta kako bismo mu pružili personalizovanu pravnu uslugu
-          koja odgovara njegovim potrebama. Znamo da su stručnost, fleksibilnost
-          i kreativnost nužni za prevazilaženje izazova u dinamičnom poslovnom
-          okruženju.
-        </p>
+          <p>
+            Od 1998. pružamo podršku internacionalnim i domaćim klijentima iz
+            različitih privrednih oblasti u osnivanju, izgradnji i razvoju
+            njihovih investicija u Srbiji. Negovanjem individualnog pristupa, s
+            klijentom gradimo odnos uzajamnog poverenja i saradnje usmerene na
+            rezultate. Važno nam je da razumemo poslovnu filozofiju, ciljeve i
+            interese klijenta kako bismo mu pružili personalizovanu pravnu
+            uslugu koja odgovara njegovim potrebama. Znamo da su stručnost,
+            fleksibilnost i kreativnost nužni za prevazilaženje izazova u
+            dinamičnom poslovnom okruženju.
+          </p>
 
-        <p>
-          Zbog toga nam je stalo da klijentu pružimo profesionalne, fokusirane,
-          pragmatične i pouzdane pravne usluge i savete koji će mu pomoći da se
-          spremno i odlučno nosi sa poslovnim izazovima u kompleksnom privrednom
-          ambijentu.
-        </p>
+          <p>
+            Zbog toga nam je stalo da klijentu pružimo profesionalne,
+            fokusirane, pragmatične i pouzdane pravne usluge i savete koji će mu
+            pomoći da se spremno i odlučno nosi sa poslovnim izazovima u
+            kompleksnom privrednom ambijentu.
+          </p>
 
-        <p>
-          Reputaciju pouzdanog, stručnog i uspešnog pravnog savetnika stekli smo
-          znanjem, iskustvom, savesnošću i visokim standardima. Verujemo da se
-          naš uspeh ogleda u rezultatima naših klijenata.
-        </p>
+          <p>
+            Reputaciju pouzdanog, stručnog i uspešnog pravnog savetnika stekli
+            smo znanjem, iskustvom, savesnošću i visokim standardima. Verujemo
+            da se naš uspeh ogleda u rezultatima naših klijenata.
+          </p>
+        </section>
 
-        <div className="work-areas-grid">
+        <section className="work-areas-grid">
           <WorkAreaCard link="https:www.google.com">
             <BsGlobe2 size={workElemHeaderIconSize} />
             <h3>Korporativno pravo/M&A</h3>
@@ -176,13 +176,15 @@ const Home: NextPage = () => {
               i pravilima koja su na snazi u Republici Srbiji..
             </p>
           </WorkAreaCard>
-        </div>
+        </section>
 
-        <h2>News</h2>
+        <section>
+          <h2>Novosti</h2>
+        </section>
 
-        <h2>Our Team</h2>
+        <h2>Naš Tim</h2>
 
-        <h2>Contact</h2>
+        <h2>Kontakt</h2>
 
         <h2>Trifunovic & Co</h2>
       </main>
@@ -200,9 +202,9 @@ function WorkAreaCard({
   children: ReactNode;
 }): JSX.Element {
   return (
-    <div className="work-area-card" /* style={{ cursor: 'pointer' }} */>
+    <div className="work-area-card">
       {children}
-      <div style={{ width: '80%', float: 'right' }}>
+      <div className="work-area-bottom">
         <a
           className="work-area-right-arrow"
           href={link}
