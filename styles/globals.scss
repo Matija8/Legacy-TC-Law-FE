@@ -59,6 +59,14 @@ a {
 
 $breakpoint-tablet: 768px;
 
+li {
+  text-decoration: none;
+}
+
+nav {
+  list-style-type: none;
+}
+
 .work-areas-grid {
   row-gap: 40px;
   display: grid;
