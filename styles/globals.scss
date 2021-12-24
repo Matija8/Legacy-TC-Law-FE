@@ -8,6 +8,10 @@ body {
   width: 100%;
 }
 
+body.mobile-nav-open {
+  overflow: hidden;
+}
+
 p {
   font-family: avenir;
   /* letter-spacing: 1px; */

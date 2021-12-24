@@ -1,39 +1,49 @@
 import Hamburger from 'hamburger-react';
 import Image from 'next/image';
 import logo from 'public/logo.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './header.module.scss';
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const headerHeight = 200;
+  const headerHeight = 150;
+  const breakPointTablet = 768;
+
+  useEffect(() => {
+    const body = document.getElementsByTagName('BODY')[0];
+    if (!body) return;
+
+    body.classList[menuOpen ? 'add' : 'remove']('mobile-nav-open');
+  });
+
   return (
     <header>
       <style jsx>{`
         header {
           height: ${headerHeight}px;
-          // position: sticky;
-          // top: 0;
+          position: sticky;
+          top: 0;
+          background: white;
         }
 
         nav {
           font-size: 1.5rem;
           position: fixed;
-          // top: ${headerHeight}px;
-          top: 0;
+          top: ${headerHeight}px;
+          // top: 0;
           left: 0;
           z-index: 1;
           background: white;
-          border-right: 1px solid black;
+          // border-right: 1px solid black;
           height: 100%;
           ${menuOpen ? '' : 'visibility:hidden'};
-          width: clamp(200px, 25%, 25%);
+          // width: clamp(300px, 25%, 25%);
+          width: 100%;
         }
 
         nav > li {
           padding: 0.5em;
           display: flex;
-          // align-items: center;
         }
 
         .burger {
