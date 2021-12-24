@@ -1,3 +1,5 @@
+$breakpoint-tablet: 768px;
+
 html,
 body {
   padding: 0;
@@ -10,6 +12,9 @@ body {
 
 body.mobile-nav-open {
   overflow: hidden;
+  @media (min-width: $breakpoint-tablet) {
+    overflow: auto;
+  }
 }
 
 p {
@@ -60,8 +65,6 @@ a {
   width: 80%;
   margin-top: auto;
 }
-
-$breakpoint-tablet: 768px;
 
 li {
   text-decoration: none;

@@ -24,6 +24,10 @@ export function Header() {
           position: sticky;
           top: 0;
           background: white;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
 
         nav {
@@ -49,6 +53,21 @@ export function Header() {
         .burger {
           float: right;
           z-index: 2;
+        }
+
+        @media (min-width: ${breakPointTablet}px) {
+          nav {
+            position: static;
+            display: flex;
+            flex-direction: row;
+            visibility: visible;
+            height: auto;
+          }
+
+          .burger {
+            // visibility: hidden;
+            display: none;
+          }
         }
       `}</style>
       <Image src={logo} alt="Company logo" />
