@@ -1,8 +1,11 @@
 import Hamburger from 'hamburger-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import logo from 'public/logo.png';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import styles from './header.module.scss';
+
+const liPadding = '0.5em';
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,7 +49,7 @@ export function Header() {
         }
 
         nav > li {
-          padding: 0.5em;
+          padding: ${liPadding};
           display: flex;
         }
 
@@ -80,11 +83,11 @@ export function Header() {
       </div>
 
       <nav id="main-nav" className="slide-in">
-        <li>What we do</li>
-        <li>News</li>
-        <li>Our Team</li>
-        <li>Career</li>
-        <li>Contact</li>
+        <NavItem href="oblasti-rada">Oblasti rada</NavItem>
+        <NavItem href="novosti">Novosti</NavItem>
+        <NavItem href="nas-tim">Nas tim</NavItem>
+        <NavItem href="karijera">Karijera</NavItem>
+        <NavItem href="kontakt">Kontakt</NavItem>
       </nav>
 
       <div className="right">
@@ -102,5 +105,19 @@ export function Header() {
         {/* <a href="mailto:office@tclaw.co.rs">office@tclaw.co.rs</a> */}
       </div>
     </header>
+  );
+}
+
+function NavItem({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <li
+      style={{
+        padding: liPadding,
+      }}
+    >
+      <Link href={href}>
+        <a>{children}</a>
+      </Link>
+    </li>
   );
 }
