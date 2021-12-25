@@ -1,7 +1,6 @@
 import Hamburger from 'hamburger-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from 'public/logo.png';
 import { ReactNode, useEffect, useState } from 'react';
 import styles from './header.module.scss';
 
@@ -73,7 +72,7 @@ export function Header() {
           }
         }
       `}</style>
-      <Image src={logo} alt="Company logo" />
+      <img src={'/logo.png'} alt="Company logo" />
       <div>
         {/* <h1>Trifunovic & Co</h1>
         <address>
