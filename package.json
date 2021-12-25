@@ -7,8 +7,9 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next build && next export",
-    "gh-predeploy": "npm run export",
-    "gh-deploy": "npm run gh-predeploy && gh-pages -d out"
+    "gh-add-nojekyll": "touch ./out/.nojekyll",
+    "gh-predeploy": "npm run export && npm run gh-add-nojekyll",
+    "gh-deploy": "npm run gh-predeploy && gh-pages -d out --dotfiles"
   },
   "dependencies": {
     "hamburger-react": "^2.4.1",

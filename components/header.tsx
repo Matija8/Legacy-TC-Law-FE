@@ -72,7 +72,7 @@ export function Header() {
           }
         }
       `}</style>
-      <img src={'/logo.png'} alt="Company logo" />
+      <img src={'/TC-law/logo.png'} alt="Company logo" />
       <div>
         {/* <h1>Trifunovic & Co</h1>
         <address>
