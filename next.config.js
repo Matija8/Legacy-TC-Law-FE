@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
+
+const basePath = '/TC-law';
+
 module.exports = {
   reactStrictMode: true,
-  basePath: '/TC-law'
+  env: {
+    basePath,
+  },
+  basePath,
 };
 
 // yarn add next-compose-plugins next-optimized-images

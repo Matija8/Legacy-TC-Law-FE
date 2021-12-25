@@ -72,7 +72,7 @@ export function Header() {
           }
         }
       `}</style>
-      <img src={'/TC-law/logo.png'} alt="Company logo" />
+      <img src={`${process.env.basePath}/logo.png`} alt="Company logo" />
       <div>
         {/* <h1>Trifunovic & Co</h1>
         <address>
