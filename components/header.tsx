@@ -1,15 +1,13 @@
 import Hamburger from 'hamburger-react';
-import Image from 'next/image';
 import Link from 'next/link';
-import { ReactNode, useEffect, useState } from 'react';
-import styles from './header.module.scss';
+import { ReactNode, useEffect, useRef, useState } from 'react';
+import { breakPointTablet } from 'styles/breakpoints';
 
-const liPadding = '0.5em';
+const liPadding = '7px';
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const headerHeight = 150;
-  const breakPointTablet = 768;
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const body = document.getElementsByTagName('BODY')[0];
@@ -19,10 +17,9 @@ export function Header() {
   });
 
   return (
-    <header>
+    <header ref={headerRef}>
       <style jsx>{`
         header {
-          height: ${headerHeight}px;
           position: sticky;
           top: 0;
           background: white;
@@ -30,12 +27,16 @@ export function Header() {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          padding: 0.5em;
         }
 
         nav {
           font-size: 1.5rem;
           position: fixed;
-          top: ${headerHeight}px;
+          padding-top: ${menuOpen ? 1 : 0.5}em;
+          ${menuOpen ? 'padding-left: 1em' : ''};
+          gap: 0.5em;
+          top: ${headerRef.current?.clientHeight ?? 150}px;
           // top: 0;
           left: 0;
           z-index: 1;
@@ -47,14 +48,19 @@ export function Header() {
           width: 100%;
         }
 
-        nav > li {
-          padding: ${liPadding};
-          display: flex;
-        }
-
         .burger {
           float: right;
           z-index: 2;
+        }
+
+        .header-right {
+          display: flex;
+          gap: 0.7em;
+          align-items: center;
+        }
+
+        #change-language:hover {
+          cursor: pointer;
         }
 
         @media (min-width: ${breakPointTablet}px) {
@@ -67,12 +73,19 @@ export function Header() {
           }
 
           .burger {
-            // visibility: hidden;
             display: none;
           }
         }
       `}</style>
-      <img src={`${process.env.basePath}/logo.png`} alt="Company logo" />
+      <Link href="/">
+        <a>
+          <img
+            src={`${process.env.basePath}/logo.png`}
+            height={'80px'}
+            alt="Company logo"
+          />
+        </a>
+      </Link>
       <div>
         {/* <h1>Trifunovic & Co</h1>
         <address>
@@ -89,8 +102,13 @@ export function Header() {
         <NavItem href="/kontakt">Kontakt</NavItem>
       </nav>
 
-      <div className="right">
-        <span>Change language (TODO)</span>
+      <div className="header-right">
+        <div id="change-language" style={{ width: 40, paddingTop: '6px' }}>
+          <img
+            src={`${process.env.basePath}/countries/uk.svg`}
+            alt="Change language"
+          />
+        </div>
         <div className="burger">
           <Hamburger
             toggled={menuOpen}
@@ -109,11 +127,20 @@ export function Header() {
 
 function NavItem({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <li
-      style={{
-        padding: liPadding,
-      }}
-    >
+    <li className="navItem">
+      <style jsx>
+        {`
+          .navItem {
+            padding: ${liPadding};
+            display: flex;
+          }
+
+          .navItem:hover {
+            background: rgba(50, 50, 50, 0.1);
+            border-radius: 6px;
+          }
+        `}
+      </style>
       <Link href={href}>
         <a>{children}</a>
       </Link>
