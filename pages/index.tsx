@@ -1,10 +1,11 @@
+import { Footer } from 'components/footer';
 import { Header } from 'components/header';
 import { SiteHead } from 'components/site-head';
 import type { NextPage } from 'next';
 import { ReactNode } from 'react';
 import { BsGlobe2 } from 'react-icons/bs';
 import { FaChevronCircleRight } from 'react-icons/fa';
-import styles from '../styles/Home.module.scss';
+import styles from 'styles/Home.module.scss';
 
 const workElemHeaderIconSize = 35;
 
@@ -136,7 +137,7 @@ const Home: NextPage = () => {
 
         <h2>Trifunovic & Co</h2>
       </main>
-      <footer className={styles.footer}></footer>
+      <Footer />
     </div>
   );
 };

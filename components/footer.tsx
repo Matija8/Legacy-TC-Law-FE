@@ -1,0 +1,105 @@
+import Link from 'next/link';
+import { BsLinkedin } from 'react-icons/bs';
+import { gColors } from 'styles/style-constants';
+import { MailIcon } from './mailIcon';
+
+const iconSize = 28;
+
+export function Footer() {
+  return (
+    <footer>
+      <style jsx>{`
+        footer {
+          padding: 50px;
+        }
+
+        p {
+          // font-size: 1.1rem;
+          color: rgb(51, 51, 51);
+        }
+
+        .banner-img {
+          height: 2.5rem;
+        }
+
+        hr {
+          border-top: 1px solid ${gColors.red1};
+          border-bottom: 0;
+        }
+
+        .footer-bottom-3 {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .footer-mid {
+          display: flex;
+          flex-direction: column;
+          gap: 1em;
+          margin-top: 1em;
+        }
+
+        .icon-flex-row {
+          display: flex;
+          gap: 0.5em;
+        }
+
+        a {
+          color: ${gColors.red1};
+        }
+      `}</style>
+      <img
+        className="banner-img"
+        src={`${process.env.basePath}/banner.png`}
+        alt="TC-law company banner"
+      />
+
+      <hr />
+
+      <section className="footer-bottom-3">
+        <section className="footer-left">
+          <h4>Advokatska kancelarija</h4>
+
+          <p>Adresa: Kneza Miloša 10, 11000 Beograd, Srbija</p>
+
+          <p>Tel/Fax:(+381 11) 334-55-66;334-52-52; 334-55-44</p>
+
+          <p>
+            E-mail: <a href="mailto:office@tclaw.rs">office@tclaw.rs</a>
+          </p>
+
+          <div className="icon-flex-row">
+            <a href="https://www.linkedin.com/company/tc-law">
+              <BsLinkedin size={iconSize} color={gColors.red1} />
+            </a>
+            <a href="mailto:office@tclaw.rs">
+              <MailIcon size={iconSize} />
+            </a>
+          </div>
+        </section>
+
+        <section className="footer-mid">
+          <Link href="/oblasti-rada">
+            <a>Oblasti rada</a>
+          </Link>
+          <Link href="/novosti">
+            <a>Novosti</a>
+          </Link>
+          <Link href="/nas-tim">
+            <a>Naš tim</a>
+          </Link>
+          <Link href="/karijera">
+            <a>Karijera</a>
+          </Link>
+          <Link href="/kontakt">
+            <a>Kontakt</a>
+          </Link>
+        </section>
+
+        <section className="footer-right">
+          <p>Prijavite se na novosti</p>
+        </section>
+      </section>
+    </footer>
+  );
+}

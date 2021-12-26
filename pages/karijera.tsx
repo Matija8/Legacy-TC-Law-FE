@@ -1,7 +1,8 @@
+import { Footer } from 'components/footer';
 import { Header } from 'components/header';
 import { SiteHead } from 'components/site-head';
 import { NextPage } from 'next';
-import styles from '../styles/Home.module.scss';
+import styles from 'styles/Home.module.scss';
 
 const careerPage: NextPage = () => {
   return (
@@ -9,6 +10,7 @@ const careerPage: NextPage = () => {
       <SiteHead title="Karijera" />
       <Header />
       <div>Karijera TODO</div>
+      <Footer />
     </div>
   );
 };

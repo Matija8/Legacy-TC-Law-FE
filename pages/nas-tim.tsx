@@ -1,9 +1,10 @@
+import { Footer } from 'components/footer';
 import { Header } from 'components/header';
+import { MailIcon } from 'components/mailIcon';
 import { SiteHead } from 'components/site-head';
 import { NextPage } from 'next';
-import styles from '../styles/Home.module.scss';
-import { ImMail4 } from 'react-icons/im';
 import { breakPointTablet } from 'styles/breakpoints';
+import styles from 'styles/Home.module.scss';
 import { gColors } from 'styles/style-constants';
 
 const ourTeamPage: NextPage = () => {
@@ -82,6 +83,7 @@ const ourTeamPage: NextPage = () => {
           />
         </section>
       </main>
+      <Footer />
     </div>
   );
 };
@@ -137,7 +139,7 @@ function TeamMember({
         </p>
         {email && (
           <a href={`mailto:${email}`}>
-            <ImMail4 size={30} color={gColors.red1} />
+            <MailIcon size={30} color={gColors.red1} />
           </a>
         )}
       </div>
