@@ -7,7 +7,6 @@ import { FaChevronCircleRight } from 'react-icons/fa';
 import styles from '../styles/Home.module.scss';
 
 const workElemHeaderIconSize = 35;
-const red1 = '#a12027';
 
 const Home: NextPage = () => {
   return (

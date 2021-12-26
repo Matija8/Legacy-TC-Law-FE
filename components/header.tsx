@@ -97,13 +97,16 @@ export function Header() {
       <nav id="main-nav" className="slide-in">
         <NavItem href="/oblasti-rada">Oblasti rada</NavItem>
         <NavItem href="/novosti">Novosti</NavItem>
-        <NavItem href="/nas-tim">Nas tim</NavItem>
+        <NavItem href="/nas-tim">Naš tim</NavItem>
         <NavItem href="/karijera">Karijera</NavItem>
         <NavItem href="/kontakt">Kontakt</NavItem>
       </nav>
 
       <div className="header-right">
-        <div id="change-language" style={{ width: 40, paddingTop: '6px' }}>
+        <div id="change-language" style={{ width: 40, paddingTop: '6px' }}
+        onClick={() => {
+          alert('Feature not yet supported - Work in progress!')
+        }}>
           <img
             src={`${process.env.basePath}/countries/uk.svg`}
             alt="Change language"
@@ -127,7 +130,7 @@ export function Header() {
 
 function NavItem({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <li className="navItem">
+    <li>
       <style jsx>
         {`
           .navItem {
@@ -142,7 +145,7 @@ function NavItem({ href, children }: { href: string; children: ReactNode }) {
         `}
       </style>
       <Link href={href}>
-        <a>{children}</a>
+        <a className="navItem">{children}</a>
       </Link>
     </li>
   );

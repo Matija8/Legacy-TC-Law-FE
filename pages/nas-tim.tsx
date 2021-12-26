@@ -2,7 +2,9 @@ import { Header } from 'components/header';
 import { SiteHead } from 'components/site-head';
 import { NextPage } from 'next';
 import styles from '../styles/Home.module.scss';
+import { ImMail4 } from 'react-icons/im';
 import { breakPointTablet } from 'styles/breakpoints';
+import { gColors } from 'styles/style-constants';
 
 const ourTeamPage: NextPage = () => {
   return (
@@ -24,7 +26,7 @@ const ourTeamPage: NextPage = () => {
       <SiteHead title="Naš tim" />
       <Header />
       <main className={styles.main}>
-        <section>
+        <section style={{ marginBottom: '50px' }}>
           <h2>Naš tim</h2>
 
           <p>
@@ -52,17 +54,51 @@ const ourTeamPage: NextPage = () => {
         </section>
 
         <section className="team-photos">
-          <TeamMember memberPhotoId="Jasna" />
-          <TeamMember memberPhotoId="Lana" />
-          <TeamMember memberPhotoId="Katarina" />
-          <TeamMember memberPhotoId="Marko" />
+          <TeamMember
+            name="Jasna"
+            surname="Trifunović"
+            email="jasna.trifunovic@tclaw.rs"
+            title="advokat"
+            memberPhotoId="Jasna"
+          />
+          <TeamMember
+            name="Lana"
+            surname="Tamindžić"
+            title="advokat"
+            email="lana.tamindzic@tclaw.rs"
+            memberPhotoId="Lana"
+          />
+          <TeamMember
+            name="Katarina"
+            surname="Savić"
+            title="advokatski pripravnik"
+            memberPhotoId="Katarina"
+          />
+          <TeamMember
+            name="Marko"
+            surname="Ilić"
+            title="advokatski pripravnik"
+            memberPhotoId="Marko"
+          />
         </section>
       </main>
     </div>
   );
 };
 
-function TeamMember({ memberPhotoId }: { memberPhotoId: string }) {
+function TeamMember({
+  name,
+  surname,
+  title,
+  memberPhotoId,
+  email,
+}: {
+  name: string;
+  surname: string;
+  title: string;
+  memberPhotoId: string;
+  email?: string;
+}) {
   return (
     <article>
       <style jsx>
@@ -70,16 +106,42 @@ function TeamMember({ memberPhotoId }: { memberPhotoId: string }) {
           article {
             display: flex;
             flex-direction: column;
-            height: 300px;
             width: 300px;
+            align-items: center;
+            gap: 1em;
           }
 
           img {
             object-fit: contain;
           }
+
+          .member-details1 {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+          }
+
+          p {
+            margin: 0;
+          }
         `}
       </style>
-      <img src={`${process.env.basePath}/team/${memberPhotoId}.jpg`} />
+      <img
+        src={`${process.env.basePath}/team/${memberPhotoId}.jpg`}
+        alt={`${name} ${surname} ${title} photo`}
+      />
+
+      <div className="member-details1">
+        <p style={{ fontSize: 16 }}>
+          {name} {surname}
+        </p>
+        {email && (
+          <a href={`mailto:${email}`}>
+            <ImMail4 size={30} color={gColors.red1} />
+          </a>
+        )}
+      </div>
+      <p style={{ margin: -10 }}>{title}</p>
     </article>
   );
 }
