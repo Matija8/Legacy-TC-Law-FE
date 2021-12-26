@@ -1,7 +1,9 @@
 import Hamburger from 'hamburger-react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { breakPointTablet } from 'styles/breakpoints';
+import { gColors } from 'styles/style-constants';
 
 const liPadding = '7px';
 
@@ -15,6 +17,8 @@ export function Header() {
 
     body.classList[menuOpen ? 'add' : 'remove']('mobile-nav-open');
   });
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header ref={headerRef}>
@@ -34,7 +38,7 @@ export function Header() {
           font-size: 1.5rem;
           position: fixed;
           padding-top: ${menuOpen ? 1 : 0.5}em;
-          ${menuOpen ? 'padding-left: 1em' : ''};
+          ${menuOpen ? 'padding: 1em' : ''};
           gap: 0.5em;
           top: ${headerRef.current?.clientHeight ?? 150}px;
           // top: 0;
@@ -95,18 +99,31 @@ export function Header() {
       </div>
 
       <nav id="main-nav" className="slide-in">
-        <NavItem href="/oblasti-rada">Oblasti rada</NavItem>
-        <NavItem href="/novosti">Novosti</NavItem>
-        <NavItem href="/nas-tim">Naš tim</NavItem>
-        <NavItem href="/karijera">Karijera</NavItem>
-        <NavItem href="/kontakt">Kontakt</NavItem>
+        <NavItem closeMenu={closeMenu} href="/oblasti-rada">
+          Oblasti rada
+        </NavItem>
+        <NavItem closeMenu={closeMenu} href="/novosti">
+          Novosti
+        </NavItem>
+        <NavItem closeMenu={closeMenu} href="/nas-tim">
+          Naš tim
+        </NavItem>
+        <NavItem closeMenu={closeMenu} href="/karijera">
+          Karijera
+        </NavItem>
+        <NavItem closeMenu={closeMenu} href="/kontakt">
+          Kontakt
+        </NavItem>
       </nav>
 
       <div className="header-right">
-        <div id="change-language" style={{ width: 40, paddingTop: '6px' }}
-        onClick={() => {
-          alert('Feature not yet supported - Work in progress!')
-        }}>
+        <div
+          id="change-language"
+          style={{ width: 40, paddingTop: '6px' }}
+          onClick={() => {
+            alert('Feature not yet supported - Work in progress!');
+          }}
+        >
           <img
             src={`${process.env.basePath}/countries/uk.svg`}
             alt="Change language"
@@ -128,7 +145,17 @@ export function Header() {
   );
 }
 
-function NavItem({ href, children }: { href: string; children: ReactNode }) {
+function NavItem({
+  href,
+  children,
+  closeMenu,
+}: {
+  href: string;
+  children: ReactNode;
+  closeMenu: () => void;
+}) {
+  const router = useRouter();
+  const isActivePage = router.pathname === href;
   return (
     <li>
       <style jsx>
@@ -136,6 +163,8 @@ function NavItem({ href, children }: { href: string; children: ReactNode }) {
           .navItem {
             padding: ${liPadding};
             display: flex;
+
+            ${isActivePage ? `color: ${gColors.red1}` : ''}
           }
 
           .navItem:hover {
@@ -145,7 +174,16 @@ function NavItem({ href, children }: { href: string; children: ReactNode }) {
         `}
       </style>
       <Link href={href}>
-        <a className="navItem">{children}</a>
+        <a
+          className="navItem"
+          onClick={() => {
+            if (isActivePage) {
+              closeMenu();
+            }
+          }}
+        >
+          {children}
+        </a>
       </Link>
     </li>
   );

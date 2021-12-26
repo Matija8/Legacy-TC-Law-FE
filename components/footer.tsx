@@ -30,7 +30,7 @@ export function Footer() {
 
         .footer-bottom-3 {
           display: grid;
-          place-items: start center;
+          place-items: start;
           grid-template-columns: repeat(1, 1fr);
         }
 
@@ -53,6 +53,7 @@ export function Footer() {
         @media (min-width: ${breakPointTablet}px) {
           .footer-bottom-3 {
             grid-template-columns: repeat(3, 1fr);
+            place-items: start center;
           }
         }
       `}</style>
