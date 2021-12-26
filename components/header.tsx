@@ -82,11 +82,11 @@ export function Header() {
       </div>
 
       <nav id="main-nav" className="slide-in">
-        <NavItem href="oblasti-rada">Oblasti rada</NavItem>
-        <NavItem href="novosti">Novosti</NavItem>
-        <NavItem href="nas-tim">Nas tim</NavItem>
-        <NavItem href="karijera">Karijera</NavItem>
-        <NavItem href="kontakt">Kontakt</NavItem>
+        <NavItem href="/oblasti-rada">Oblasti rada</NavItem>
+        <NavItem href="/novosti">Novosti</NavItem>
+        <NavItem href="/nas-tim">Nas tim</NavItem>
+        <NavItem href="/karijera">Karijera</NavItem>
+        <NavItem href="/kontakt">Kontakt</NavItem>
       </nav>
 
       <div className="right">
