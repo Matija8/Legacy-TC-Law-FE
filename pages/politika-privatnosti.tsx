@@ -7,9 +7,9 @@ import styles from 'styles/Home.module.scss';
 const newsPage: NextPage = () => {
   return (
     <div className={styles.container}>
-      <SiteHead title="Novosti" />
+      <SiteHead title="Politika privatnosti" />
       <Header />
-      <div>Novosti TODO</div>
+      <div>Politika privatnosti TODO</div>
       <Footer />
     </div>
   );
