@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { BsLinkedin } from 'react-icons/bs';
+import { breakPointTablet } from 'styles/breakpoints';
 import { gColors } from 'styles/style-constants';
 import { MailIcon } from './mailIcon';
 
@@ -28,8 +29,9 @@ export function Footer() {
         }
 
         .footer-bottom-3 {
-          display: flex;
-          justify-content: space-between;
+          display: grid;
+          place-items: start center;
+          grid-template-columns: repeat(1, 1fr);
         }
 
         .footer-mid {
@@ -46,6 +48,12 @@ export function Footer() {
 
         a {
           color: ${gColors.red1};
+        }
+
+        @media (min-width: ${breakPointTablet}px) {
+          .footer-bottom-3 {
+            grid-template-columns: repeat(3, 1fr);
+          }
         }
       `}</style>
       <img
