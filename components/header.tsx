@@ -1,7 +1,9 @@
+import { workAreas } from 'data/oblasti-rada';
 import Hamburger from 'hamburger-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ReactNode, useEffect, useRef, useState } from 'react';
+import { BsChevronDown } from 'react-icons/bs';
 import { breakPointTablet } from 'styles/breakpoints';
 import { gColors } from 'styles/style-constants';
 
@@ -9,6 +11,7 @@ const liPadding = '7px';
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [sublistOpen, setSublistOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -67,6 +70,12 @@ export function Header() {
           cursor: pointer;
         }
 
+        .submenu {
+          background: white;
+          padding-left: 2rem;
+          ${!sublistOpen ? 'display: none' : ''}
+        }
+
         @media (min-width: ${breakPointTablet}px) {
           nav {
             position: static;
@@ -78,6 +87,15 @@ export function Header() {
 
           .burger {
             display: none;
+          }
+
+          .submenu {
+            position: absolute;
+            z-index: 1;
+            background: white;
+            padding: 10px;
+            border: 1px solid black;
+            box-shadow: 1px 1px;
           }
         }
       `}</style>
@@ -99,9 +117,30 @@ export function Header() {
       </div>
 
       <nav id="main-nav" className="slide-in">
-        <NavItem closeMenu={closeMenu} href="/oblasti-rada">
-          Oblasti rada
-        </NavItem>
+        <div style={{ display: 'relative' }}>
+          <NavItem
+            closeMenu={closeMenu}
+            href="/oblasti-rada"
+            toggleSubList={() => {
+              setSublistOpen(!sublistOpen);
+            }}
+          >
+            Oblasti rada
+          </NavItem>
+          <div className="submenu">
+            {workAreas.map(({ title }) => (
+              <NavItem
+                className="normal-text-size"
+                key={title}
+                closeMenu={closeMenu}
+                href="#"
+              >
+                {title}
+              </NavItem>
+            ))}
+          </div>
+        </div>
+
         <NavItem closeMenu={closeMenu} href="/novosti">
           Novosti
         </NavItem>
@@ -145,31 +184,59 @@ export function Header() {
   );
 }
 
+
 function NavItem({
   href,
   children,
   closeMenu,
+  toggleSubList,
+  className = '',
 }: {
   href: string;
   children: ReactNode;
   closeMenu: () => void;
+  toggleSubList?: () => void;
+  className?: string;
 }) {
   const router = useRouter();
   const isActivePage = router.pathname === href;
   return (
-    <li>
+    <li className={className}>
       <style jsx>
         {`
+          li {
+            display: flex;
+          }
+
           .navItem {
             padding: ${liPadding};
             display: flex;
-
+            justify-content: space-between;
+            flex-grow: 1;
             ${isActivePage ? `color: ${gColors.red1}` : ''}
           }
 
           .navItem:hover {
             background: rgba(50, 50, 50, 0.1);
             border-radius: 6px;
+          }
+
+          .submenu-toggle {
+            color: black;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            height: 100%;
+          }
+
+          .normal-text-size {
+            font-size: 1rem;
+          }
+
+          @media (min-width: ${breakPointTablet}px) {
+            .navItem {
+              flex-grow: 0;
+            }
           }
         `}
       </style>
@@ -183,6 +250,17 @@ function NavItem({
           }}
         >
           {children}
+          {toggleSubList && (
+            <div className="submenu-toggle">
+              <BsChevronDown
+                onClick={(ev) => {
+                  ev.stopPropagation();
+                  ev.preventDefault();
+                  toggleSubList();
+                }}
+              />
+            </div>
+          )}
         </a>
       </Link>
     </li>
