@@ -48,14 +48,7 @@ const Home: NextPage = () => {
           {workAreas.map((workArea) => (
             <WorkAreaCard key={workArea.title} link="https:www.google.com">
               {workArea.icon({ size: workElemHeaderIconSize })}
-              <h3>
-                {workArea.title.split('\n').map((titleLine) => (
-                  <>
-                    {titleLine}
-                    <br />
-                  </>
-                ))}
-              </h3>
+              <h3 className={styles.preWrap}>{workArea.title}</h3>
               <p>{workArea.text}..</p>
             </WorkAreaCard>
           ))}

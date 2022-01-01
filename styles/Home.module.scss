@@ -117,6 +117,10 @@ $breakpoint-tablet: 768px;
   margin-left: 0.5rem;
 }
 
+.preWrap {
+  white-space: pre-wrap;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
