@@ -9,7 +9,9 @@ const newsPage: NextPage = () => {
     <div className={styles.container}>
       <SiteHead title="Uslovi koriščenja" />
       <Header />
-      <div>Uslovi koriščenja TODO</div>
+      <main className={styles.main}>
+        <div>Uslovi koriščenja TODO</div>
+      </main>
       <Footer />
     </div>
   );

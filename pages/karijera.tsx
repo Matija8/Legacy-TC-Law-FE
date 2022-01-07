@@ -9,7 +9,9 @@ const careerPage: NextPage = () => {
     <div className={styles.container}>
       <SiteHead title="Karijera" />
       <Header />
-      <div>Karijera TODO</div>
+      <main className={styles.main}>
+        <div>Karijera TODO</div>
+      </main>
       <Footer />
     </div>
   );

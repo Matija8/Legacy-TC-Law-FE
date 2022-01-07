@@ -48,8 +48,15 @@ a {
 .work-area-card > h3,
 .work-area-card > p {
   text-align: center;
-  /* max-width: 60%; */
 }
+
+// TODO
+// .work-area-card > p {
+//   display: none;
+//   @media (min-width: $breakpoint-tablet) {
+//     display: initial;
+//   }
+// }
 
 .work-area-card > svg {
   color: #a12027;

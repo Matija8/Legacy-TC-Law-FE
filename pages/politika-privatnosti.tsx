@@ -9,7 +9,9 @@ const newsPage: NextPage = () => {
     <div className={styles.container}>
       <SiteHead title="Politika privatnosti" />
       <Header />
-      <div>Politika privatnosti TODO</div>
+      <main className={styles.main}>
+        <div>Politika privatnosti TODO</div>
+      </main>
       <Footer />
     </div>
   );

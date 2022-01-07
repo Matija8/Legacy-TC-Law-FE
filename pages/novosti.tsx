@@ -9,7 +9,9 @@ const newsPage: NextPage = () => {
     <div className={styles.container}>
       <SiteHead title="Novosti" />
       <Header />
-      <div>Novosti TODO</div>
+      <main className={styles.main}>
+        <div>Novosti TODO</div>
+      </main>
       <Footer />
     </div>
   );

@@ -30,14 +30,15 @@ export function Header() {
           position: sticky;
           top: 0;
           background: white;
+          padding: 1rem 0;
 
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 0.5em;
         }
 
         nav {
+          // TODO: font-size media query
           font-size: 1.5rem;
           position: fixed;
           padding-top: ${menuOpen ? 1 : 0.5}em;
@@ -183,7 +184,6 @@ export function Header() {
     </header>
   );
 }
-
 
 function NavItem({
   href,

@@ -9,7 +9,9 @@ const contactPage: NextPage = () => {
     <div className={styles.container}>
       <SiteHead title="Kontakt" />
       <Header />
-      <div>Kontakt TODO</div>
+      <main className={styles.main}>
+        <div>Kontakt TODO</div>
+      </main>
       <Footer />
     </div>
   );

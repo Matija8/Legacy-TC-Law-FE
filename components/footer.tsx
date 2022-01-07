@@ -11,7 +11,8 @@ export function Footer() {
     <footer>
       <style jsx>{`
         footer {
-          padding: 50px;
+          padding: 0;
+          margin-bottom: 1rem;
         }
 
         p {
@@ -48,6 +49,10 @@ export function Footer() {
 
         a {
           color: ${gColors.red1};
+        }
+
+        .footer-left {
+          width: 100%; // For alignment
         }
 
         @media (min-width: ${breakPointTablet}px) {
