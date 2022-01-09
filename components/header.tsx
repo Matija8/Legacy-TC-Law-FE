@@ -166,12 +166,12 @@ export function Header() {
                 Oblasti rada
               </NavItem>
               <div className="submenu">
-                {workAreas.map(({ title }) => (
+                {workAreas.map(({ title, id }) => (
                   <NavItem
                     className="normal-text-size"
                     key={title}
                     closeMenu={closeMenu}
-                    href="#"
+                    href={`oblasti-rada/${id}`}
                   >
                     {title}
                   </NavItem>

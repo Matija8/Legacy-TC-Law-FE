@@ -13,7 +13,7 @@ export default WorkAreaPage;
 
 export async function getStaticPaths() {
   return {
-    paths: workAreas.map((_, idx) => ({ params: { workArea: `${idx}` } })),
+    paths: workAreas.map(({ id }) => ({ params: { workArea: `${id}` } })),
     fallback: false,
   };
 }
