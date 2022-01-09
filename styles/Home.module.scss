@@ -1,13 +1,13 @@
-$breakpoint-tablet: 768px;
+$breakpointTablet: 768px;
 
 .container {
-  padding: 0 2rem;
+  padding: 0 3rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 
-  @media (min-width: $breakpoint-tablet) {
-    padding: 0 7rem;
+  @media (min-width: $breakpointTablet) {
+    padding: 0 10rem;
   }
 }
 
@@ -15,7 +15,7 @@ $breakpoint-tablet: 768px;
   padding: 2rem 0 4rem;
   flex-grow: 1;
 
-  @media (min-width: $breakpoint-tablet) {
+  @media (min-width: $breakpointTablet) {
     padding: 4rem 0 4rem;
   }
 }

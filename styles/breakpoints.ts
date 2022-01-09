@@ -1,1 +1,1 @@
-export const breakPointTablet = 850;
+export const breakPointTablet = 768; // TODO

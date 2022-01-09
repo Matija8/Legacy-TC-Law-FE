@@ -24,11 +24,6 @@ export function Footer() {
           height: 2.5rem;
         }
 
-        hr {
-          border-top: 1px solid ${gColors.red1};
-          border-bottom: 0;
-        }
-
         .footer-bottom-3 {
           display: grid;
           place-items: start;
@@ -68,15 +63,16 @@ export function Footer() {
         alt="TC-law company banner"
       />
 
-      <hr />
+      <hr className="red-horizontal-ruler" />
 
       <section className="footer-bottom-3">
         <section className="footer-left">
           <h4>Advokatska kancelarija</h4>
 
-          <p>Adresa: Kneza Miloša 10, 11000 Beograd, Srbija</p>
-
-          <p>Tel/Fax:(+381 11) 334-55-66;334-52-52; 334-55-44</p>
+          <address>
+            <p>Adresa: Kneza Miloša 10, 11000 Beograd, Srbija</p>
+            <p>Tel/Fax:(+381 11) 334-55-66;334-52-52; 334-55-44</p>
+          </address>
 
           <p>
             E-mail: <a href="mailto:office@tclaw.rs">office@tclaw.rs</a>

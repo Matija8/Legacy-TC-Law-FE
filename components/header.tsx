@@ -35,17 +35,23 @@ export function Header() {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          gap: 3rem;
+        }
+
+        .header-main {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          width: 100%;
         }
 
         nav {
           // TODO: font-size media query
-          font-size: 1.5rem;
+          font-size: 1.3rem;
           position: fixed;
-          padding-top: ${menuOpen ? 1 : 0.5}em;
           ${menuOpen ? 'padding: 1em' : ''};
           gap: 0.5em;
           top: ${headerRef.current?.clientHeight ?? 150}px;
-          // top: 0;
           left: 0;
           z-index: 1;
           background: white;
@@ -56,38 +62,58 @@ export function Header() {
           width: 100%;
         }
 
-        .burger {
-          float: right;
-          z-index: 2;
-        }
-
-        .header-right {
-          display: flex;
-          gap: 0.7em;
-          align-items: center;
-        }
-
-        #change-language:hover {
-          cursor: pointer;
-        }
-
         .submenu {
           background: white;
           padding-left: 2rem;
           ${!sublistOpen ? 'display: none' : ''}
         }
 
+        .header-top {
+          display: none;
+        }
+
+        .header-bottom {
+          display: flex;
+          align-items: center;
+          gap: 0.7em;
+          padding-top: 0.5em;
+        }
+
+        .header-bottom-right {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 0.7em;
+        }
+
+        .hide-mobile {
+          display: none;
+        }
+
         @media (min-width: ${breakPointTablet}px) {
+          .header-main {
+            align-items: stretch;
+          }
+
+          .header-top {
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .mail-btn {
+            background-color: ${gColors.red1};
+            padding: 15px 25px;
+            font-size: 1em;
+            color: white;
+            border-radius: 30px;
+          }
+
           nav {
             position: static;
             display: flex;
             flex-direction: row;
             visibility: visible;
             height: auto;
-          }
-
-          .burger {
-            display: none;
           }
 
           .submenu {
@@ -97,6 +123,14 @@ export function Header() {
             padding: 10px;
             border: 1px solid black;
             box-shadow: 1px 1px;
+          }
+
+          .hide-mobile {
+            display: block;
+          }
+
+          .hide-desktop {
+            display: none;
           }
         }
       `}</style>
@@ -109,77 +143,73 @@ export function Header() {
           />
         </a>
       </Link>
-      <div>
-        {/* <h1>Trifunovic & Co</h1>
-        <address>
-          Kneza Milosa 10, 11000 Beograd, Srbija <br />
-          Tel/Fax
-        </address> */}
-      </div>
 
-      <nav id="main-nav" className="slide-in">
-        <div style={{ display: 'relative' }}>
-          <NavItem
-            closeMenu={closeMenu}
-            href="/oblasti-rada"
-            toggleSubList={() => {
-              setSublistOpen(!sublistOpen);
-            }}
-          >
-            Oblasti rada
-          </NavItem>
-          <div className="submenu">
-            {workAreas.map(({ title }) => (
+      <div className="header-main">
+        <div className="header-top">
+          <h1>Trifunovic & Co</h1>
+          <address>
+            <p>Adresa: Kneza Miloša 10, 11000 Beograd, Srbija</p>
+            <p>Tel/Fax:(+381 11) 334-55-66;334-52-52; 334-55-44</p>
+          </address>
+        </div>
+
+        <hr className="red-horizontal-ruler hide-mobile" />
+
+        <div className="header-bottom">
+          <nav>
+            <div style={{ display: 'relative' }}>
               <NavItem
-                className="normal-text-size"
-                key={title}
                 closeMenu={closeMenu}
-                href="#"
+                href="/oblasti-rada"
+                toggleSubList={() => setSublistOpen(!sublistOpen)}
               >
-                {title}
+                Oblasti rada
               </NavItem>
-            ))}
+              <div className="submenu">
+                {workAreas.map(({ title }) => (
+                  <NavItem
+                    className="normal-text-size"
+                    key={title}
+                    closeMenu={closeMenu}
+                    href="#"
+                  >
+                    {title}
+                  </NavItem>
+                ))}
+              </div>
+            </div>
+
+            <NavItem closeMenu={closeMenu} href="/novosti">
+              Novosti
+            </NavItem>
+            <NavItem closeMenu={closeMenu} href="/nas-tim">
+              Naš tim
+            </NavItem>
+            <NavItem closeMenu={closeMenu} href="/karijera">
+              Karijera
+            </NavItem>
+            <NavItem closeMenu={closeMenu} href="/kontakt">
+              Kontakt
+            </NavItem>
+          </nav>
+
+          <div className="header-bottom-right">
+            <ChangeLanguage />
+            <div className="hide-desktop">
+              <Hamburger
+                toggled={menuOpen}
+                onToggle={() => {
+                  setMenuOpen(!menuOpen);
+                }}
+              >
+                Menu
+              </Hamburger>
+            </div>
+            <div className="mail-btn hide-mobile">
+              <a href="mailto:office@tclaw.co.rs">office@tclaw.co.rs</a>
+            </div>
           </div>
         </div>
-
-        <NavItem closeMenu={closeMenu} href="/novosti">
-          Novosti
-        </NavItem>
-        <NavItem closeMenu={closeMenu} href="/nas-tim">
-          Naš tim
-        </NavItem>
-        <NavItem closeMenu={closeMenu} href="/karijera">
-          Karijera
-        </NavItem>
-        <NavItem closeMenu={closeMenu} href="/kontakt">
-          Kontakt
-        </NavItem>
-      </nav>
-
-      <div className="header-right">
-        <div
-          id="change-language"
-          style={{ width: 40, paddingTop: '6px' }}
-          onClick={() => {
-            alert('Feature not yet supported - Work in progress!');
-          }}
-        >
-          <img
-            src={`${process.env.basePath}/countries/uk.svg`}
-            alt="Change language"
-          />
-        </div>
-        <div className="burger">
-          <Hamburger
-            toggled={menuOpen}
-            onToggle={() => {
-              setMenuOpen(!menuOpen);
-            }}
-          >
-            Menu
-          </Hamburger>
-        </div>
-        {/* <a href="mailto:office@tclaw.co.rs">office@tclaw.co.rs</a> */}
       </div>
     </header>
   );
@@ -223,10 +253,11 @@ function NavItem({
 
           .submenu-toggle {
             color: black;
-            margin-left: 10px;
+            margin-left: 7px;
             display: flex;
             align-items: center;
             height: 100%;
+            padding-top: 2px;
           }
 
           .normal-text-size {
@@ -253,6 +284,7 @@ function NavItem({
           {toggleSubList && (
             <div className="submenu-toggle">
               <BsChevronDown
+                size={15}
                 onClick={(ev) => {
                   ev.stopPropagation();
                   ev.preventDefault();
@@ -264,5 +296,21 @@ function NavItem({
         </a>
       </Link>
     </li>
+  );
+}
+
+function ChangeLanguage() {
+  return (
+    <div
+      style={{ width: 40, paddingTop: '6px', cursor: 'pointer' }}
+      onClick={() => {
+        alert('Feature not yet supported - Work in progress!');
+      }}
+    >
+      <img
+        src={`${process.env.basePath}/countries/uk.svg`}
+        alt="Change language"
+      />
+    </div>
   );
 }

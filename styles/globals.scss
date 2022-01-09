@@ -1,4 +1,5 @@
-$breakpoint-tablet: 768px;
+$breakpointTablet: 768px;
+$red1: #a12027;
 
 html,
 body {
@@ -12,7 +13,7 @@ body {
 
 body.mobile-nav-open {
   overflow: hidden;
-  @media (min-width: $breakpoint-tablet) {
+  @media (min-width: $breakpointTablet) {
     overflow: auto;
   }
 }
@@ -59,14 +60,14 @@ a {
 // }
 
 .work-area-card > svg {
-  color: #a12027;
+  color: $red1;
   flex-shrink: 0;
   flex-grow: 0;
   // flex: 0;
 }
 
 .work-area-right-arrow {
-  color: #a12027;
+  color: $red1;
 }
 
 .work-area-bottom {
@@ -82,13 +83,19 @@ nav {
   list-style-type: none;
 }
 
+.red-horizontal-ruler {
+  border-top: 1px solid $red1;
+  border-bottom: 0;
+  width: 100%;
+}
+
 .work-areas-grid {
   row-gap: 40px;
   display: grid;
   place-items: center;
   grid-template-columns: repeat(1, 1fr);
   // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  @media (min-width: $breakpoint-tablet) {
+  @media (min-width: $breakpointTablet) {
     grid-template-columns: repeat(4, 1fr);
   }
 }

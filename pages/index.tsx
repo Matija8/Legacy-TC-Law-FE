@@ -69,8 +69,4 @@ const Home: NextPage = () => {
   );
 };
 
-function HorizontalRuler(): JSX.Element {
-  return <hr style={{ width: '100%' }}></hr>;
-}
-
 export default Home;
