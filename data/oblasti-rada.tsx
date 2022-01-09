@@ -1,6 +1,6 @@
 import { BsGlobe2 } from 'react-icons/bs';
 
-interface WorkArea {
+export interface WorkArea {
   id: string;
   title: string;
   text: string;

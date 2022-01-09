@@ -171,9 +171,9 @@ export function Header() {
                     className="normal-text-size"
                     key={title}
                     closeMenu={closeMenu}
-                    href={`oblasti-rada/${id}`}
+                    href={`/oblasti-rada/${id}`}
                   >
-                    {title}
+                    <span className={'pre-wrap'}>{title} </span>
                   </NavItem>
                 ))}
               </div>
@@ -229,7 +229,7 @@ function NavItem({
   className?: string;
 }) {
   const router = useRouter();
-  const isActivePage = router.pathname === href;
+  const isActivePage = router.asPath === href;
   return (
     <li className={className}>
       <style jsx>

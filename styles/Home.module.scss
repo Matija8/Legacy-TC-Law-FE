@@ -1,7 +1,9 @@
 $breakpointTablet: 768px;
 
+$contained-rl-padding: 3rem;
+
 .container {
-  padding: 0 3rem;
+  padding: 0 $contained-rl-padding;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

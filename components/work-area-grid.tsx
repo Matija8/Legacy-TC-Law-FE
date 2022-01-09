@@ -11,7 +11,7 @@ export function WorkAreaGrid() {
       {workAreas.map((workArea) => (
         <WorkAreaCard key={workArea.title} link="https:www.google.com">
           {workArea.icon({ size: workElemHeaderIconSize })}
-          <h3 className={styles.preWrap}>{workArea.title}</h3>
+          <h3 className="pre-wrap">{workArea.title}</h3>
           <p>{substringToWord(workArea.text)}..</p>
         </WorkAreaCard>
       ))}
