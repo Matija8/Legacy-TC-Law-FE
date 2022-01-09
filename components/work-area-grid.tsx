@@ -9,7 +9,10 @@ export function WorkAreaGrid() {
   return (
     <section className="work-areas-grid">
       {workAreas.map((workArea) => (
-        <WorkAreaCard key={workArea.title} link="https:www.google.com">
+        <WorkAreaCard
+          key={workArea.title}
+          href={`/oblasti-rada/${workArea.id}`}
+        >
           {workArea.icon({ size: workElemHeaderIconSize })}
           <h3 className="pre-wrap">{workArea.title}</h3>
           <p>{substringToWord(workArea.text)}..</p>
