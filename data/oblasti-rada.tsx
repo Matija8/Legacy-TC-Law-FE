@@ -9,8 +9,12 @@ interface WorkArea {
 export const workAreas: WorkArea[] = [
   {
     title: 'Korporativno pravo/M&A',
-    text: `Savetujemo klijente u pripremnoj fazi odlučivanja o investiciji,
-      sastavljamo i pripremamo potrebna`,
+    text: `
+    Savetujemo klijente u pripremnoj fazi odlučivanja o investiciji, sastavljamo i pripremamo potrebna dokumenta za osnivanje privrednih društava i ogranaka stranih privrednih društava, i pružamo usluge zastupanja u postupku njihove registracije i započinjanja poslovanja. Posebnu važnost pridajemo uspostavljanju mehanizama upravljanja koji najbolje odgovaraju ekonomskom i poslovnom kontekstu u kojem posluju, i efikasnog odgovora na probleme izazvane organizacijskom strukturom poslovanja i promenom regulatornog okvira.
+
+    Pružamo podršku klijentima u transakcijama vezanim za statusne promene privrednih društava, pravno dubinsko ispitivanje, pratimo ih u pregovorima i zaključenju ugovora, obezbeđenju njihovih investicija i drugim poslovima u vezi sa njihovim poslovanjem. Pomažemo u istraživanju alternativnih načina za odgovor na različite poslovne izazove i probleme i izboru onog koji najbolje odgovara njihovom poslovanju.
+
+    Posebnu pažnju posvećujemo vrednosti poslovnih informacija, podataka i tehnologija naših klijenata, pružamo im savete i sastavljamo dokumenta za zaštitu podataka i poslovnih tajni naših klijenata od nelojalne konkurencije.`,
     icon: BsGlobe2,
   },
   {
@@ -45,8 +49,7 @@ export const workAreas: WorkArea[] = [
   },
   {
     title: `Porezi, carine i devizno poslovanje`,
-    text: `Pružamo podršku investitorima u razvoju greenfield investicija i
-    drugih vidova ulaganja u projekte izgradnje`,
+    text: `Poresko savetovanje koje pružamo našim klijentima podrazumeva celokupan spektar usluga planiranja i konsaltinga`,
     icon: BsGlobe2,
   },
   {

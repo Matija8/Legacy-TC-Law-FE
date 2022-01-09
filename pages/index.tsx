@@ -1,11 +1,7 @@
 import { Footer } from 'components/footer';
 import { Header } from 'components/header';
 import { SiteHead } from 'components/site-head';
-import {
-  WorkAreaCard,
-  workElemHeaderIconSize,
-} from 'components/work-area-card';
-import { workAreas } from 'data/oblasti-rada';
+import { WorkAreaGrid } from 'components/work-area-grid';
 import type { NextPage } from 'next';
 import styles from 'styles/Home.module.scss';
 
@@ -44,15 +40,7 @@ const Home: NextPage = () => {
           </p>
         </section>
 
-        <section className="work-areas-grid">
-          {workAreas.map((workArea) => (
-            <WorkAreaCard key={workArea.title} link="https:www.google.com">
-              {workArea.icon({ size: workElemHeaderIconSize })}
-              <h3 className={styles.preWrap}>{workArea.title}</h3>
-              <p>{workArea.text}..</p>
-            </WorkAreaCard>
-          ))}
-        </section>
+        <WorkAreaGrid />
 
         <section>
           <h2>Novosti</h2>
