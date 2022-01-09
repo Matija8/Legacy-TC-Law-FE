@@ -14,12 +14,18 @@ const WorkAreaPage = ({ workArea }: { workArea: WorkArea }) => {
       <main className={styles.main}>
         <h2 className="header-underlined">Oblasti rada</h2>
 
-        <section>
-          <h3>{workArea.title}</h3>
-          <p>{workArea.text}</p>
+        <section style={{ margin: '40px 0 70px' }}>
+          <h3 className="pre-wrap">{workArea.title}</h3>
+          {workArea.text
+            .split('\n')
+            .map((p) => p.trim())
+            .filter(Boolean)
+            .map((p, idx) => (
+              <p key={idx}>{p}</p>
+            ))}
         </section>
 
-        <WorkAreaGrid />
+        <WorkAreaGrid slice={8} />
       </main>
       <Footer />
     </div>

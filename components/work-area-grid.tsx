@@ -5,10 +5,11 @@ import {
 import { workAreas } from 'data/oblasti-rada';
 import styles from 'styles/Home.module.scss';
 
-export function WorkAreaGrid() {
+export function WorkAreaGrid({ slice }: { slice?: number }) {
+  const slicedWorkAreas = slice ? workAreas.slice(0, slice) : workAreas;
   return (
     <section className="work-areas-grid">
-      {workAreas.map((workArea) => (
+      {slicedWorkAreas.map((workArea) => (
         <WorkAreaCard
           key={workArea.title}
           href={`/oblasti-rada/${workArea.id}`}
