@@ -77,6 +77,11 @@ a {
 
 .work-area-right-arrow {
   color: $red1;
+  float: right;
+}
+
+.work-area-right-arrow:hover {
+  opacity: 0.9;
 }
 
 .work-area-bottom {

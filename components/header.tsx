@@ -9,7 +9,7 @@ import { gColors } from 'styles/style-constants';
 import { XImage } from './image';
 import { RoundBtn } from './round-btn';
 
-const liPadding = '7px';
+const liPadding = '10px';
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,6 +23,7 @@ export function Header() {
     body.classList[menuOpen ? 'add' : 'remove']('mobile-nav-open');
   });
 
+  const headerHeight = headerRef.current?.clientHeight ?? 150;
   const closeMenu = () => setMenuOpen(false);
 
   return (
@@ -52,7 +53,7 @@ export function Header() {
           position: fixed;
           ${menuOpen ? 'padding: 1em' : ''};
           gap: 0.5em;
-          top: ${headerRef.current?.clientHeight ?? 150}px;
+          top: ${headerHeight}px;
           left: 0;
           z-index: 1;
           background: white;
@@ -111,6 +112,10 @@ export function Header() {
             display: flex;
             justify-content: space-between;
             align-items: center;
+          }
+
+          .submenu-holding-li:hover > .submenu {
+            display: block;
           }
 
           nav {
@@ -176,7 +181,7 @@ export function Header() {
 
         <div className="header-bottom">
           <nav>
-            <div style={{ display: 'relative' }}>
+            <div className="submenu-holding-li">
               <NavItem
                 closeMenu={closeMenu}
                 href="/oblasti-rada"
@@ -260,6 +265,7 @@ function NavItem({
           }
 
           .navItem {
+            color: rgb(50, 50, 50);
             padding: ${liPadding};
             display: flex;
             justify-content: space-between;
@@ -271,8 +277,9 @@ function NavItem({
           }
 
           .navItem:hover {
-            background: rgba(50, 50, 50, 0.1);
-            border-radius: 6px;
+            color: black;
+            background: rgba(50, 50, 50, 0.04);
+            border-radius: 16px;
           }
 
           .submenu-toggle {
@@ -290,7 +297,7 @@ function NavItem({
 
           @media (min-width: ${breakPointTablet}px) {
             .navItem {
-              flex-grow: 0;
+              flex-grow: 1;
             }
           }
         `}

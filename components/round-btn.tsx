@@ -24,10 +24,19 @@ export function RoundBtn({
             justify-content: center;
             margin: 1px;
             cursor: pointer;
+
+            transition: all 0.1s linear;
+            outline: none;
+            // box-shadow: 0 3px 0 black;
           }
 
           .mail-btn:hover {
             opacity: 0.9;
+          }
+
+          .mail-btn:active {
+            box-shadow: none;
+            transform: translateY(1px);
           }
         `}
       </style>

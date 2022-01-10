@@ -16,7 +16,7 @@ export function WorkAreaCard({
       {children}
       <div className="work-area-bottom">
         <Link href={href}>
-          <a style={{ float: 'right' }} className="work-area-right-arrow">
+          <a className="work-area-right-arrow">
             <FaChevronCircleRight size={30} />
           </a>
         </Link>
