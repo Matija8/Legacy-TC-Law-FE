@@ -12,7 +12,7 @@ const contact: NextPage = () => {
       <SiteHead title="Oblasti rada" />
       <Header />
       <main className={styles.main}>
-        <h2 className="header-underlined">Oblasti rada</h2>
+        <h2 className="heading-underlined">Oblasti rada</h2>
         <WorkAreaGrid />
       </main>
       <Footer />

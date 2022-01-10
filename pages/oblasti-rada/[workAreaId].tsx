@@ -12,7 +12,7 @@ const WorkAreaPage = ({ workArea }: { workArea: WorkArea }) => {
       <SiteHead title="Oblasti rada" />
       <Header />
       <main className={styles.main}>
-        <h2 className="header-underlined">Oblasti rada</h2>
+        <h2 className="heading-underlined">Oblasti rada</h2>
 
         <section style={{ margin: '40px 0 70px' }}>
           <h3 className="pre-wrap">{workArea.title}</h3>

@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       <Header />
       <main className={styles.main}>
         <section style={{ width: '100%', marginBottom: '3rem' }}>
-          <h2 style={{ fontWeight: 700 }}>OBLASTI RADA</h2>
+          <h2 className="heading-underlined">Oblasti Rada</h2>
 
           <p>
             Od 1998. pružamo podršku internacionalnim i domaćim klijentima iz
@@ -43,14 +43,16 @@ const Home: NextPage = () => {
         <WorkAreaGrid />
 
         <section>
-          <h2>Novosti</h2>
+          <h2 className="heading-underlined">Novosti</h2>
         </section>
 
-        <h2>Naš Tim</h2>
+        <section>
+          <h2 className="heading-underlined">Naš Tim</h2>
+        </section>
 
-        <h2>Kontakt</h2>
-
-        <h2>Trifunovic & Co</h2>
+        <section>
+          <h2 className="heading-underlined">Kontakt</h2>
+        </section>
       </main>
       <Footer />
     </div>

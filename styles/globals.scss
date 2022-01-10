@@ -11,6 +11,15 @@ body {
   width: 100%;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
 body.mobile-nav-open {
   overflow: hidden;
   @media (min-width: $breakpointTablet) {
@@ -24,7 +33,7 @@ p {
   /* letter-spacing: 1px; */
   box-sizing: border-box;
   line-height: 26.4px;
-  color: rgb(51, 51, 51);
+  color: rgb(50, 50, 50);
   margin: 0 0 1rem 0;
 }
 
@@ -87,6 +96,16 @@ nav {
   border-top: 1px solid $red1;
   border-bottom: 0;
   width: 100%;
+}
+
+.heading-underlined {
+  border-bottom: 1px solid $red1;
+  padding-bottom: 0.5em;
+  width: 20rem;
+  margin-bottom: 3rem;
+
+  font-size: 2rem;
+  font-weight: 300;
 }
 
 .work-areas-grid {

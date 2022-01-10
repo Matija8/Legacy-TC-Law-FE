@@ -6,6 +6,8 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
 import { breakPointTablet } from 'styles/breakpoints';
 import { gColors } from 'styles/style-constants';
+import { XImage } from './image';
+import { RoundBtn } from './round-btn';
 
 const liPadding = '7px';
 
@@ -30,7 +32,7 @@ export function Header() {
           position: sticky;
           top: 0;
           background: white;
-          padding: 1rem 0;
+          padding: 2rem 0 1rem;
 
           display: flex;
           justify-content: space-between;
@@ -47,7 +49,6 @@ export function Header() {
 
         nav {
           // TODO: font-size media query
-          font-size: 1.3rem;
           position: fixed;
           ${menuOpen ? 'padding: 1em' : ''};
           gap: 0.5em;
@@ -65,7 +66,7 @@ export function Header() {
         .submenu {
           background: white;
           padding-left: 2rem;
-          ${!sublistOpen ? 'display: none' : ''}
+          ${!sublistOpen ? 'display: none' : ''};
         }
 
         .header-top {
@@ -90,6 +91,17 @@ export function Header() {
           display: none;
         }
 
+        address {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+
+        address > p,
+        address > a {
+          color: grey;
+        }
+
         @media (min-width: ${breakPointTablet}px) {
           .header-main {
             align-items: stretch;
@@ -98,14 +110,7 @@ export function Header() {
           .header-top {
             display: flex;
             justify-content: space-between;
-          }
-
-          .mail-btn {
-            background-color: ${gColors.red1};
-            padding: 15px 25px;
-            font-size: 1em;
-            color: white;
-            border-radius: 30px;
+            align-items: center;
           }
 
           nav {
@@ -114,6 +119,10 @@ export function Header() {
             flex-direction: row;
             visibility: visible;
             height: auto;
+          }
+
+          .header-bottom-right {
+            gap: 1.7em;
           }
 
           .submenu {
@@ -136,9 +145,9 @@ export function Header() {
       `}</style>
       <Link href="/">
         <a>
-          <img
+          <XImage
             src={`${process.env.basePath}/logo.png`}
-            height={'80px'}
+            height={'105px'}
             alt="Company logo"
           />
         </a>
@@ -146,10 +155,20 @@ export function Header() {
 
       <div className="header-main">
         <div className="header-top">
-          <h1>Trifunovic & Co</h1>
+          <Link href="/">
+            <a>
+              <XImage
+                src={`${process.env.basePath}/banner.png`}
+                height={'50px'}
+                alt="Company banner"
+              />
+            </a>
+          </Link>
           <address>
-            <p>Adresa: Kneza Miloša 10, 11000 Beograd, Srbija</p>
-            <p>Tel/Fax:(+381 11) 334-55-66;334-52-52; 334-55-44</p>
+            <Link href="https://www.google.com/maps/place/Trifunovic%26Co+Law+Office/@44.8087014,20.4636747,19z/data=!4m5!3m4!1s0x475a7aa8ab86039f:0x184d5a50bfafe45d!8m2!3d44.8086604!4d20.4636218">
+              <a>Kneza Miloša 10, 11000 Beograd, Srbija</a>
+            </Link>
+            <p>Tel/Fax: (+381 11) 334-55-66;334-52-52; 334-55-44</p>
           </address>
         </div>
 
@@ -205,8 +224,10 @@ export function Header() {
                 Menu
               </Hamburger>
             </div>
-            <div className="mail-btn hide-mobile">
-              <a href="mailto:office@tclaw.co.rs">office@tclaw.co.rs</a>
+            <div className="hide-mobile">
+              <RoundBtn>
+                <a href="mailto:office@tclaw.co.rs">office@tclaw.co.rs</a>
+              </RoundBtn>
             </div>
           </div>
         </div>
@@ -243,7 +264,10 @@ function NavItem({
             display: flex;
             justify-content: space-between;
             flex-grow: 1;
-            ${isActivePage ? `color: ${gColors.red1}` : ''}
+            ${isActivePage ? `color: ${gColors.red1};` : ''}
+            // font-weight: 300;
+            // font-size: 1.4rem
+            text-transform: uppercase;
           }
 
           .navItem:hover {
@@ -307,7 +331,7 @@ function ChangeLanguage() {
         alert('Feature not yet supported - Work in progress!');
       }}
     >
-      <img
+      <XImage
         src={`${process.env.basePath}/countries/uk.svg`}
         alt="Change language"
       />

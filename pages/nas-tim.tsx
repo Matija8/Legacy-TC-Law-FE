@@ -1,5 +1,6 @@
 import { Footer } from 'components/footer';
 import { Header } from 'components/header';
+import { XImage } from 'components/image';
 import { MailIcon } from 'components/mailIcon';
 import { SiteHead } from 'components/site-head';
 import { NextPage } from 'next';
@@ -28,7 +29,7 @@ const ourTeamPage: NextPage = () => {
       <Header />
       <main className={styles.main}>
         <section style={{ marginBottom: '50px' }}>
-          <h2>Naš tim</h2>
+          <h2 className="heading-underlined">Naš tim</h2>
 
           <p>
             Sa preko dve i po decenije iskustva u advokaturi i negovanjem
@@ -113,7 +114,7 @@ function TeamMember({
             gap: 1em;
           }
 
-          img {
+          .photo {
             object-fit: contain;
           }
 
@@ -128,7 +129,8 @@ function TeamMember({
           }
         `}
       </style>
-      <img
+      <XImage
+        className="photo"
         src={`${process.env.basePath}/team/${memberPhotoId}.jpg`}
         alt={`${name} ${surname} ${title} photo`}
       />

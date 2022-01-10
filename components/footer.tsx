@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { BsLinkedin } from 'react-icons/bs';
 import { breakPointTablet } from 'styles/breakpoints';
 import { gColors } from 'styles/style-constants';
+import { XImage } from './image';
 import { MailIcon } from './mailIcon';
 
 const iconSize = 28;
@@ -57,7 +58,7 @@ export function Footer() {
           }
         }
       `}</style>
-      <img
+      <XImage
         className="banner-img"
         src={`${process.env.basePath}/banner.png`}
         alt="TC-law company banner"
