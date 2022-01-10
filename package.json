@@ -12,6 +12,7 @@
     "gh-deploy": "npm run gh-predeploy && gh-pages -d out --dotfiles"
   },
   "dependencies": {
+    "formik": "^2.2.9",
     "hamburger-react": "^2.4.1",
     "next": "12.0.7",
     "react": "17.0.2",
