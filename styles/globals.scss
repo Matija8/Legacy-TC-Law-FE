@@ -27,7 +27,9 @@ body.mobile-nav-open {
   }
 }
 
-p {
+p,
+li,
+td {
   font-family: avenir;
   text-align: justify;
   /* letter-spacing: 1px; */
@@ -38,7 +40,8 @@ p {
 }
 
 a {
-  color: inherit;
+  // color: inherit;
+  color: $red1;
   text-decoration: none;
 }
 

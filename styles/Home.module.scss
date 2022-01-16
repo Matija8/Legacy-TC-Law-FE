@@ -1,17 +1,12 @@
 $breakpointTablet: 768px;
 
-$contained-rl-padding: 3rem;
-
 .container {
-  padding: 0 $contained-rl-padding;
+  margin: 0 auto;
+  padding: 0 2rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
-  // TODO
-  // max-width: 1440px;
-  // padding: 0 2rem;
-  // margin: 0 2rem;
+  max-width: 1440px;
 
   @media (min-width: $breakpointTablet) {
     padding: 0 10rem;

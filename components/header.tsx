@@ -132,11 +132,14 @@ export function Header() {
 
           .submenu {
             position: absolute;
+            overflow-y: auto;
             z-index: 1;
             background: white;
             padding: 10px;
             border: 1px solid black;
             box-shadow: 1px 1px;
+            font-size: 0.5em;
+            text-transform: none;
           }
 
           .hide-mobile {
@@ -186,6 +189,7 @@ export function Header() {
                 closeMenu={closeMenu}
                 href="/oblasti-rada"
                 toggleSubList={() => setSublistOpen(!sublistOpen)}
+                className="UPPER"
               >
                 Oblasti rada
               </NavItem>
@@ -203,16 +207,16 @@ export function Header() {
               </div>
             </div>
 
-            <NavItem closeMenu={closeMenu} href="/novosti">
+            <NavItem closeMenu={closeMenu} href="/novosti" className="UPPER">
               Novosti
             </NavItem>
-            <NavItem closeMenu={closeMenu} href="/nas-tim">
+            <NavItem closeMenu={closeMenu} href="/nas-tim" className="UPPER">
               Naš tim
             </NavItem>
-            <NavItem closeMenu={closeMenu} href="/karijera">
+            <NavItem closeMenu={closeMenu} href="/karijera" className="UPPER">
               Karijera
             </NavItem>
-            <NavItem closeMenu={closeMenu} href="/kontakt">
+            <NavItem closeMenu={closeMenu} href="/kontakt" className="UPPER">
               Kontakt
             </NavItem>
           </nav>
@@ -231,7 +235,9 @@ export function Header() {
             </div>
             <div className="hide-mobile">
               <RoundBtn>
-                <a href="mailto:office@tclaw.co.rs">office@tclaw.co.rs</a>
+                <a href="mailto:office@tclaw.co.rs" style={{ color: 'white' }}>
+                  office@tclaw.co.rs
+                </a>
               </RoundBtn>
             </div>
           </div>
@@ -262,6 +268,7 @@ function NavItem({
         {`
           li {
             display: flex;
+            margin: 0;
           }
 
           .navItem {
@@ -270,9 +277,12 @@ function NavItem({
             display: flex;
             justify-content: space-between;
             flex-grow: 1;
-            ${isActivePage ? `color: ${gColors.red1};` : ''}
+            ${isActivePage ? `color: ${gColors.red1}` : ''};
             // font-weight: 300;
-            // font-size: 1.4rem
+            // font-size: 1.4rem;
+          }
+
+          .UPPER {
             text-transform: uppercase;
           }
 
