@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { BsLinkedin } from 'react-icons/bs';
 import { breakPointTablet } from 'styles/breakpoints';
 import { gColors } from 'styles/style-constants';
+import { FirmAddress } from './address';
 import { XImage } from './image';
 import { MailIcon } from './mailIcon';
 
@@ -62,6 +63,7 @@ export function Footer() {
         className="banner-img"
         src={`${process.env.basePath}/banner.png`}
         alt="TC-law company banner"
+        height={'50px'}
       />
 
       <hr className="red-horizontal-ruler" />
@@ -71,8 +73,7 @@ export function Footer() {
           <h4>Advokatska kancelarija</h4>
 
           <address>
-            <p>Adresa: Kneza Miloša 10, 11000 Beograd, Srbija</p>
-            <p>Tel/Fax:(+381 11) 334-55-66;334-52-52; 334-55-44</p>
+            <FirmAddress />
           </address>
 
           <p>

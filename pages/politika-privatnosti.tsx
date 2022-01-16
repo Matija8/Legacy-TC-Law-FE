@@ -1,5 +1,6 @@
 import { Footer } from 'components/footer';
 import { Header } from 'components/header';
+import { PhoneNumberLink } from 'components/address';
 import { SiteHead } from 'components/site-head';
 import { NextPage } from 'next';
 import Link from 'next/link';
@@ -157,8 +158,8 @@ const newsPage: NextPage = () => {
           </ul>
         </section>
 
-        <section id="trece-licnosti">
-          <h3>Podaci o ličnost koje prikupljamo od trećih lica</h3>
+        <section id="Trece-licnosti">
+          <h3>Podaci o ličnosti koje prikupljamo od trećih lica</h3>
 
           <p>
             Od vas prikupljamo većinu vaših podataka o ličnosti koje nam vi
@@ -170,7 +171,7 @@ const newsPage: NextPage = () => {
           </p>
         </section>
 
-        <section id="kolacici">
+        <section id="Kolacici">
           <h3>Informacija o korišćenju kolačića</h3>
           <p>
             Kao i mnogi drugi veb-sajtovi, i naš veb-sajt koristi kolačiće.
@@ -213,9 +214,10 @@ const newsPage: NextPage = () => {
 
           <p>
             Više o kolačićima koje koristimo možete saznati na ovom
-            <Link href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage">
-              <a> Linku</a>
-            </Link>
+            <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage">
+              {' '}
+              Linku
+            </a>
             .
           </p>
 
@@ -232,7 +234,7 @@ const newsPage: NextPage = () => {
           </p>
         </section>
 
-        <section id="Podaci-licnost-kako-zasto">
+        <section id="Podaci-licnosti-kako-i-zasto">
           <h3>Zašto, kako i po kom osnovu koristimo vaše podatke o ličnosti</h3>
 
           <p>
@@ -305,6 +307,213 @@ const newsPage: NextPage = () => {
           <p className="italic">
             Molimo kontaktirajte nas ako imate pitanja u vezi načina
             prikupljanja i korišćenja vaših podataka o ličnosti.
+          </p>
+        </section>
+
+        <section id="Otkrivanje-i-prenos-vasih-podataka">
+          <h3>Otkrivanje i prenos vaših podataka o ličnosti</h3>
+          <p>
+            Mi poštujemo vaše podatke o ličnosti i ne otkrivamo ih drugim licima
+            osim kako je niže opisano.
+          </p>
+
+          <p>Vaše podatke o ličnosti možemo otkriti:</p>
+
+          <ul>
+            <li>
+              licu koje nam pruža računovodstvene usluge u svrhu administracije
+              i naplate;
+            </li>
+            <li>
+              u svrhu pružanja advokatskih saveta i usluga. Kada otkrivamo vaše
+              podatke o ličnosti van Srbije, koristimo standardne ugovorne
+              klauzule. Kada je neophodno da se podaci prenesu van Srbije,
+              prenos se vrši u skladu sa propisanim uslovima u Republici Srbiji;
+            </li>
+            <li>
+              podatke o ličnosti klijenata, njihovih zaposlenih i zastupnika
+              možemo otkrivati drugim stručnjacima uključujući advokate,
+              medijatore, arbitre, konsultante, eksperte koje angažujemo na
+              predmetu i advokatske pripravnike. Takođe, podaci o ličnosti mogu
+              biti otkriveni i drugoj advokatskoj kancelariji ako je potrebno
+              dobijanje stranog pravnog mišljenja;
+            </li>
+            <li>
+              našim dobavljačima odnosno pružaocima usluga (npr. organizatoru
+              događaja, partnerima i slično);
+            </li>
+            <li>nadležnim organima kad je to obavezno ili potrebno;</li>
+            <li>kada nam za njihovo otkrivanje vi date pristanak.</li>
+          </ul>
+
+          <p>
+            Prenosićemo vaše podatke o ličnosti izvan Republike Srbije samo ako:
+          </p>
+
+          <ul>
+            <li>
+              se prenos podataka vrši u zemlju za koju je utvrđeno da ima
+              primereni nivo zaštite podataka o ličnosti u skladu sa zakonom,
+            </li>
+            <li>
+              se prenos vrši uz primenu standardnih ugovornih klauzula kao
+              odgovarajućih mera zaštite;
+            </li>
+            <li>ste nam dali izričit pristanak ili</li>
+            <li>
+              je takav prenos u skladu sa Zakonom o zaštiti podataka o ličnosti
+              u Republici Srbiji (dalje: Zakon) ili odredbama GDPR.
+            </li>
+          </ul>
+
+          <p>
+            U svakom slučaju preduzimaćemo sve odgovarajuće mere kako bismo
+            osigurali da vaša privatnost ostane zaštićena.
+          </p>
+          <p className="italic">
+            Kontaktirajte nas ako imate bilo kakva pitanja u vezi način
+            otkrivanja ili prenosa vaših podataka o ličnosti.
+          </p>
+        </section>
+
+        <section id="Kako-stitimo-vase-podatke">
+          <h3>Kako štitimo vaše podatke o ličnosti</h3>
+
+          <p>
+            Naš cilj je da vaše podatke čuvamo sigurnim i bezbednim u najvećoj
+            mogućoj meri. U cilju bezbednosti vaših podataka o ličnosti
+            sprovodimo odgovarajuće tehničke, organizacione i kadrovske mere
+            radi sprečavanja neovlašćenog otkrivanja ili pristupa podacima o
+            ličnosti koji su preneseni, pohranjeni ili obrađivani na drugi
+            način, kao i slučajnog ili nezakonitog gubitka, uništenja ili
+            izmene.
+          </p>
+
+          <p className="italic">
+            Kontaktirajte nas ako imate pitanja u vezi načina zaštite vaših
+            podataka o ličnosti.
+          </p>
+        </section>
+
+        <section id="Koliko-dugo-cuvamo-vase-podatke">
+          <h3>Koliko dugo čuvamo vaše podatke o ličnosti</h3>
+
+          <p>
+            Vaše podatke o ličnosti ne čuvamo duže nego što je to neophodno za
+            svrhu za koju su podaci prikupljeni, ili u trajanju na koje smo
+            obavezani zakonom, ili radi ostvarivanja odnosno odbrane pravnog
+            zahteva.
+          </p>
+        </section>
+
+        <section id="Vasa-prava">
+          <h3>Vaša prava u vezi obrade i čuvanja vaših podataka o ličnosti</h3>
+
+          <b>Imate prava:</b>
+          <ul>
+            <li>
+              da budete informisani o obradi vaših podataka o ličnosti,
+              uključujući osnov i svrhu obrade, vrste podataka, da li se i kome
+              otkrivaju, i druge informacije u skladu sa Zakonom („
+              <b>pravo na informisanje</b>“). U pojedinim situacijama, ovo pravo
+              može biti ograničeno;
+            </li>
+            <li>
+              da nam{' '}
+              <b>
+                date odnosno da odbijete davanje pristanka kao i pravo da
+                opozovete dati pristanak
+              </b>{' '}
+              na obradu vaših podataka o ličnosti, kada se radi o obradi koja se
+              vrši na osnovu pristanka;
+            </li>
+            <li>
+              da istaknete prigovor na obradu podataka o ličnosti („
+              <b>pravo na prigovor</b>“) iz Zakonom propisanih razloga (ovo
+              pravo je neograničeno ako se radi o obradi podataka koja se vrši
+              isključivo za potrebe direktnog oglašavanja (marketinga));
+            </li>
+            <li>
+              da budete obavešteni odn. da dobijete informaciju koji podaci o
+              ličnosti se o vama obrađuju i čuvaju („<b>pravo na pristup</b>“),
+              kao i pravo na uvid u podatke i kopiju podataka u skladu sa
+              Zakonom;
+            </li>
+            <li>
+              da zahtevate da se izvrši ispravka ili dopuna podataka koje čuvamo
+              o vama, ako su ti podaci netačni ili neažurni ili nepotpuni („
+              <b>pravo na ispravku i dopunu</b>“)
+            </li>
+            <li>
+              da zahtevate brisanje podataka koje čuvamo: 1) kada vaši podaci o
+              ličnosti više nisu neophodni za obradu u svrhe u koje su
+              prikupljeni ili na drugi način obrađivani; 2) kada povučete
+              pristanak na kojem je obrada zasnovana a nema drugog osnova za
+              obradu, ili 3) kada uložite prigovor na obradu podataka o ličnosti
+              u skladu sa članom 37. stav 1 Zakona a nema drugog pravnog osnova
+              za obradu koji preteže nad vašim legitimnim interesom, pravom ili
+              slobodom ili je osnov u vezi sa podnošenjem, ostvarivanjem i
+              odbranom pravnog zahteva („<b>pravo na brisanje/zaborav</b>“).
+            </li>
+          </ul>
+
+          <p>
+            Ovo pravo nije apsolutno: u zavisnosti od obima zahteva, možemo
+            obrisati sve ili deo podataka koje čuvamo, a u nekim situacijama
+            takav zahtev može biti i pravno neosnovan (ako su npr. podaci
+            neophodni za izvršenje ugovora i ispunjenje zakonskih obaveza ili
+            zbog podnošenja, ostvarivanja ili odbrane pravnog zahteva, u meri u
+            kojoj je obrada neophodna);
+          </p>
+
+          <ul>
+            <li>
+              da obezbedite ograničenje obrade vaših podataka o ličnosti: 1) ako
+              osporavate njihovu tačnost (za vreme koje nam omogućava proveru
+              tačnosti podataka o ličnosti); 2) ako je obrada nezakonita a vi se
+              protivite brisanju vaših podataka o ličnosti i umesto toga tražite
+              ograničavanje njihove upotrebe; 3) ako nama više nisu potrebni
+              podaci o ličnosti za potrebe obrade ali ih vi tražite radi
+              podnošenja, ostvarivanja ili odbrane pravnih zahteva i 4) ako
+              uložite prigovor na obradu a još nije utvrđeno da li naši
+              legitimni interesi za obradu preovlađuju nad vašim interesima („
+              <b>pravo na ograničenje obrade</b>“). Ako je obrada ograničena,
+              takve podatke o ličnosti smemo obrađivati ili uz vaš pristanak ili
+              u cilju podnošenja, ostvarivanja ili odbrane pravnih zahteva ili
+              zbog zaštite prava drugog fizičkog ili pravnog lica ili zbog
+              ostvarivanja značajnih javnih interesa. U slučaju ograničene
+              obrade obavestićemo vas o prestanku ograničenja pre njegovog
+              prestanka.
+            </li>
+            <li>
+              pod određenim uslovima propisanim Zakonom, imate pravo da
+              zahtevate da podatke o ličnosti koje ste nam dostavili prenesemo
+              vama ili drugom rukovaocu („
+              <b>pravo da zahtevate prenos podataka</b>“).
+            </li>
+            <li>
+              da podnesete <b>pritužbu</b> Povereniku za informacije od javnog
+              značaja i zaštitu podataka o ličnosti (Poverenik) i pravo na
+              sudsku zaštitu. Ako smatrate da se obrada vaših podataka o
+              ličnosti sprovodi suprotno odredbama Zakona ili drugih važećih
+              propisa, možete podneti pritužbu Povereniku. Ako ne budete
+              zadovoljni njegovom odlukom, možete pokrenuti <b>upravni spor</b>{' '}
+              u roku propisanom Zakonom. Lice na koje se podaci odnose ima pravo
+              na sudsku zaštitu ako smatra da mu je, radnjom obrade njegovih
+              podataka o ličnosti, povređeno neko pravo predviđeno Zakonom od
+              strane rukovaoca ili obrađivača.
+            </li>
+          </ul>
+        </section>
+
+        <section id="Kontaktirajte-nas">
+          <h3>Kontaktirajte nas</h3>
+          <p>
+            Molimo vas da sva pitanja u vezi ove Izjave o privatnosti, načina na
+            koji obrađujemo vaše podatke o ličnosti i druge zahteve u vezi
+            zaštite ličnih podataka uputite na e-mail{' '}
+            <a href="mailto:office@tclaw.rs">office@tclaw.rs</a>; kontakt
+            telefon: <PhoneNumberLink style={{}} />
           </p>
         </section>
       </main>

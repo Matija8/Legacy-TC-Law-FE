@@ -6,6 +6,7 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
 import { breakPointTablet } from 'styles/breakpoints';
 import { gColors } from 'styles/style-constants';
+import { FirmAddress } from './address';
 import { XImage } from './image';
 import { RoundBtn } from './round-btn';
 
@@ -98,11 +99,6 @@ export function Header() {
           align-items: flex-end;
         }
 
-        address > p,
-        address > a {
-          color: grey;
-        }
-
         @media (min-width: ${breakPointTablet}px) {
           .header-main {
             align-items: stretch;
@@ -173,10 +169,7 @@ export function Header() {
             </a>
           </Link>
           <address>
-            <Link href="https://www.google.com/maps/place/Trifunovic%26Co+Law+Office/@44.8087014,20.4636747,19z/data=!4m5!3m4!1s0x475a7aa8ab86039f:0x184d5a50bfafe45d!8m2!3d44.8086604!4d20.4636218">
-              <a>Kneza Miloša 10, 11000 Beograd, Srbija</a>
-            </Link>
-            <p>Tel/Fax: (+381 11) 334-55-66;334-52-52; 334-55-44</p>
+            <FirmAddress />
           </address>
         </div>
 
