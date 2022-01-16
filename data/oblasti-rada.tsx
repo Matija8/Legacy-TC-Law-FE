@@ -7,6 +7,8 @@ export interface WorkArea {
   icon: (props: { size: number }) => JSX.Element;
 }
 
+// TODO: Header Nav from workAreas!?
+
 export const workAreas: WorkArea[] = [
   {
     id: 'Korporativno-pravo-M&A',

@@ -8,6 +8,11 @@ $contained-rl-padding: 3rem;
   display: flex;
   flex-direction: column;
 
+  // TODO
+  // max-width: 1440px;
+  // padding: 0 2rem;
+  // margin: 0 2rem;
+
   @media (min-width: $breakpointTablet) {
     padding: 0 10rem;
   }
