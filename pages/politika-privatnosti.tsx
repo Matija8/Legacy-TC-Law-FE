@@ -3,26 +3,16 @@ import { Header } from 'components/header';
 import { PhoneNumberLink } from 'components/address';
 import { SiteHead } from 'components/site-head';
 import { NextPage } from 'next';
-import Link from 'next/link';
 import styles from 'styles/Home.module.scss';
 
 const newsPage: NextPage = () => {
   return (
     <div className={styles.container}>
-      <style jsx>{`
-        section {
-          padding-bottom: 1rem;
-        }
-
-        .italic {
-          font-style: italic;
-        }
-      `}</style>
       <SiteHead title="Politika privatnosti" />
       <Header />
       <main className={styles.main}>
         <h2 className="heading-underlined">Politika privatnosti</h2>
-        <section id="Izjava-o-privatnosti">
+        <section id="Izjava-o-privatnosti" className={styles.section}>
           <h3>Izjava o privatnosti</h3>
           <p>
             Naša kancelarija posvećena je poštovanju i zaštiti privatnosti i
@@ -46,7 +36,7 @@ const newsPage: NextPage = () => {
           </p>
         </section>
 
-        <section id="Ko-smo-mi">
+        <section id="Ko-smo-mi" className={styles.section}>
           <h3>Ko smo mi</h3>
 
           <p>
@@ -56,7 +46,10 @@ const newsPage: NextPage = () => {
           </p>
         </section>
 
-        <section id="Koje-podatke-prikupljamo-i-obradjujemo">
+        <section
+          id="Koje-podatke-prikupljamo-i-obradjujemo"
+          className={styles.section}
+        >
           <h3>Koje podatke o ličnosti prikupljamo i obrađujemo</h3>
 
           <p>
@@ -158,7 +151,7 @@ const newsPage: NextPage = () => {
           </ul>
         </section>
 
-        <section id="Trece-licnosti">
+        <section id="Trece-licnosti" className={styles.section}>
           <h3>Podaci o ličnosti koje prikupljamo od trećih lica</h3>
 
           <p>
@@ -171,7 +164,7 @@ const newsPage: NextPage = () => {
           </p>
         </section>
 
-        <section id="Kolacici">
+        <section id="Kolacici" className={styles.section}>
           <h3>Informacija o korišćenju kolačića</h3>
           <p>
             Kao i mnogi drugi veb-sajtovi, i naš veb-sajt koristi kolačiće.
@@ -234,7 +227,7 @@ const newsPage: NextPage = () => {
           </p>
         </section>
 
-        <section id="Podaci-licnosti-kako-i-zasto">
+        <section id="Podaci-licnosti-kako-i-zasto" className={styles.section}>
           <h3>Zašto, kako i po kom osnovu koristimo vaše podatke o ličnosti</h3>
 
           <p>
@@ -304,13 +297,16 @@ const newsPage: NextPage = () => {
             ispunjenje svrhe u koju se prikupljaju.
           </p>
 
-          <p className="italic">
+          <p className={styles.italic}>
             Molimo kontaktirajte nas ako imate pitanja u vezi načina
             prikupljanja i korišćenja vaših podataka o ličnosti.
           </p>
         </section>
 
-        <section id="Otkrivanje-i-prenos-vasih-podataka">
+        <section
+          id="Otkrivanje-i-prenos-vasih-podataka"
+          className={styles.section}
+        >
           <h3>Otkrivanje i prenos vaših podataka o ličnosti</h3>
           <p>
             Mi poštujemo vaše podatke o ličnosti i ne otkrivamo ih drugim licima
@@ -370,13 +366,13 @@ const newsPage: NextPage = () => {
             U svakom slučaju preduzimaćemo sve odgovarajuće mere kako bismo
             osigurali da vaša privatnost ostane zaštićena.
           </p>
-          <p className="italic">
+          <p className={styles.italic}>
             Kontaktirajte nas ako imate bilo kakva pitanja u vezi način
             otkrivanja ili prenosa vaših podataka o ličnosti.
           </p>
         </section>
 
-        <section id="Kako-stitimo-vase-podatke">
+        <section id="Kako-stitimo-vase-podatke" className={styles.section}>
           <h3>Kako štitimo vaše podatke o ličnosti</h3>
 
           <p>
@@ -389,13 +385,16 @@ const newsPage: NextPage = () => {
             izmene.
           </p>
 
-          <p className="italic">
+          <p className={styles.italic}>
             Kontaktirajte nas ako imate pitanja u vezi načina zaštite vaših
             podataka o ličnosti.
           </p>
         </section>
 
-        <section id="Koliko-dugo-cuvamo-vase-podatke">
+        <section
+          id="Koliko-dugo-cuvamo-vase-podatke"
+          className={styles.section}
+        >
           <h3>Koliko dugo čuvamo vaše podatke o ličnosti</h3>
 
           <p>
@@ -406,7 +405,7 @@ const newsPage: NextPage = () => {
           </p>
         </section>
 
-        <section id="Vasa-prava">
+        <section id="Vasa-prava" className={styles.section}>
           <h3>Vaša prava u vezi obrade i čuvanja vaših podataka o ličnosti</h3>
 
           <b>Imate prava:</b>
@@ -506,7 +505,7 @@ const newsPage: NextPage = () => {
           </ul>
         </section>
 
-        <section id="Kontaktirajte-nas">
+        <section id="Kontaktirajte-nas" className={styles.section}>
           <h3>Kontaktirajte nas</h3>
           <p>
             Molimo vas da sva pitanja u vezi ove Izjave o privatnosti, načina na

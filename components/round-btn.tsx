@@ -1,14 +1,18 @@
 import { gColors } from 'styles/style-constants';
 
 export function RoundBtn({
-  className,
+  className = '',
   children,
+  options = { hoverEffects: true, translate: true },
+  onClick,
 }: {
   className?: string;
   children?: React.ReactNode;
+  options?: { hoverEffects: boolean; translate: boolean };
+  onClick?: () => void;
 }) {
   return (
-    <div className={`${className ?? ''} mail-btn`}>
+    <div className={`${className} mail-btn`} onClick={onClick}>
       <style jsx>
         {`
           .mail-btn {
@@ -31,12 +35,12 @@ export function RoundBtn({
           }
 
           .mail-btn:hover {
-            opacity: 0.9;
+            ${options.hoverEffects ? 'opacity: 0.9' : ''};
           }
 
           .mail-btn:active {
             box-shadow: none;
-            transform: translateY(1px);
+            ${options.translate ? 'transform: translateY(1px)' : ''};
           }
         `}
       </style>
