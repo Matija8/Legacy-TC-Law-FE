@@ -1,0 +1,22 @@
+@use '../styles/colors.scss' as colors;
+
+.outer {
+  display: flex;
+}
+
+.carousel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.lr-arrow {
+  flex-shrink: 0;
+  cursor: pointer;
+  color: colors.$red1;
+  border: none;
+  background: none;
+}
+
+.disabled {
+  color: grey;
+}

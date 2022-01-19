@@ -1,5 +1,5 @@
 $breakpointTablet: 768px;
-$red1: #a12027;
+@use './colors.scss' as colors;
 
 html,
 body {
@@ -41,7 +41,7 @@ td {
 
 a {
   // color: inherit;
-  color: $red1;
+  color: colors.$red1;
   text-decoration: none;
 }
 
@@ -72,14 +72,14 @@ a {
 // }
 
 .work-area-card > svg {
-  color: $red1;
+  color: colors.$red1;
   flex-shrink: 0;
   flex-grow: 0;
   // flex: 0;
 }
 
 .work-area-right-arrow {
-  color: $red1;
+  color: colors.$red1;
   float: right;
 }
 
@@ -101,13 +101,13 @@ nav {
 }
 
 .red-horizontal-ruler {
-  border-top: 1px solid $red1;
+  border-top: 1px solid colors.$red1;
   border-bottom: 0;
   width: 100%;
 }
 
 .heading-underlined {
-  border-bottom: 1px solid $red1;
+  border-bottom: 1px solid colors.$red1;
   padding-bottom: 0.5em;
   width: 20rem;
   margin-bottom: 3rem;

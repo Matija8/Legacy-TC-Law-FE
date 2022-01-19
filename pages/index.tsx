@@ -1,3 +1,4 @@
+import { EmployeeCarousel } from 'components/carousel';
 import { Footer } from 'components/footer';
 import { Header } from 'components/header';
 import { SiteHead } from 'components/site-head';
@@ -11,7 +12,10 @@ const Home: NextPage = () => {
       <SiteHead title="Home page" />
       <Header />
       <main className={styles.main}>
-        <section style={{ width: '100%', marginBottom: '3rem' }}>
+        <section
+          id="oblasti-rada"
+          style={{ width: '100%', marginBottom: '3rem' }}
+        >
           <h2 className="heading-underlined">Oblasti Rada</h2>
 
           <p>
@@ -42,15 +46,16 @@ const Home: NextPage = () => {
 
         <WorkAreaGrid />
 
-        <section>
+        <section id="novosti">
           <h2 className="heading-underlined">Novosti</h2>
         </section>
 
-        <section>
+        <section id="nas-tim">
           <h2 className="heading-underlined">Naš Tim</h2>
+          <EmployeeCarousel />
         </section>
 
-        <section>
+        <section id="kontakt">
           <h2 className="heading-underlined">Kontakt</h2>
         </section>
       </main>

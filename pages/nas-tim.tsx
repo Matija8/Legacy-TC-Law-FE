@@ -1,8 +1,10 @@
+import { TeamMember } from 'components/employee';
 import { Footer } from 'components/footer';
 import { Header } from 'components/header';
 import { XImage } from 'components/image';
 import { MailIcon } from 'components/mailIcon';
 import { SiteHead } from 'components/site-head';
+import { employees } from 'data/employees';
 import { NextPage } from 'next';
 import { breakPointTablet } from 'styles/breakpoints';
 import styles from 'styles/Home.module.scss';
@@ -56,98 +58,14 @@ const ourTeamPage: NextPage = () => {
         </section>
 
         <section className="team-photos">
-          <TeamMember
-            name="Jasna"
-            surname="Trifunović"
-            email="jasna.trifunovic@tclaw.rs"
-            title="advokat"
-            memberPhotoId="Jasna"
-          />
-          <TeamMember
-            name="Lana"
-            surname="Tamindžić"
-            title="advokat"
-            email="lana.tamindzic@tclaw.rs"
-            memberPhotoId="Lana"
-          />
-          <TeamMember
-            name="Katarina"
-            surname="Savić"
-            title="advokatski pripravnik"
-            memberPhotoId="Katarina"
-          />
-          <TeamMember
-            name="Marko"
-            surname="Ilić"
-            title="advokatski pripravnik"
-            memberPhotoId="Marko"
-          />
+          {employees.map((employee, idx) => (
+            <TeamMember {...employee} key={employee.key} />
+          ))}
         </section>
       </main>
       <Footer />
     </div>
   );
 };
-
-function TeamMember({
-  name,
-  surname,
-  title,
-  memberPhotoId,
-  email,
-}: {
-  name: string;
-  surname: string;
-  title: string;
-  memberPhotoId: string;
-  email?: string;
-}) {
-  return (
-    <article>
-      <style jsx>
-        {`
-          article {
-            display: flex;
-            flex-direction: column;
-            width: 300px;
-            align-items: center;
-            gap: 1em;
-          }
-
-          .photo {
-            object-fit: contain;
-          }
-
-          .member-details1 {
-            display: flex;
-            align-items: center;
-            gap: 0.5em;
-          }
-
-          p {
-            margin: 0;
-          }
-        `}
-      </style>
-      <XImage
-        className="photo"
-        src={`${process.env.basePath}/team/${memberPhotoId}.jpg`}
-        alt={`${name} ${surname} ${title} photo`}
-      />
-
-      <div className="member-details1">
-        <p style={{ fontSize: 16 }}>
-          {name} {surname}
-        </p>
-        {email && (
-          <a href={`mailto:${email}`}>
-            <MailIcon size={30} color={gColors.red1} />
-          </a>
-        )}
-      </div>
-      <p style={{ margin: -10 }}>{title}</p>
-    </article>
-  );
-}
 
 export default ourTeamPage;
