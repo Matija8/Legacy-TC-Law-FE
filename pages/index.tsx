@@ -1,4 +1,5 @@
 import { EmployeeCarousel } from 'components/carousel';
+import { ContactForm } from 'components/contact-form';
 import { Footer } from 'components/footer';
 import { Header } from 'components/header';
 import { SiteHead } from 'components/site-head';
@@ -9,6 +10,11 @@ import styles from 'styles/Home.module.scss';
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
+      <style>{`.contact {
+        display: grid;
+        grid-template-columns: 50fr 60fr;
+        gap: 2rem
+      }`}</style>
       <SiteHead title="Home page" />
       <Header />
       <main className={styles.main}>
@@ -57,6 +63,11 @@ const Home: NextPage = () => {
 
         <section id="kontakt">
           <h2 className="heading-underlined">Kontakt</h2>
+
+          <div className="contact">
+            <ContactForm />
+            <div style={{ border: '1px solid black' }}>TODO MAP</div>
+          </div>
         </section>
       </main>
       <Footer />
