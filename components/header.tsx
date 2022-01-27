@@ -12,6 +12,8 @@ import { RoundBtn } from './round-btn';
 
 const liPadding = '10px';
 
+const breakpoint1 = breakPointTablet; // TODO
+
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sublistOpen, setSublistOpen] = useState(false);
@@ -262,6 +264,10 @@ function NavItem({
           li {
             display: flex;
             margin: 0;
+          }
+
+          li > a {
+            width: max-content;
           }
 
           .navItem {
