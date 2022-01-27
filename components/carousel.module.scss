@@ -2,11 +2,16 @@
 
 .outer {
   display: flex;
+  justify-content: center;
 }
 
 .carousel {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-auto-flow: column;
+  overflow-x: hidden; // TODO
+  overflow-y: hidden; // TODO
+  padding-bottom: 2rem;
 }
 
 .lr-arrow {
@@ -19,4 +24,5 @@
 
 .disabled {
   color: grey;
+  cursor: no-drop;
 }
