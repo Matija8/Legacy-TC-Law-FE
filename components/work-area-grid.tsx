@@ -3,12 +3,12 @@ import {
   workElemHeaderIconSize,
 } from 'components/work-area-card';
 import { workAreas } from 'data/oblasti-rada';
-import styles from 'styles/Home.module.scss';
+import styles from './work-area-grid.module.scss';
 
 export function WorkAreaGrid({ slice }: { slice?: number }) {
   const slicedWorkAreas = slice ? workAreas.slice(0, slice) : workAreas;
   return (
-    <section className="work-areas-grid">
+    <section className={styles['work-areas-grid']}>
       {slicedWorkAreas.map((workArea) => (
         <WorkAreaCard
           key={workArea.title}
