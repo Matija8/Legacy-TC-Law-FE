@@ -12,6 +12,8 @@
     "gh-deploy": "npm run gh-predeploy && gh-pages -d out --dotfiles"
   },
   "dependencies": {
+    "@react-hook/size": "^2.1.2",
+    "classnames": "^2.3.1",
     "formik": "^2.2.9",
     "hamburger-react": "^2.4.1",
     "next": "12.0.7",

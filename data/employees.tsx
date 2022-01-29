@@ -7,7 +7,7 @@ export interface Employee {
   key: string;
 }
 
-export const employees: Employee[] = [
+export const lawyers: Employee[] = [
   {
     name: 'Jasna',
     surname: 'Trifunović',
@@ -34,4 +34,13 @@ export const employees: Employee[] = [
     title: 'advokatski pripravnik',
     memberPhotoId: 'Marko',
   },
-].map((x) => ({ ...x, key: `${x.name}-${x.surname}` }));
+  {
+    name: 'Matija',
+    surname: 'Test',
+    title: 'programer',
+    memberPhotoId: 'debug',
+    test: true,
+  },
+]
+  .map((x) => ({ ...x, key: `${x.name}-${x.surname}` }))
+  .filter((x) => !x.test);

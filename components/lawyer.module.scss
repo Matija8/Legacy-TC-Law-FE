@@ -1,0 +1,36 @@
+@use 'styles/colors.scss' as colors;
+
+.lawyer-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  align-items: center;
+  gap: 1em;
+}
+
+.lawyer-info p {
+  margin: 0;
+}
+
+.photo-container {
+  background-color: colors.$red1;
+}
+
+.photo {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 330px;
+}
+
+.member-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  align-items: center;
+}
+
+.member-details-row-1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}

@@ -1,14 +1,10 @@
-import { TeamMember } from 'components/employee';
 import { Footer } from 'components/footer';
 import { Header } from 'components/header';
-import { XImage } from 'components/image';
-import { MailIcon } from 'components/mailIcon';
+import { Lawyer } from 'components/lawyer';
 import { SiteHead } from 'components/site-head';
-import { employees } from 'data/employees';
+import { lawyers } from 'data/employees';
 import { NextPage } from 'next';
-import { breakPointTablet } from 'styles/breakpoints';
 import styles from 'styles/Home.module.scss';
-import { gColors } from 'styles/style-constants';
 
 const ourTeamPage: NextPage = () => {
   return (
@@ -16,15 +12,10 @@ const ourTeamPage: NextPage = () => {
       <style jsx>{`
         .team-photos {
           display: grid;
-          grid-template-columns: repeat(1, 1fr);
-          row-gap: 50px;
-          place-items: center;
-        }
-
-        @media (min-width: ${breakPointTablet}px) {
-          .team-photos {
-            grid-template-columns: repeat(3, 1fr);
-          }
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          row-gap: 3rem;
+          column-gap: 4%;
+          place-items: start center;
         }
       `}</style>
       <SiteHead title="Naš tim" />
@@ -58,8 +49,8 @@ const ourTeamPage: NextPage = () => {
         </section>
 
         <section className="team-photos">
-          {employees.map((employee, idx) => (
-            <TeamMember {...employee} key={employee.key} />
+          {lawyers.map((employee) => (
+            <Lawyer {...employee} key={employee.key} />
           ))}
         </section>
       </main>

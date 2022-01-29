@@ -153,7 +153,7 @@ export function Header() {
         <a>
           <XImage
             src={`${process.env.basePath}/logo.png`}
-            height={'105px'}
+            style={{ minHeight: '100px' }} // T*DO
             alt="Company logo"
           />
         </a>

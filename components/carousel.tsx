@@ -1,45 +1,77 @@
+import useSize from '@react-hook/size';
+import classNames from 'classnames';
+import { lawyers } from 'data/employees';
+import { useRef, useState } from 'react';
+import { clamp } from 'util/helpers';
 import styles from './carousel.module.scss';
-import { useState } from 'react';
-import { employees as employeesDep } from 'data/employees';
-import { TeamMember } from './employee';
 import { Icons } from './icons';
-import { useWindowDimensions } from 'hooks/use-window-dimensions-hook';
-import { breakPointTablet } from 'styles/breakpoints';
+import { Lawyer } from './lawyer';
+
+const lrIconSize = 30;
 
 export function EmployeeCarousel() {
-  const { width } = useWindowDimensions();
-  // alert(width);
+  const carouselOuterRef = useRef<HTMLDivElement>(null);
+  const [width] = useSize(carouselOuterRef);
 
   const [idx, setIdx] = useState(0);
-  const take = width > breakPointTablet ? 3 : 1;
-  const lrIconSize = 30;
-  // const employees = [...employeesx, ...employeesx];
-  const employees = employeesDep;
+  const take = clamp(1, Math.floor((width - 20) / 250), 3);
 
   return (
-    <div className={styles.outer}>
+    <section className={styles.outer} ref={carouselOuterRef}>
+      <LButton
+        disabled={idx < 1}
+        onClick={() => setIdx(Math.max(0, idx - 1))}
+      />
+      <div className={styles.carousel}>
+        {lawyers.slice(idx, idx + take).map((person) => (
+          <Lawyer {...person} key={person.key} />
+        ))}
+      </div>
+      <RButton
+        disabled={idx >= lawyers.length - take}
+        onClick={() => setIdx(Math.min(lawyers.length - take, idx + 1))}
+      />
+    </section>
+  );
+}
+
+function LButton({
+  disabled,
+  onClick,
+}: {
+  disabled: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <div className={styles['lr-arrow-container']}>
       <button
-        className={`${styles['lr-arrow']} ${idx < 1 ? styles.disabled : ''}`}
-        onClick={() => {
-          setIdx(Math.max(0, idx - 1));
-        }}
+        className={classNames({
+          [styles['lr-arrow']]: true,
+          [styles.disabled]: disabled,
+        })}
+        onClick={onClick}
       >
         <Icons.Left size={lrIconSize} />
       </button>
-      <div className={styles.carousel}>
-        {employees.slice(idx, idx + take).map((emp) => (
-          <article style={{ height: 380 }} key={emp.key}>
-            <TeamMember {...emp} />
-          </article>
-        ))}
-      </div>
+    </div>
+  );
+}
+
+function RButton({
+  disabled,
+  onClick,
+}: {
+  disabled: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <div className={styles['lr-arrow-container']}>
       <button
-        className={`${styles['lr-arrow']} ${
-          idx >= employees.length - take ? styles.disabled : ''
-        }`}
-        onClick={() => {
-          setIdx(Math.min(employees.length - take, idx + 1));
-        }}
+        className={classNames({
+          [styles['lr-arrow']]: true,
+          [styles.disabled]: disabled,
+        })}
+        onClick={onClick}
       >
         <Icons.Right size={lrIconSize} />
       </button>
