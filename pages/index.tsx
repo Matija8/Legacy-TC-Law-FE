@@ -5,19 +5,15 @@ import { Header } from 'components/header';
 import { SiteHead } from 'components/site-head';
 import { WorkAreaGrid } from 'components/work-area-grid';
 import type { NextPage } from 'next';
-import styles from 'styles/Home.module.scss';
+import homeStyles from 'styles/Home.module.scss';
+import styles from './index.module.scss';
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <style>{`.contact {
-        display: grid;
-        grid-template-columns: 50fr 60fr;
-        gap: 2rem
-      }`}</style>
+    <div className={homeStyles.container}>
       <SiteHead title="Home page" />
       <Header />
-      <main className={styles.main}>
+      <main className={homeStyles.main}>
         <section
           id="oblasti-rada"
           style={{ width: '100%', marginBottom: '3rem' }}
@@ -64,7 +60,7 @@ const Home: NextPage = () => {
         <section id="kontakt">
           <h2 className="heading-underlined">Kontakt</h2>
 
-          <div className="contact">
+          <div className={styles.contact}>
             <ContactForm />
             <div style={{ border: '1px solid black' }}>TODO MAP</div>
           </div>
