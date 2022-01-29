@@ -12,24 +12,49 @@ const lrIconSize = 30;
 export function EmployeeCarousel() {
   const carouselOuterRef = useRef<HTMLDivElement>(null);
   const [width] = useSize(carouselOuterRef);
+  const [fstLawyerShownIndex, setFstLawyerShownIdx] = useState(0);
 
-  const [idx, setIdx] = useState(0);
-  const take = clamp(1, Math.floor((width - 20) / 250), 3);
+  const take = (() => {
+    const maxTakePossible = Math.min(3, lawyers.length);
+    const prefferedTake = Math.floor((width - 20) / 250);
+    return clamp(1, prefferedTake, maxTakePossible);
+  })();
+  const lastLawyerShownIdx = fstLawyerShownIndex + take - 1;
+
+  // In array [0,1,2,3,4,5]
+  // if you want to show only [1,2] on carousel
+  // render [0,1,2,3]
+  // and make [0,3] display: none.
+  // That way you want have jank when switching to next/prev
 
   return (
     <section className={styles.outer} ref={carouselOuterRef}>
       <LButton
-        disabled={idx < 1}
-        onClick={() => setIdx(Math.max(0, idx - 1))}
+        disabled={fstLawyerShownIndex < 1}
+        onClick={() =>
+          setFstLawyerShownIdx(Math.max(0, fstLawyerShownIndex - 1))
+        }
       />
       <div className={styles.carousel}>
-        {lawyers.slice(idx, idx + take).map((person) => (
-          <Lawyer {...person} key={person.key} />
-        ))}
+        {lawyers.map(
+          (lawyer, idx) =>
+            idx >= fstLawyerShownIndex - 1 &&
+            idx <= lastLawyerShownIdx + 1 && (
+              <Lawyer
+                {...lawyer}
+                key={lawyer.key}
+                hide={idx < fstLawyerShownIndex || idx > lastLawyerShownIdx}
+              />
+            ),
+        )}
       </div>
       <RButton
-        disabled={idx >= lawyers.length - take}
-        onClick={() => setIdx(Math.min(lawyers.length - take, idx + 1))}
+        disabled={fstLawyerShownIndex >= lawyers.length - take}
+        onClick={() =>
+          setFstLawyerShownIdx(
+            Math.min(lawyers.length - take, fstLawyerShownIndex + 1),
+          )
+        }
       />
     </section>
   );
@@ -49,7 +74,7 @@ function LButton({
           [styles['lr-arrow']]: true,
           [styles.disabled]: disabled,
         })}
-        onClick={onClick}
+        onClick={() => !disabled && onClick()}
       >
         <Icons.Left size={lrIconSize} />
       </button>
@@ -71,7 +96,7 @@ function RButton({
           [styles['lr-arrow']]: true,
           [styles.disabled]: disabled,
         })}
-        onClick={onClick}
+        onClick={() => !disabled && onClick()}
       >
         <Icons.Right size={lrIconSize} />
       </button>

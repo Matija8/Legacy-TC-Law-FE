@@ -9,15 +9,20 @@ export function Lawyer({
   title,
   memberPhotoId,
   email,
+  hide,
 }: {
   name: string;
   surname: string;
   title: string;
   memberPhotoId: string;
   email?: string;
+  hide?: boolean;
 }) {
   return (
-    <article className={styles['lawyer-info']}>
+    <article
+      className={styles['lawyer-info']}
+      style={{ ...(hide && { display: 'none' }) }}
+    >
       <div className={styles['photo-container']}>
         <XImage
           style={{ cursor: 'pointer' }}
