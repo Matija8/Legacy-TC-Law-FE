@@ -8,6 +8,11 @@
   gap: 1em;
 }
 
+.lawyer-info:hover {
+  transform: scale(1.02);
+  transition: ease-in 30ms;
+}
+
 .lawyer-info p {
   margin: 0;
 }

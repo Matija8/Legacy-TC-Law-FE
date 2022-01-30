@@ -43,6 +43,7 @@ export function Header() {
           justify-content: space-between;
           align-items: center;
           gap: 3rem;
+          z-index: 1;
         }
 
         .header-nav {
@@ -52,7 +53,6 @@ export function Header() {
           gap: 0.5em;
           top: ${headerHeight}px;
           left: 0;
-          z-index: 1;
           background: white;
           // border-right: 1px solid black;
           height: 100%;
@@ -288,6 +288,8 @@ function NavItem({
             align-items: center;
             height: 100%;
             padding-top: 2px;
+            width: 3rem;
+            justify-content: center;
           }
 
           .normal-text-size {
@@ -297,6 +299,10 @@ function NavItem({
           @media (min-width: ${breakPointTablet}px) {
             .navItem {
               flex-grow: 1;
+            }
+
+            .submenu-toggle {
+              display: none;
             }
           }
         `}
@@ -312,15 +318,15 @@ function NavItem({
         >
           {children}
           {toggleSubList && (
-            <div className="submenu-toggle">
-              <BsChevronDown
-                size={15}
-                onClick={(ev) => {
-                  ev.stopPropagation();
-                  ev.preventDefault();
-                  toggleSubList();
-                }}
-              />
+            <div
+              className="submenu-toggle"
+              onClick={(ev) => {
+                ev.stopPropagation();
+                ev.preventDefault();
+                toggleSubList();
+              }}
+            >
+              <BsChevronDown size={15} />
             </div>
           )}
         </a>

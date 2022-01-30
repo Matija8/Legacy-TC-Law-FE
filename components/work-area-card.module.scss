@@ -7,6 +7,12 @@
   justify-content: flex-start;
   width: 80%;
   height: 100%;
+  background: white;
+}
+
+.work-area-card:hover {
+  transform: scale(1.05);
+  transition: ease-in 30ms;
 }
 
 .work-area-card > h3,
