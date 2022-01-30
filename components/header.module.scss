@@ -10,3 +10,30 @@
     align-items: stretch;
   }
 }
+
+.header-nav {
+  // TODO: font-size media query
+  position: fixed;
+  gap: 0.5em;
+  left: 0;
+  background: white;
+  height: 100%;
+  padding: 1em;
+  width: 100%;
+
+  @media (min-width: breakPts.$breakpointTablet) {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    visibility: visible;
+    height: auto;
+    padding: 0;
+  }
+}
+
+.header-nav-closed {
+  visibility: hidden;
+  @media (min-width: breakPts.$breakpointTablet) {
+    visibility: visible;
+  }
+}

@@ -47,21 +47,6 @@ export function Header() {
           z-index: 1;
         }
 
-        .header-nav {
-          // TODO: font-size media query
-          position: fixed;
-          ${menuOpen ? 'padding: 1em' : ''};
-          gap: 0.5em;
-          top: ${headerHeight}px;
-          left: 0;
-          background: white;
-          // border-right: 1px solid black;
-          height: 100%;
-          ${menuOpen ? '' : 'visibility:hidden'};
-          // width: clamp(300px, 25%, 25%);
-          width: 100%;
-        }
-
         .submenu {
           background: white;
           padding-left: 2rem;
@@ -108,14 +93,6 @@ export function Header() {
 
           .submenu-holding-li:hover > .submenu {
             display: block;
-          }
-
-          .header-nav {
-            position: static;
-            display: flex;
-            flex-direction: row;
-            visibility: visible;
-            height: auto;
           }
 
           .header-bottom-right {
@@ -176,7 +153,13 @@ export function Header() {
         <hr className="red-horizontal-ruler hide-mobile" />
 
         <div className="header-bottom">
-          <nav className="header-nav">
+          <nav
+            className={classNames({
+              [styles['header-nav']]: true,
+              [styles['header-nav-closed']]: !menuOpen,
+            })}
+            style={{ top: headerHeight }}
+          >
             <div className="submenu-holding-li">
               <NavItem
                 closeMenu={closeMenu}
