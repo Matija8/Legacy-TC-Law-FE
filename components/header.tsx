@@ -9,6 +9,7 @@ import { gColors } from 'styles/style-constants';
 import { FirmAddress } from './address';
 import { XImage } from './image';
 import { RoundBtn } from './round-btn';
+import styles from './header.module.scss';
 
 const liPadding = '10px';
 
@@ -44,14 +45,7 @@ export function Header() {
           gap: 3rem;
         }
 
-        .header-main {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          width: 100%;
-        }
-
-        nav {
+        .header-nav {
           // TODO: font-size media query
           position: fixed;
           ${menuOpen ? 'padding: 1em' : ''};
@@ -102,10 +96,6 @@ export function Header() {
         }
 
         @media (min-width: ${breakPointTablet}px) {
-          .header-main {
-            align-items: stretch;
-          }
-
           .header-top {
             display: flex;
             justify-content: space-between;
@@ -116,7 +106,7 @@ export function Header() {
             display: block;
           }
 
-          nav {
+          .header-nav {
             position: static;
             display: flex;
             flex-direction: row;
@@ -159,7 +149,7 @@ export function Header() {
         </a>
       </Link>
 
-      <div className="header-main">
+      <div className={styles['header-main']}>
         <div className="header-top">
           <Link href="/">
             <a>
@@ -178,7 +168,7 @@ export function Header() {
         <hr className="red-horizontal-ruler hide-mobile" />
 
         <div className="header-bottom">
-          <nav>
+          <nav className="header-nav">
             <div className="submenu-holding-li">
               <NavItem
                 closeMenu={closeMenu}

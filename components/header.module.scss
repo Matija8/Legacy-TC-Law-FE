@@ -1,0 +1,12 @@
+@use 'styles/breakpoints.scss' as breakPts;
+
+.header-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+
+  @media (min-width: breakPts.$breakpointTablet) {
+    align-items: stretch;
+  }
+}
