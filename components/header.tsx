@@ -10,6 +10,7 @@ import { FirmAddress } from './address';
 import { XImage } from './image';
 import { RoundBtn } from './round-btn';
 import styles from './header.module.scss';
+import classNames from 'classnames';
 
 const liPadding = '10px';
 
@@ -64,7 +65,10 @@ export function Header() {
         .submenu {
           background: white;
           padding-left: 2rem;
-          ${!sublistOpen ? 'display: none' : ''};
+        }
+
+        .submenu-sub-list-closed {
+          display: none;
         }
 
         .header-top {
@@ -128,6 +132,10 @@ export function Header() {
             box-shadow: 1px 1px;
             font-size: 0.5em;
             text-transform: none;
+            display: none;
+          }
+
+          .submenu-sub-list-closed {
           }
 
           .hide-mobile {
@@ -178,7 +186,12 @@ export function Header() {
               >
                 Oblasti rada
               </NavItem>
-              <div className="submenu">
+              <div
+                className={classNames({
+                  submenu: true,
+                  'submenu-sub-list-closed': !sublistOpen,
+                })}
+              >
                 {workAreas.map(({ title, id }) => (
                   <NavItem
                     className="normal-text-size"
