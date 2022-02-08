@@ -1,5 +1,8 @@
 @use 'styles/breakpoints.scss' as breakPts;
 
+// $breakpointTablet: breakPts.$breakpointTablet;
+$breakpointTablet: 950px;
+
 .header {
   position: sticky;
   top: 0;
@@ -9,7 +12,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 3rem;
   z-index: 1;
 }
 
@@ -19,36 +21,52 @@
   align-items: flex-end;
   width: 100%;
 
-  @media (min-width: breakPts.$breakpointTablet) {
+  @media (min-width: $breakpointTablet) {
     align-items: stretch;
   }
-}
 
-.header-nav {
-  // TODO: font-size media query
-  position: fixed;
-  gap: 0.5em;
-  left: 0;
-  background: white;
-  height: 100%;
-  padding: 1em;
-  width: 100%;
+  .header-top {
+    display: none;
 
-  @media (min-width: breakPts.$breakpointTablet) {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    visibility: visible;
-    height: auto;
-    padding: 0;
+    @media (min-width: $breakpointTablet) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
-}
 
-.header-nav-closed {
-  visibility: hidden;
+  .header-nav {
+    // TODO: font-size media query
+    position: fixed;
+    gap: 0.5em;
+    left: 0;
+    background: white;
+    height: 100%;
+    padding: 1em;
+    width: 100%;
 
-  @media (min-width: breakPts.$breakpointTablet) {
-    visibility: visible;
+    @media (min-width: $breakpointTablet) {
+      position: static;
+      display: flex;
+      flex-direction: row;
+      visibility: visible;
+      height: auto;
+      padding: 0;
+    }
+  }
+
+  .header-nav-closed {
+    visibility: hidden;
+
+    @media (min-width: $breakpointTablet) {
+      visibility: visible;
+    }
+  }
+
+  .submenu-holding-li:hover > .submenu {
+    @media (min-width: $breakpointTablet) {
+      display: block;
+    }
   }
 }
 
@@ -56,7 +74,7 @@
   background: white;
   padding-left: 2rem;
 
-  @media (min-width: breakPts.$breakpointTablet) {
+  @media (min-width: $breakpointTablet) {
     position: absolute;
     overflow-y: auto;
     z-index: 1;
@@ -67,5 +85,12 @@
     font-size: 0.5em;
     text-transform: none;
     display: none;
+  }
+}
+
+.hide-narrow-desktop {
+  display: none;
+  @media (min-width: 1350px) {
+    display: block;
   }
 }

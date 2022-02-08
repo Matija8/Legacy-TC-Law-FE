@@ -34,12 +34,7 @@ export function Header() {
   return (
     <header ref={headerRef} className={styles.header}>
       <style jsx>{`
-
         .submenu-sub-list-closed {
-          display: none;
-        }
-
-        .header-top {
           display: none;
         }
 
@@ -61,22 +56,13 @@ export function Header() {
           display: none;
         }
 
-        address {
+        .header-top-address {
           display: flex;
           flex-direction: column;
           align-items: flex-end;
         }
 
-        @media (min-width: ${breakPointTablet}px) {
-          .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          }
-
-          .submenu-holding-li:hover > .submenu {
-            display: block;
-          }
+        @media (min-width: ${950}px) {
 
           .header-bottom-right {
             gap: 1.7em;
@@ -97,15 +83,21 @@ export function Header() {
       <Link href="/">
         <a>
           <XImage
+            className={styles['hide-narrow-desktop']}
             src={`${process.env.basePath}/logo.png`}
-            style={{ maxHeight: '95px', height: '10vw', minHeight: '60px' }}
+            style={{
+              maxHeight: '95px',
+              height: '10vw',
+              minHeight: '60px',
+              paddingRight: '3rem', // Use padding, gap stays even when display is none!
+            }}
             alt="Company logo"
           />
         </a>
       </Link>
 
       <div className={styles['header-main']}>
-        <div className="header-top">
+        <div className={styles['header-top']}>
           <Link href="/">
             <a>
               <XImage
@@ -115,7 +107,9 @@ export function Header() {
               />
             </a>
           </Link>
-          <address>
+          <address
+            className={styles['hide-narrow-desktop'] + ' header-top-address'}
+          >
             <FirmAddress />
           </address>
         </div>
@@ -126,11 +120,11 @@ export function Header() {
           <nav
             className={classNames({
               [styles['header-nav']]: true,
-              [styles['header-nav-closed']]: !menuOpen,
+              [styles['header-nav-closed']]: !menuOpen, // TODO
             })}
             style={{ top: headerHeight }}
           >
-            <div className="submenu-holding-li">
+            <div className={styles["submenu-holding-li"]}>
               <NavItem
                 closeMenu={closeMenu}
                 href="/oblasti-rada"
@@ -184,7 +178,7 @@ export function Header() {
                 Menu
               </Hamburger>
             </div>
-            <div className="hide-mobile">
+            <div className={styles['hide-narrow-desktop']}>
               <RoundBtn>
                 <a href="mailto:office@tclaw.co.rs" style={{ color: 'white' }}>
                   office@tclaw.co.rs
