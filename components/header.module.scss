@@ -1,5 +1,18 @@
 @use 'styles/breakpoints.scss' as breakPts;
 
+.header {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 2rem 0 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  z-index: 1;
+}
+
 .header-main {
   display: flex;
   flex-direction: column;
@@ -33,7 +46,26 @@
 
 .header-nav-closed {
   visibility: hidden;
+
   @media (min-width: breakPts.$breakpointTablet) {
     visibility: visible;
+  }
+}
+
+.submenu {
+  background: white;
+  padding-left: 2rem;
+
+  @media (min-width: breakPts.$breakpointTablet) {
+    position: absolute;
+    overflow-y: auto;
+    z-index: 1;
+    background: white;
+    padding: 10px;
+    border: 1px solid black;
+    box-shadow: 1px 1px;
+    font-size: 0.5em;
+    text-transform: none;
+    display: none;
   }
 }

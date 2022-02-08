@@ -32,25 +32,8 @@ export function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header ref={headerRef}>
+    <header ref={headerRef} className={styles.header}>
       <style jsx>{`
-        header {
-          position: sticky;
-          top: 0;
-          background: white;
-          padding: 2rem 0 1rem;
-
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 3rem;
-          z-index: 1;
-        }
-
-        .submenu {
-          background: white;
-          padding-left: 2rem;
-        }
 
         .submenu-sub-list-closed {
           display: none;
@@ -97,19 +80,6 @@ export function Header() {
 
           .header-bottom-right {
             gap: 1.7em;
-          }
-
-          .submenu {
-            position: absolute;
-            overflow-y: auto;
-            z-index: 1;
-            background: white;
-            padding: 10px;
-            border: 1px solid black;
-            box-shadow: 1px 1px;
-            font-size: 0.5em;
-            text-transform: none;
-            display: none;
           }
 
           .submenu-sub-list-closed {
@@ -171,7 +141,7 @@ export function Header() {
               </NavItem>
               <div
                 className={classNames({
-                  submenu: true,
+                  [styles.submenu]: true,
                   'submenu-sub-list-closed': !sublistOpen,
                 })}
               >
