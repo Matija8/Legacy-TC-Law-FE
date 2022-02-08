@@ -8,11 +8,19 @@
   width: 80%;
   height: 100%;
   background: white;
+  padding: 1rem;
 }
 
 .work-area-card:hover {
-  transform: scale(1.05);
-  transition: ease-in 30ms;
+  // T*DO
+  // 1
+  // transform: scale(1.05);
+  // transition: ease-in 30ms;
+  // 2
+  // transform: translateY(- 1rem);
+  // transition: ease-in 60ms;
+  // 3
+  // Shade grey!?
 }
 
 .work-area-card > h3,

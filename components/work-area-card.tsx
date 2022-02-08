@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 import { FaChevronCircleRight } from 'react-icons/fa';
 import styles from './work-area-card.module.scss';
+// import Card from '@mui/material/Card';
 
 export const workElemHeaderIconSize = 35;
 
@@ -13,6 +14,7 @@ export function WorkAreaCard({
   children: ReactNode;
 }): JSX.Element {
   return (
+    // <Card classes={{ root: styles['work-area-card'] }} raised={true}>
     <div className={styles['work-area-card']}>
       {children}
       <div className={styles['work-area-bottom']}>
@@ -23,5 +25,6 @@ export function WorkAreaCard({
         </Link>
       </div>
     </div>
+    // </Card>
   );
 }
