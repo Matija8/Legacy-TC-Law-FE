@@ -1,7 +1,8 @@
 @use 'styles/breakpoints.scss' as breakPts;
+@use 'styles/Home.module.scss' as homeStyles;
 
-// $breakpointTablet: breakPts.$breakpointTablet;
-$breakpointTablet: 950px;
+$breakpointTablet: breakPts.$breakpointTablet;
+$breakpointNarrowDesktop: 1350px;
 
 .header {
   position: sticky;
@@ -33,6 +34,33 @@ $breakpointTablet: 950px;
       justify-content: space-between;
       align-items: center;
     }
+
+    .header-top-address {
+      display: none;
+      flex-direction: column;
+      align-items: flex-end;
+
+      @media (min-width: $breakpointNarrowDesktop) {
+        display: flex;
+      }
+    }
+  }
+
+  .header-bottom {
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+    padding-top: 0.5em;
+
+    .header-bottom-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.7em;
+      @media (min-width: $breakpointTablet) {
+        gap: 1.7em;
+      }
+    }
   }
 
   .header-nav {
@@ -42,8 +70,9 @@ $breakpointTablet: 950px;
     left: 0;
     background: white;
     height: 100%;
-    padding: 1em;
+    // padding: 1em;
     width: 100%;
+    @include homeStyles.container-pad;
 
     @media (min-width: $breakpointTablet) {
       position: static;
@@ -52,6 +81,10 @@ $breakpointTablet: 950px;
       visibility: visible;
       height: auto;
       padding: 0;
+    }
+
+    @media (min-width: $breakpointNarrowDesktop) {
+      overflow-x: auto;
     }
   }
 
@@ -67,6 +100,10 @@ $breakpointTablet: 950px;
     @media (min-width: $breakpointTablet) {
       display: block;
     }
+  }
+
+  .submenu-sub-list-closed {
+    display: none;
   }
 }
 
@@ -88,9 +125,33 @@ $breakpointTablet: 950px;
   }
 }
 
+.submenu-toggle {
+  color: black;
+  margin-left: 7px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-top: 2px;
+  width: 3rem;
+  justify-content: center;
+}
+
 .hide-narrow-desktop {
   display: none;
-  @media (min-width: 1350px) {
+  @media (min-width: $breakpointNarrowDesktop) {
     display: block;
+  }
+}
+
+.hide-mobile {
+  display: none;
+  @media (min-width: $breakpointTablet) {
+    display: block;
+  }
+}
+
+.hide-desktop {
+  @media (min-width: $breakpointTablet) {
+    display: none;
   }
 }

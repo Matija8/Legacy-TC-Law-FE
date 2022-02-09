@@ -33,53 +33,6 @@ export function Header() {
 
   return (
     <header ref={headerRef} className={styles.header}>
-      <style jsx>{`
-        .submenu-sub-list-closed {
-          display: none;
-        }
-
-        .header-bottom {
-          display: flex;
-          align-items: center;
-          gap: 0.7em;
-          padding-top: 0.5em;
-        }
-
-        .header-bottom-right {
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          gap: 0.7em;
-        }
-
-        .hide-mobile {
-          display: none;
-        }
-
-        .header-top-address {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-        }
-
-        @media (min-width: ${950}px) {
-
-          .header-bottom-right {
-            gap: 1.7em;
-          }
-
-          .submenu-sub-list-closed {
-          }
-
-          .hide-mobile {
-            display: block;
-          }
-
-          .hide-desktop {
-            display: none;
-          }
-        }
-      `}</style>
       <Link href="/">
         <a>
           <XImage
@@ -108,15 +61,15 @@ export function Header() {
             </a>
           </Link>
           <address
-            className={styles['hide-narrow-desktop'] + ' header-top-address'}
+            className={`${styles['hide-narrow-desktop']} ${styles['header-top-address']}`}
           >
             <FirmAddress />
           </address>
         </div>
 
-        <hr className="red-horizontal-ruler hide-mobile" />
+        <hr className={`red-horizontal-ruler ${styles['hide-mobile']}`} />
 
-        <div className="header-bottom">
+        <div className={styles['header-bottom']}>
           <nav
             className={classNames({
               [styles['header-nav']]: true,
@@ -124,7 +77,7 @@ export function Header() {
             })}
             style={{ top: headerHeight }}
           >
-            <div className={styles["submenu-holding-li"]}>
+            <div className={styles['submenu-holding-li']}>
               <NavItem
                 closeMenu={closeMenu}
                 href="/oblasti-rada"
@@ -136,7 +89,7 @@ export function Header() {
               <div
                 className={classNames({
                   [styles.submenu]: true,
-                  'submenu-sub-list-closed': !sublistOpen,
+                  [styles['submenu-sub-list-closed']]: !sublistOpen,
                 })}
               >
                 {workAreas.map(({ title, id }) => (
@@ -166,9 +119,9 @@ export function Header() {
             </NavItem>
           </nav>
 
-          <div className="header-bottom-right">
+          <div className={styles['header-bottom-right']}>
             <ChangeLanguage />
-            <div className="hide-desktop">
+            <div className={styles['hide-desktop']}>
               <Hamburger
                 toggled={menuOpen}
                 onToggle={() => {
@@ -241,17 +194,6 @@ function NavItem({
             border-radius: 16px;
           }
 
-          .submenu-toggle {
-            color: black;
-            margin-left: 7px;
-            display: flex;
-            align-items: center;
-            height: 100%;
-            padding-top: 2px;
-            width: 3rem;
-            justify-content: center;
-          }
-
           .normal-text-size {
             font-size: 1rem;
           }
@@ -259,10 +201,6 @@ function NavItem({
           @media (min-width: ${breakPointTablet}px) {
             .navItem {
               flex-grow: 1;
-            }
-
-            .submenu-toggle {
-              display: none;
             }
           }
         `}
@@ -279,7 +217,7 @@ function NavItem({
           {children}
           {toggleSubList && (
             <div
-              className="submenu-toggle"
+              className={`${styles['submenu-toggle']} ${styles['hide-desktop']}`}
               onClick={(ev) => {
                 ev.stopPropagation();
                 ev.preventDefault();
