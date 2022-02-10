@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react';
 import { gColors } from 'styles/style-constants';
 
 export function RoundBtn({
@@ -5,14 +6,16 @@ export function RoundBtn({
   children,
   options = { hoverEffects: true, translate: true },
   onClick,
+  style,
 }: {
   className?: string;
   children?: React.ReactNode;
   options?: { hoverEffects: boolean; translate: boolean };
   onClick?: () => void;
+  style?: CSSProperties;
 }) {
   return (
-    <div className={`${className} mail-btn`} onClick={onClick}>
+    <button className={`${className} mail-btn`} onClick={onClick} style={style}>
       <style jsx>
         {`
           .mail-btn {
@@ -32,6 +35,7 @@ export function RoundBtn({
             transition: all 0.1s linear;
             outline: none;
             // box-shadow: 0 3px 0 black;
+            border: 0;
           }
 
           .mail-btn:hover {
@@ -45,6 +49,6 @@ export function RoundBtn({
         `}
       </style>
       {children}
-    </div>
+    </button>
   );
 }
