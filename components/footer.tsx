@@ -78,14 +78,11 @@ export function Footer() {
           </address>
 
           <p>
-            E-mail: <a href="mailto:office@tclaw.rs">office@tclaw.rs</a>
+            E-mail: <a href={gLinks.email}>office@tclaw.rs</a>
           </p>
 
           <div className="icon-flex-row">
-            <a
-              href="https://www.linkedin.com/company/tc-law"
-              aria-label="linkedin"
-            >
+            <a href={gLinks.linkedin} aria-label="linkedin">
               <BsLinkedin size={iconSize} color={gColors.red1} />
             </a>
             <a href={gLinks.email} aria-label="email">

@@ -30,10 +30,7 @@ const contactPage: NextPage = () => {
             </p>
 
             <div className="icon-flex-row">
-              <a
-                href="https://www.linkedin.com/company/tc-law"
-                aria-label="linkedin"
-              >
+              <a href={gLinks.linkedin} aria-label="linkedin">
                 <BsLinkedin size={iconSize} color={gColors.red1} />
               </a>
               <a href={gLinks.email} aria-label="email">

@@ -11,6 +11,7 @@ import { XImage } from './image';
 import { RoundBtn } from './round-btn';
 import styles from './header.module.scss';
 import classNames from 'classnames';
+import { gLinks } from 'data/constants';
 
 const liPadding = '10px';
 
@@ -133,7 +134,7 @@ export function Header() {
             </div>
             <div className={styles['hide-narrow-desktop']}>
               <RoundBtn>
-                <a href="mailto:office@tclaw.co.rs" style={{ color: 'white' }}>
+                <a href={gLinks.email} style={{ color: 'white' }}>
                   office@tclaw.co.rs
                 </a>
               </RoundBtn>
