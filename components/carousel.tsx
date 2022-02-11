@@ -70,6 +70,8 @@ function LButton({
   return (
     <div className={styles['lr-arrow-container']}>
       <button
+        aria-label="Go to previous carousel image"
+        aria-disabled={disabled}
         className={classNames({
           [styles['lr-arrow']]: true,
           [styles.disabled]: disabled,
@@ -92,6 +94,8 @@ function RButton({
   return (
     <div className={styles['lr-arrow-container']}>
       <button
+        aria-label="Go to next carousel image"
+        aria-disabled={disabled}
         className={classNames({
           [styles['lr-arrow']]: true,
           [styles.disabled]: disabled,

@@ -4,11 +4,17 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Link from 'next/link';
 import { RoundBtn } from './round-btn';
 import CircularProgress from '@mui/material/CircularProgress';
+import TextField from '@mui/material/TextField';
 
 export function ContactForm() {
   return (
     <Formik
-      initialValues={{ nameSurname: '', email: '', message: '' }}
+      initialValues={{
+        nameSurname: '',
+        email: '',
+        message: '',
+        readPrivacy: false,
+      }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
@@ -16,22 +22,41 @@ export function ContactForm() {
         }, 400);
       }}
     >
-      {({ submitForm, isSubmitting }) => (
+      {({ submitForm, isSubmitting, values, handleChange }) => (
         <form
-          style={{ display: 'flex', flexDirection: 'column' }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
           onSubmit={(ev) => ev.preventDefault()}
         >
-          <label htmlFor="name-surname">Ime i prezime</label>
-          <input type="text" id="name-surname" name="name-surname" />
+          <TextField
+            label="Ime i prezime"
+            name="nameSurname"
+            variant="outlined"
+            value={values.nameSurname}
+            onChange={handleChange}
+          />
 
-          <label htmlFor="email">E-mail</label>
-          <input type="email" id="email" name="email" />
+          <TextField
+            label="E-mail"
+            name="email"
+            variant="outlined"
+            type="email"
+            value={values.email}
+            onChange={handleChange}
+          />
 
-          <label htmlFor="msg">Poruka</label>
-          <input type="text" id="msg" name="msg" />
+          <TextField
+            label="Poruka"
+            name="message"
+            variant="outlined"
+            value={values.message}
+            onChange={handleChange}
+          />
 
           <FormControlLabel
-            control={<Checkbox />}
+            control={
+              <Checkbox value={values.readPrivacy} onChange={handleChange} />
+            }
+            name="readPrivacy"
             label={
               <p>
                 Potvrđujem da sam pročitao i da sam saglasan sa{' '}

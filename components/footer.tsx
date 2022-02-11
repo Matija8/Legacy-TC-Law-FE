@@ -81,10 +81,13 @@ export function Footer() {
           </p>
 
           <div className="icon-flex-row">
-            <a href="https://www.linkedin.com/company/tc-law">
+            <a
+              href="https://www.linkedin.com/company/tc-law"
+              aria-label="linkedin"
+            >
               <BsLinkedin size={iconSize} color={gColors.red1} />
             </a>
-            <a href="mailto:office@tclaw.rs">
+            <a href="mailto:office@tclaw.rs" aria-label="email">
               <MailIcon size={iconSize} />
             </a>
           </div>
