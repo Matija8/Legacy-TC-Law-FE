@@ -1,4 +1,5 @@
 import { FirmAddress } from 'components/address';
+import { ContactForm } from 'components/contact-form';
 import { Footer } from 'components/footer';
 import { Header } from 'components/header';
 import { MailIcon } from 'components/mailIcon';
@@ -38,6 +39,8 @@ const contactPage: NextPage = () => {
               </a>
             </div>
           </section>
+
+          <ContactForm />
         </div>
       </main>
       <Footer />
