@@ -4,6 +4,7 @@ import { PhoneNumberLink } from 'components/address';
 import { SiteHead } from 'components/site-head';
 import { NextPage } from 'next';
 import styles from 'styles/Home.module.scss';
+import { gLinks } from 'data/constants';
 
 const newsPage: NextPage = () => {
   return (
@@ -511,8 +512,8 @@ const newsPage: NextPage = () => {
             Molimo vas da sva pitanja u vezi ove Izjave o privatnosti, načina na
             koji obrađujemo vaše podatke o ličnosti i druge zahteve u vezi
             zaštite ličnih podataka uputite na e-mail{' '}
-            <a href="mailto:office@tclaw.rs">office@tclaw.rs</a>; kontakt
-            telefon: <PhoneNumberLink style={{}} />
+            <a href={gLinks.email}>office@tclaw.rs</a>; kontakt telefon:{' '}
+            <PhoneNumberLink />
           </p>
         </section>
       </main>

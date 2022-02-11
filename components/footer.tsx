@@ -1,3 +1,4 @@
+import { gLinks } from 'data/constants';
 import Link from 'next/link';
 import { BsLinkedin } from 'react-icons/bs';
 import { breakPointTablet } from 'styles/breakpoints';
@@ -87,7 +88,7 @@ export function Footer() {
             >
               <BsLinkedin size={iconSize} color={gColors.red1} />
             </a>
-            <a href="mailto:office@tclaw.rs" aria-label="email">
+            <a href={gLinks.email} aria-label="email">
               <MailIcon size={iconSize} />
             </a>
           </div>
