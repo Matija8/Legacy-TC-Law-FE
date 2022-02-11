@@ -1,6 +1,7 @@
 import { EmployeeCarousel } from 'components/carousel';
 import { ContactForm } from 'components/contact-form';
 import { Footer } from 'components/footer';
+import { GoogleMap } from 'components/google-map';
 import { Header } from 'components/header';
 import { SiteHead } from 'components/site-head';
 import { WorkAreaGrid } from 'components/work-area-grid';
@@ -62,7 +63,7 @@ const Home: NextPage = () => {
 
           <div className={styles.contact}>
             <ContactForm />
-            <div style={{ border: '1px solid black' }}>TODO MAP</div>
+            <GoogleMap />
           </div>
         </section>
       </main>

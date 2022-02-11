@@ -45,6 +45,8 @@ export function ContactForm() {
           />
 
           <TextField
+            multiline
+            rows={6}
             label="Poruka"
             name="message"
             variant="outlined"
