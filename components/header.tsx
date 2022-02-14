@@ -78,7 +78,7 @@ export function Header() {
             })}
             style={{ top: headerHeight }}
           >
-            <div className={styles['submenu-holding-li']}>
+            <ul className={styles['submenu-holding-li']}>
               <NavItem
                 closeMenu={closeMenu}
                 href="/oblasti-rada"
@@ -104,7 +104,7 @@ export function Header() {
                   </NavItem>
                 ))}
               </div>
-            </div>
+            </ul>
 
             <NavItem closeMenu={closeMenu} href="/novosti" className="UPPER">
               Novosti

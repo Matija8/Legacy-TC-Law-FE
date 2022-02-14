@@ -96,6 +96,11 @@ $breakpointNarrowDesktop: 1350px;
     }
   }
 
+  .submenu-holding-li {
+    margin: 0;
+    padding: 0;
+  }
+
   .submenu-holding-li:hover > .submenu {
     @media (min-width: $breakpointTablet) {
       display: block;
@@ -110,6 +115,7 @@ $breakpointNarrowDesktop: 1350px;
 .submenu {
   background: white;
   padding-left: 2rem;
+  z-index: 5; // TODO kontakt page
 
   @media (min-width: $breakpointTablet) {
     position: absolute;

@@ -1,6 +1,7 @@
 import { FirmAddress } from 'components/address';
 import { ContactForm } from 'components/contact-form';
 import { Footer } from 'components/footer';
+import { GoogleMap } from 'components/google-map';
 import { Header } from 'components/header';
 import { MailIcon } from 'components/mailIcon';
 import { SiteHead } from 'components/site-head';
@@ -18,7 +19,14 @@ const contactPage: NextPage = () => {
       <SiteHead title="Kontakt" />
       <Header />
       <main className={styles.main}>
-        <div style={{ display: 'flex' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            gap: '1rem',
+            paddingBottom: '1rem',
+          }}
+        >
           <section className="adress-left">
             <h4>Advokatska kancelarija</h4>
 
@@ -40,7 +48,10 @@ const contactPage: NextPage = () => {
             </div>
           </section>
 
-          <ContactForm />
+          <ContactForm style={{ flexGrow: 1 }} />
+        </div>
+        <div style={{ height: 400 }}>
+          <GoogleMap />
         </div>
       </main>
       <Footer />

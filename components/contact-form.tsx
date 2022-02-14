@@ -1,12 +1,13 @@
-import { Formik } from 'formik';
 import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Link from 'next/link';
-import { RoundBtn } from './round-btn';
 import CircularProgress from '@mui/material/CircularProgress';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
+import { Formik } from 'formik';
+import Link from 'next/link';
+import { CSSProperties } from 'react';
+import { RoundBtn } from './round-btn';
 
-export function ContactForm() {
+export function ContactForm({ style }: { style?: CSSProperties }) {
   return (
     <Formik
       initialValues={{
@@ -24,7 +25,12 @@ export function ContactForm() {
     >
       {({ submitForm, isSubmitting, values, handleChange }) => (
         <form
-          style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+          style={{
+            ...style,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+          }}
           onSubmit={(ev) => ev.preventDefault()}
         >
           <TextField
