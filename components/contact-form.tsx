@@ -8,6 +8,8 @@ import Link from 'next/link';
 import { CSSProperties } from 'react';
 import { RoundBtn } from './round-btn';
 
+const requiredText = '*neophodno polje';
+
 interface ContactFormValues {
   nameSurname: string;
   email: string;
@@ -32,15 +34,32 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
       }}
       validate={(values) => {
         const errors: FormikErrors<ContactFormValues> = {};
-        if (!values.email) {
-          errors.email = 'Required';
-        } else if (!validationRegexes.email.test(values.email)) {
-          errors.email = 'Invalid email address';
+        if (!values.nameSurname) {
+          errors.nameSurname = requiredText;
         }
+
+        if (!values.email) {
+          errors.email = requiredText;
+        } else if (!validationRegexes.email.test(values.email)) {
+          errors.email = '*Nevalidan e-mail';
+        }
+
+        if (!values.message) {
+          errors.message = requiredText;
+        }
+
         return errors;
       }}
     >
-      {({ submitForm, isSubmitting, values, handleChange, errors }) => (
+      {({
+        errors,
+        touched,
+        handleBlur,
+        handleChange,
+        isSubmitting,
+        submitForm,
+        values,
+      }) => (
         <form
           style={{
             ...style,
@@ -55,7 +74,10 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
             name="nameSurname"
             variant="outlined"
             value={values.nameSurname}
+            error={Boolean(touched.nameSurname && errors.nameSurname)}
+            helperText={errors.nameSurname || requiredText}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
 
           <TextField
@@ -64,9 +86,10 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
             variant="outlined"
             type="email"
             value={values.email}
-            error={Boolean(errors.email)}
-            helperText={errors.email}
+            error={Boolean(touched.email && errors.email)}
+            helperText={(touched.email && errors.email) || requiredText}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
 
           <TextField
@@ -76,7 +99,10 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
             name="message"
             variant="outlined"
             value={values.message}
+            error={Boolean(touched.message && errors.message)}
+            helperText={errors.message || requiredText}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
 
           <FormControlLabel
