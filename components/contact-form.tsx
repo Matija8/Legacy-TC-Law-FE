@@ -2,10 +2,18 @@ import Checkbox from '@mui/material/Checkbox';
 import CircularProgress from '@mui/material/CircularProgress';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
-import { Formik } from 'formik';
+import { validationRegexes } from 'data/constants';
+import { Formik, FormikErrors } from 'formik';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
 import { RoundBtn } from './round-btn';
+
+interface ContactFormValues {
+  nameSurname: string;
+  email: string;
+  message: string;
+  readPrivacy: boolean;
+}
 
 export function ContactForm({ style }: { style?: CSSProperties }) {
   return (
@@ -22,8 +30,17 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
           setSubmitting(false);
         }, 400);
       }}
+      validate={(values) => {
+        const errors: FormikErrors<ContactFormValues> = {};
+        if (!values.email) {
+          errors.email = 'Required';
+        } else if (!validationRegexes.email.test(values.email)) {
+          errors.email = 'Invalid email address';
+        }
+        return errors;
+      }}
     >
-      {({ submitForm, isSubmitting, values, handleChange }) => (
+      {({ submitForm, isSubmitting, values, handleChange, errors }) => (
         <form
           style={{
             ...style,
@@ -47,6 +64,8 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
             variant="outlined"
             type="email"
             value={values.email}
+            error={Boolean(errors.email)}
+            helperText={errors.email}
             onChange={handleChange}
           />
 
