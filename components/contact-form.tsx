@@ -111,7 +111,7 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
             }
             name="readPrivacy"
             label={
-              <p>
+              <p style={{ margin: 0 }}>
                 Potvrđujem da sam pročitao i da sam saglasan sa{' '}
                 <Link href="/politika-privatnosti">
                   <a style={{ textAlign: 'initial' }}>Politikom privatnosti</a>

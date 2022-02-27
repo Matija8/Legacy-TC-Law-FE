@@ -1,13 +1,8 @@
-import { gLinks } from 'data/constants';
 import Link from 'next/link';
-import { BsLinkedin } from 'react-icons/bs';
 import { breakPointTablet } from 'styles/breakpoints';
 import { gColors } from 'styles/style-constants';
-import { FirmAddress } from './address';
+import { ContactGroup } from './contact-group';
 import { XImage } from './image';
-import { MailIcon } from './mailIcon';
-
-const iconSize = 28;
 
 export function Footer() {
   return (
@@ -40,11 +35,6 @@ export function Footer() {
           margin-top: 1em;
         }
 
-        .icon-flex-row {
-          display: flex;
-          gap: 0.5em;
-        }
-
         a {
           color: ${gColors.red1};
         }
@@ -71,24 +61,7 @@ export function Footer() {
 
       <section className="footer-bottom-3">
         <section className="footer-left">
-          <h4>Advokatska kancelarija</h4>
-
-          <address>
-            <FirmAddress />
-          </address>
-
-          <p>
-            E-mail: <a href={gLinks.email}>office@tclaw.rs</a>
-          </p>
-
-          <div className="icon-flex-row">
-            <a href={gLinks.linkedin} aria-label="linkedin">
-              <BsLinkedin size={iconSize} color={gColors.red1} />
-            </a>
-            <a href={gLinks.email} aria-label="email">
-              <MailIcon size={iconSize} />
-            </a>
-          </div>
+          <ContactGroup />
         </section>
 
         <section className="footer-mid">

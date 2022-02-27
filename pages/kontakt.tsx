@@ -1,51 +1,22 @@
-import { FirmAddress } from 'components/address';
 import { ContactForm } from 'components/contact-form';
+import { ContactGroup } from 'components/contact-group';
 import { Footer } from 'components/footer';
 import { GoogleMap } from 'components/google-map';
 import { Header } from 'components/header';
-import { MailIcon } from 'components/mailIcon';
 import { SiteHead } from 'components/site-head';
-import { gLinks } from 'data/constants';
 import { NextPage } from 'next';
-import { BsLinkedin } from 'react-icons/bs';
-import styles from 'styles/Home.module.scss';
-import { gColors } from 'styles/style-constants';
-
-const iconSize = 28;
+import homeStyles from 'styles/Home.module.scss';
+import styles from './kontakt.module.scss';
 
 const contactPage: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div className={homeStyles.container}>
       <SiteHead title="Kontakt" />
       <Header />
-      <main className={styles.main}>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            gap: '1rem',
-            paddingBottom: '1rem',
-          }}
-        >
+      <main className={homeStyles.main}>
+        <div className={styles['address-and-kontakt']}>
           <section className="adress-left">
-            <h4>Advokatska kancelarija</h4>
-
-            <address>
-              <FirmAddress />
-            </address>
-
-            <p>
-              E-mail: <a href={gLinks.email}>office@tclaw.rs</a>
-            </p>
-
-            <div className="icon-flex-row">
-              <a href={gLinks.linkedin} aria-label="linkedin">
-                <BsLinkedin size={iconSize} color={gColors.red1} />
-              </a>
-              <a href={gLinks.email} aria-label="email">
-                <MailIcon size={iconSize} />
-              </a>
-            </div>
+            <ContactGroup />
           </section>
 
           <ContactForm style={{ flexGrow: 1 }} />
