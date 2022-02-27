@@ -1,8 +1,7 @@
+import { CareerForm } from 'components/career-form';
 import { Footer } from 'components/footer';
 import { Header } from 'components/header';
-import { RoundBtn } from 'components/round-btn';
 import { SiteHead } from 'components/site-head';
-import { Formik, FormikErrors } from 'formik';
 import { NextPage } from 'next';
 import styles from 'styles/Home.module.scss';
 
@@ -44,64 +43,3 @@ const careerPage: NextPage = () => {
 };
 
 export default careerPage;
-
-function CareerForm() {
-  return (
-    <Formik
-      initialValues={{ email: '', motivational: '' }}
-      validate={(values) => {
-        const errors: FormikErrors<{ email: string; motivational: string }> =
-          {};
-        if (!values.email) {
-          errors.email = 'Required';
-        } else if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ) {
-          errors.email = 'Invalid email address';
-        }
-        return errors;
-      }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
-    >
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        isSubmitting,
-      }) => (
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
-          />
-          {errors.email && touched.email && errors.email}
-          <input
-            type="text"
-            name="motivational letter"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.motivational}
-          />
-          {errors.motivational && touched.motivational && errors.motivational}
-
-          <RoundBtn>Dodajte CV</RoundBtn>
-          <RoundBtn>Pošaljite</RoundBtn>
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
-        </form>
-      )}
-    </Formik>
-  );
-}

@@ -8,3 +8,5 @@ export const validationRegexes = {
   email:
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
 };
+
+export const requiredFieldErrorText = '*neophodno polje';

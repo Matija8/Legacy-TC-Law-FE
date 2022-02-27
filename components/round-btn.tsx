@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { ButtonHTMLAttributes, CSSProperties } from 'react';
 import { gColors } from 'styles/style-constants';
 
 export function RoundBtn({
@@ -7,15 +7,22 @@ export function RoundBtn({
   options = { hoverEffects: true, translate: true },
   onClick,
   style,
+  type = 'button',
 }: {
   className?: string;
   children?: React.ReactNode;
   options?: { hoverEffects: boolean; translate: boolean };
   onClick?: () => void;
   style?: CSSProperties;
+  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
 }) {
   return (
-    <button className={`${className} mail-btn`} onClick={onClick} style={style}>
+    <button
+      className={`${className} mail-btn`}
+      onClick={onClick}
+      style={style}
+      type={type}
+    >
       <style jsx>
         {`
           .mail-btn {
