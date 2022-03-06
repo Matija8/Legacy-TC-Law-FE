@@ -2,8 +2,7 @@ import { Footer } from 'components/footer';
 import { Header } from 'components/header';
 import { SiteHead } from 'components/site-head';
 import { WorkAreaGrid } from 'components/work-area-grid';
-import { workAreas, WorkArea } from 'data/oblasti-rada';
-import { useRouter } from 'next/router';
+import { WorkArea, workAreas } from 'data/oblasti-rada';
 import styles from 'styles/Home.module.scss';
 
 const WorkAreaPage = ({ workArea }: { workArea: WorkArea }) => {
