@@ -11,7 +11,7 @@ export function Footer() {
       <style jsx>{`
         footer {
           padding: 0;
-          margin-bottom: 1rem;
+          margin-bottom: 2rem;
         }
 
         p {

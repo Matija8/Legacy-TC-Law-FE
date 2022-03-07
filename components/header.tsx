@@ -37,7 +37,8 @@ export function Header() {
       <Link href="/">
         <a>
           <XImage
-            className={styles['hide-narrow-desktop']}
+            // TODO: Align in mobile layout
+            // className={styles['hide-narrow-desktop']}
             src={`${process.env.basePath}/logo.png`}
             style={{
               maxHeight: '95px',

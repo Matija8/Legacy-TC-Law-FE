@@ -69,29 +69,33 @@ export function NewsletterForm() {
             gap: '1rem',
           }}
         >
-          <TextField
-            label="Ime i prezime"
-            name="nameSurname"
-            variant={textFieldVariant}
-            value={values.nameSurname}
-            error={Boolean(touched.nameSurname && errors.nameSurname)}
-            helperText={errors.nameSurname || requiredFieldErrorText}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          <TextField
-            label="E-mail"
-            name="email"
-            variant={textFieldVariant}
-            type="email"
-            value={values.email}
-            error={Boolean(touched.email && errors.email)}
-            helperText={
-              (touched.email && errors.email) || requiredFieldErrorText
-            }
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
+          <div style={{ width: '100%' }}>
+            <TextField
+              style={{ width: '100%' }}
+              label="Ime i prezime"
+              name="nameSurname"
+              variant={textFieldVariant}
+              value={values.nameSurname}
+              error={Boolean(touched.nameSurname && errors.nameSurname)}
+              helperText={errors.nameSurname || requiredFieldErrorText}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <TextField
+              style={{ width: '100%' }}
+              label="E-mail"
+              name="email"
+              variant={textFieldVariant}
+              type="email"
+              value={values.email}
+              error={Boolean(touched.email && errors.email)}
+              helperText={
+                (touched.email && errors.email) || requiredFieldErrorText
+              }
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </div>
 
           {/* TODO: privacy error */}
           <FormControlLabel
