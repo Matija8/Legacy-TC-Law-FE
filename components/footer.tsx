@@ -3,6 +3,7 @@ import { breakPointTablet } from 'styles/breakpoints';
 import { gColors } from 'styles/style-constants';
 import { ContactGroup } from './contact-group';
 import { XImage } from './image';
+import { NewsletterForm } from './newsletter-form';
 
 export function Footer() {
   return (
@@ -83,7 +84,8 @@ export function Footer() {
         </section>
 
         <section className="footer-right">
-          <p>Prijavite se na novosti</p>
+          <h4 style={{ margin: '1rem 0 0.3rem' }}>Prijavite se na novosti</h4>
+          <NewsletterForm />
         </section>
       </section>
     </footer>

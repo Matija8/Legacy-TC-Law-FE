@@ -4,9 +4,11 @@ import { RoundBtn } from './round-btn';
 export function RoundSubmittingBtn({
   submitForm,
   isSubmitting,
+  text = 'Pošaljite',
 }: {
   submitForm: () => void;
   isSubmitting: boolean;
+  text?: string;
 }) {
   return (
     <RoundBtn
@@ -22,7 +24,7 @@ export function RoundSubmittingBtn({
       {isSubmitting ? (
         <CircularProgress size={20} style={{ color: 'white' }} />
       ) : (
-        'Pošaljite'
+        text
       )}
     </RoundBtn>
   );
