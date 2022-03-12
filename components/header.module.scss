@@ -68,9 +68,9 @@ $breakpointNarrowDesktop: 1350px;
     position: fixed;
     gap: 0.5em;
     left: 0;
+    bottom: 0;
+    overflow-y: auto;
     background: white;
-    height: 100%;
-    // padding: 1em;
     width: 100%;
     @include homeStyles.container-pad;
 

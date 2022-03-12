@@ -79,7 +79,7 @@ export function Header() {
             })}
             style={{ top: headerHeight }}
           >
-            <ul className={styles['submenu-holding-li']}>
+            <div className={styles['submenu-holding-li']}>
               <NavItem
                 closeMenu={closeMenu}
                 href="/oblasti-rada"
@@ -88,7 +88,7 @@ export function Header() {
               >
                 Oblasti rada
               </NavItem>
-              <div
+              <ul
                 className={classNames({
                   [styles.submenu]: true,
                   [styles['submenu-sub-list-closed']]: !sublistOpen,
@@ -104,8 +104,8 @@ export function Header() {
                     <span className={'pre-wrap'}>{title} </span>
                   </NavItem>
                 ))}
-              </div>
-            </ul>
+              </ul>
+            </div>
 
             <NavItem closeMenu={closeMenu} href="/novosti" className="UPPER">
               Novosti
