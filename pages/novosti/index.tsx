@@ -13,14 +13,14 @@ const newsPage = ({ newsArticles }: { newsArticles: NewsArticle[] }) => {
       <SiteHead title="Novosti" />
       <Header />
       <main className={styles.main}>
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {newsArticles.slice(0, 3).map((article, idx) => (
             <article
               key={`article ${idx} ${article.title}`}
               style={{ border: 'solid 1px', padding: '1rem' }}
             >
               <section>
-                <div style={{ maxHeight: '500px', overflow: 'hidden' }}>
+                <div style={{ maxHeight: '220px', overflow: 'hidden' }}>
                   <ReactMarkdown>{article.md}</ReactMarkdown>
                 </div>
               </section>

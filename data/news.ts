@@ -2,10 +2,18 @@ import path from 'path';
 
 export const newsArticles = [
   {
-    mdPath: '1.md',
+    mdPath: 'TODO-last.md',
     title: 'Izmene Zakona o porezima na imovinu',
+    area: 'TODO',
   },
-].map((x) => ({ ...x, mdPath: fullMdPath(x.mdPath) }));
+  {
+    mdPath: '1.md',
+    title: 'Novine u Zakonu o privrednim društvima',
+    area: '',
+  },
+]
+  .map((x) => ({ ...x, mdPath: fullMdPath(x.mdPath) }))
+  .reverse();
 
 export type NewsArticleMeta = typeof newsArticles[number];
 
