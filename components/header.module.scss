@@ -116,6 +116,7 @@ $breakpointNarrowDesktop: 1350px;
   background: white;
   padding-left: 2rem;
   z-index: 2;
+  margin: 0;
 
   @media (min-width: $breakpointTablet) {
     position: absolute;
