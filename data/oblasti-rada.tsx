@@ -1,13 +1,27 @@
 import { BsGlobe2 } from 'react-icons/bs';
 
+// TODO: Header Nav from workAreas!?
+
+export type WorkAreaId =
+  | 'Korporativno-pravo-M&A'
+  | 'Privredno-pravo'
+  | 'Gradjenje'
+  | 'Antimonopolsko-pravo-Pravo-konkurencije'
+  | 'Radno-pravo-Boravisna-i-radna-dozvola'
+  | 'Intelektualna-svojina-Industrija-zabave-IT'
+  | 'Porezi-carine-i-devizno-poslovanje'
+  | 'Zastita-podataka-o-licnosti'
+  | 'resavanje-sporova'
+  | 'zastita-zivotne-sredine'
+  | 'neprofitne-organizacije'
+  | 'usluge-fizickim-licima';
+
 export interface WorkArea {
-  id: string;
+  id: WorkAreaId;
   title: string;
   text: string;
   icon: (props: { size: number }) => JSX.Element;
 }
-
-// TODO: Header Nav from workAreas!?
 
 export const workAreas: WorkArea[] = [
   {
