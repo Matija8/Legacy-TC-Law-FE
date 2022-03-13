@@ -18,6 +18,11 @@ const newsArticlesBase: { mdPath: string; title: string; area: WorkAreaId }[] =
       title: 'Novi Zakon o žigovima',
       area: 'Intelektualna-svojina-Industrija-zabave-IT',
     },
+    {
+      mdPath: '3.md',
+      title: 'COVID-19 - Uredba o rokovima u sudskim postupcima za vreme vanrednog stanja proglašenog 15.03.2020. (mart 2020)',
+      area: 'resavanje-sporova',
+    },
   ];
 
 export const newsArticles = newsArticlesBase
