@@ -4,17 +4,21 @@ import { RoundBtn } from './round-btn';
 export function RoundSubmittingBtn({
   submitForm,
   isSubmitting,
+  disabled = false,
   text = 'Pošaljite',
 }: {
   submitForm: () => void;
   isSubmitting: boolean;
+  disabled?: boolean;
   text?: string;
 }) {
   return (
     <RoundBtn
       type="submit"
+      disabled={disabled}
+      animationDisabled={isSubmitting}
       onClick={() => {
-        if (!isSubmitting) {
+        if (!isSubmitting && !disabled) {
           // TODO: Disabled prop on btn
           submitForm();
         }
@@ -24,7 +28,7 @@ export function RoundSubmittingBtn({
       {isSubmitting ? (
         <CircularProgress size={20} style={{ color: 'white' }} />
       ) : (
-        text
+        text // Call to Action
       )}
     </RoundBtn>
   );

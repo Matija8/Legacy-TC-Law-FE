@@ -107,7 +107,11 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
 
           <FormControlLabel
             control={
-              <Checkbox value={values.readPrivacy} onChange={handleChange} />
+              <Checkbox
+                value={values.readPrivacy}
+                onChange={handleChange}
+                required
+              />
             }
             name="readPrivacy"
             label={
@@ -123,6 +127,7 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}
             submitForm={submitForm}
+            disabled={Object.keys(errors).length > 0}
           />
         </form>
       )}

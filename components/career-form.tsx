@@ -108,7 +108,11 @@ export function CareerForm() {
 
           <FormControlLabel
             control={
-              <Checkbox value={values.readPrivacy} onChange={handleChange} />
+              <Checkbox
+                value={values.readPrivacy}
+                onChange={handleChange}
+                required
+              />
             }
             name="readPrivacy"
             label={
@@ -125,10 +129,10 @@ export function CareerForm() {
             Dodajte CV
           </RoundBtn>
 
-          {/* TODO: Disabled state */}
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}
             submitForm={submitForm}
+            disabled={Object.keys(errors).length > 0}
           />
         </form>
       )}

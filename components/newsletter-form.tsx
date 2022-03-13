@@ -100,7 +100,11 @@ export function NewsletterForm() {
           {/* TODO: privacy error */}
           <FormControlLabel
             control={
-              <Checkbox value={values.readPrivacy} onChange={handleChange} />
+              <Checkbox
+                value={values.readPrivacy}
+                onChange={handleChange}
+                required
+              />
             }
             name="readPrivacy"
             label={
@@ -113,15 +117,11 @@ export function NewsletterForm() {
             }
           />
 
-          {/* TODO: Disabled state */}
-          {/* {Object.values(errors).some((err) => err) && (
-            <p>TODO: Disable button</p>
-          )} */}
-
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}
             submitForm={submitForm}
             text={'Prijavite se'}
+            disabled={Object.keys(errors).length > 0}
           />
         </form>
       )}

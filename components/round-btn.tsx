@@ -1,16 +1,21 @@
+import classNames from 'classnames';
 import { ButtonHTMLAttributes, CSSProperties } from 'react';
 import { gColors } from 'styles/style-constants';
 
 export function RoundBtn({
+  disabled = false,
   className = '',
   children,
   options = { hoverEffects: true, translate: true },
   onClick,
   style,
+  animationDisabled,
   type = 'button',
 }: {
+  disabled?: boolean;
+  animationDisabled?: boolean;
   className?: string;
-  children?: React.ReactNode;
+  children: React.ReactNode;
   options?: { hoverEffects: boolean; translate: boolean };
   onClick?: () => void;
   style?: CSSProperties;
@@ -18,8 +23,13 @@ export function RoundBtn({
 }) {
   return (
     <button
-      className={`${className} mail-btn`}
-      onClick={onClick}
+      className={classNames({
+        'mail-btn': true,
+        [className]: true,
+        'mail-btn-disabled': disabled,
+        'animated-btn': !disabled && !animationDisabled,
+      })}
+      onClick={() => !disabled && onClick?.()}
       style={style}
       type={type}
     >
@@ -39,17 +49,24 @@ export function RoundBtn({
             margin: 1px;
             cursor: pointer;
 
-            transition: all 0.1s linear;
             outline: none;
-            // box-shadow: 0 3px 0 black;
             border: 0;
           }
 
-          .mail-btn:hover {
-            ${options.hoverEffects ? 'opacity: 0.9' : ''};
+          .animated-btn {
+            transition: all 0.1s linear;
           }
 
-          .mail-btn:active {
+          .mail-btn-disabled {
+            color: #838383;
+            background-color: #cccccc;
+          }
+
+          .mail-btn:hover {
+            ${(options.hoverEffects && !disabled) ? 'opacity: 0.9' : ''};
+          }
+
+          .animated-btn:active {
             box-shadow: none;
             ${options.translate ? 'transform: translateY(1px)' : ''};
           }
