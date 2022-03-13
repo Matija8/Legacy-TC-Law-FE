@@ -1,4 +1,17 @@
 import { BsGlobe2 } from 'react-icons/bs';
+import { AiOutlineRise } from 'react-icons/ai';
+import { RiBuildingLine } from 'react-icons/ri';
+import {
+  MdAccountBalance,
+  MdCallSplit,
+  MdEuro,
+  MdLightbulbOutline,
+  MdNaturePeople,
+  MdPeople,
+} from 'react-icons/md';
+import { FaClipboardList } from 'react-icons/fa';
+import { IoShieldCheckmarkSharp } from 'react-icons/io5';
+import { VscOrganization } from 'react-icons/vsc';
 
 // TODO: Header Nav from workAreas!?
 
@@ -44,7 +57,7 @@ export const workAreas: WorkArea[] = [
     Sastavljamo ugovore o proizvodnji i kupovini, međunarodnoj prodaji robe, ugovore o zajmu, uslugama, distribuciji, zastupanju, posredovanju, franšizi, zajedničkom ulaganju, prevozu i druge.
 
     Pružamo savete klijentima u poslovanju u skladu sa carinskim propisima, propisima u oblastima deviznog poslovanja i platnih usluga.`,
-    icon: BsGlobe2,
+    icon: AiOutlineRise,
   },
   {
     id: 'Gradjenje',
@@ -55,7 +68,7 @@ export const workAreas: WorkArea[] = [
     Sastavljamo ugovore i druga dokumenta u vezi sa investicijama u oblasti građenja, zakupom, finansiranjem, zoniranjem, izgradnjom i obezbeđenjem investicija. Pružamo pomoć u postupcima pred nadležnim organima radi dobijanja neophodnih dozvola i saglasnosti, kao i svu drugu pravnu pomoć u toku izgradnje objekata.
 
     Imamo dugogodišnju saradnju sa vrhunskim stručnjacima iz oblasti urbanizma i prostornog planiranja.`,
-    icon: BsGlobe2,
+    icon: RiBuildingLine, // CgOrganisation
   },
   {
     id: `Antimonopolsko-pravo-Pravo-konkurencije`,
@@ -66,7 +79,7 @@ export const workAreas: WorkArea[] = [
     Prilikom zaključenja ugovora o kooperaciji i drugih komercijalnih poslova, pružamo savete klijentima sa aspekta važećih pravila, antimonopolskih propisa i propisa o konkurenciji.
 
     Zastupamo klijente u postupcima u vezi sa zloupotrebom dominantnog položaja na tržištu i antimonopolskim sporovima, i pružamo im podršku uključujući i razvoj odbrambenih strategija i ostvarivanje naknade štete.`,
-    icon: BsGlobe2,
+    icon: MdCallSplit,
   },
   {
     id: `Radno-pravo-Boravisna-i-radna-dozvola`,
@@ -79,7 +92,7 @@ export const workAreas: WorkArea[] = [
     Pružamo savete i podršku pri upućivanju zaposlenih na rad u inostranstvo (detašmani). Pružamo sveobuhvatnu podršku stranim državljanima i internacionalnim kompanijama u ispunjavanju uslova za pokretanje i uspešno okončanje postupaka dobijanja boravišne dozvole i obezbeđenje uslova za dobijanje radne dozvole.
 
     Pružamo pravnu pomoć i u vezi sa ispunjenjem uslova za ulazak, kretanje i boravak stranaca, uključujući i  zastupanje u postupcima dobijanja viza za kraći i privremeni boravak u Republici Srbiji.`,
-    icon: BsGlobe2,
+    icon: FaClipboardList,
   },
   {
     id: `Intelektualna-svojina-Industrija-zabave-IT`,
@@ -92,7 +105,7 @@ export const workAreas: WorkArea[] = [
     Savetujemo klijente i u domenu audio-vizuelnih tehnologija i medijskog prava (TV, film, muzika, izdavaštvo, advertajzing, elektronski i štampani mediji, itd.) i pomažemo im u realizaciji projekata u vezi sa produkcijom, izdavaštvom, emitovanjem, distribucijom i oglašavanjem. Pružamo podršku projektima u svim fazama, uključujući korporativni aspekt, finansiranje, prava intelektualne svojine, publicitet, privatnost i oglašavanje.
 
     Imamo višegodišnjeg iskustva u zastupanju različitih učesnika na medijskom i telekomunikacionom tržištu, kao i sveobuhvatno znanje i bogatu praksu u oglašavanju, pripremi i organizaciji konkursa, sponzorstava, festivala, nagradnih igara, takmičenja i promotivnih događaja.`,
-    icon: BsGlobe2,
+    icon: MdLightbulbOutline,
   },
   {
     id: `Porezi-carine-i-devizno-poslovanje`,
@@ -105,7 +118,7 @@ export const workAreas: WorkArea[] = [
     Pružamo savete klijentima u poslovanju u skladu sa carinskim propisima, propisima u oblastima deviznog poslovanja i platnih usluga.
 
     U pronalaženju pragmatičnih i prikladnih rešenja, negujemo poseban pristup svakom klijentu, u potpunosti uvažavajući specifičnosti slučaja, njegov ekonomski interes i poslovni ugled.`,
-    icon: BsGlobe2,
+    icon: MdEuro,
   },
   {
     id: `Zastita-podataka-o-licnosti`,
@@ -116,7 +129,7 @@ export const workAreas: WorkArea[] = [
     Sastavljamo ugovor o obradi podataka, interna pravila zaštite podataka o ličnosti i druga dokumenta koja obezbeđuju zakonitu i svrsishodnu obradu ličnih podataka. Svesni smo da je odnos kompanija prema ličnim podacima i privatnosti od ključne važnosti za njihov ugled i zakonito poslovanje, pa je zaštita privatnosti važan segment svih usluga koje pružamo kompanijama, bez obzira na primarnu oblast usluge.
 
     Imamo dugogodišnju saradnju sa vrhunskim stručnjacima iz oblasti zaštite podataka o ličnosti i u saradnji sa njima organizujemo seminare i obuke iz ove oblasti.`,
-    icon: BsGlobe2,
+    icon: IoShieldCheckmarkSharp,
   },
   {
     id: `resavanje-sporova`,
@@ -127,7 +140,7 @@ export const workAreas: WorkArea[] = [
     Pronalazimo najefikasnije načine za naplatu potraživanja naših klijenata u vansudskom postupku i primenjujemo sve instrumente obezbeđenja (zaloga, hipoteka, bankarska garancija, menice, jemstvo i dr.) u cilju zaštite i obezbeđenja potraživanja naših klijenata i njihove naplate bez pokretanja sudskih postupaka, kad god je to moguće.
 
     U slučajevima kada je naplata potraživanja moguća isključivo sudskim putem, pružamo kompletnu uslugu zastupanja u postupcima prinudnog izvršenja.`,
-    icon: BsGlobe2,
+    icon: MdAccountBalance,
   },
   {
     id: `zastita-zivotne-sredine`,
@@ -136,7 +149,7 @@ export const workAreas: WorkArea[] = [
     Kancelarija pruža savete i u vezi sa pitanjima zaštite i očuvanja životne sredine, sprečavanja i kontrole zagađivanja, odnosno usklađenosti poslovanja i dokumenata klijenata sa važećim propisima iz oblasti ekologije, kao i propisima iz oblasti energetike, planiranja i izgradnje, proizvodnje i upravljanja hemikalijama, otpadom i slično.
 
     Asistiramo našim klijentima prilikom definisanja strategije i zaključenja ugovora o upravljanju otpadom sa izabranim strateškim partnerom, postupanja u skladu sa propisima o bezbednosti hrane i organskoj proizvodnji, kao i ispunjenju uslova za dobijanje sertifikata.`,
-    icon: BsGlobe2,
+    icon: MdNaturePeople,
   },
   {
     id: `neprofitne-organizacije`,
@@ -147,7 +160,7 @@ export const workAreas: WorkArea[] = [
     Sastavljamo akta za registraciju i rad fondacija, zadužbina i udruženja kao i predstavništava stranih neprofitnih organizacija i zastupamo ih u postupcima pred državnim organima. Pregovaramo i sastavljamo širok spektar ugovora specifičnih za neprofitne organizacije, pružamo savete i usluge u oblasti radnih odnosa, boravišnih i radnih dozvola i pružamo im podršku u toku realizacije njihovih projekata, kao i pri prestanku rada po ostvarenju ciljeva.
 
     Advokat Jasna Trifunović učestvovala je u procesu kreiranja važećih normativnih rešenja u neprofitnom sektoru.`,
-    icon: BsGlobe2,
+    icon: VscOrganization,
   },
   {
     id: `usluge-fizickim-licima`,
@@ -168,6 +181,6 @@ export const workAreas: WorkArea[] = [
     Pružamo usluge u vezi rehabilitacije fizičkih lica koji su neosnovano lišeni političkih, svojinskih i drugih prava za vreme komunističkog režima.
 
     Savetujemo i zastupamo fizička lica u različitim građanskim sporovima, upravnim  i drugim postupcima u cilju ostvarivanja i zaštite njihovih prava i interesa.`,
-    icon: BsGlobe2,
+    icon: MdPeople,
   },
 ];
