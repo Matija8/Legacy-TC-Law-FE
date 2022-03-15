@@ -20,8 +20,10 @@ const newsPage = ({ newsArticles }: { newsArticles: NewsArticle[] }) => {
               style={{ border: 'solid 1px', padding: '1rem' }}
             >
               <section>
-                <div style={{ maxHeight: '220px', overflow: 'hidden' }}>
-                  <ReactMarkdown>{article.md}</ReactMarkdown>
+                <div /* style={{ maxHeight: '220px', overflow: 'hidden' }} */>
+                  <ReactMarkdown>
+                    {takeUntilNthSpace(article.md, 6)}
+                  </ReactMarkdown>
                 </div>
               </section>
               <Link href={`/novosti/${idx}`}>
@@ -35,6 +37,19 @@ const newsPage = ({ newsArticles }: { newsArticles: NewsArticle[] }) => {
     </div>
   );
 };
+
+function takeUntilNthSpace(text: string, n: number) {
+  let res = '';
+  let spaceRepetition = 0;
+  for (const char of text) {
+    if (char === '\n') {
+      spaceRepetition += 1;
+      if (spaceRepetition >= n) return res;
+    }
+    res += char;
+  }
+  return res;
+}
 
 export async function getStaticProps() {
   const newsArticlesWMardkown = await Promise.all(
