@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-const basePath = '/TC-law';
+const isDevEnv = process.env.NODE_ENV === 'development';
+// On github pages use '/TC-law' as basePath
+const basePath = isDevEnv ? '' : '/TC-law';
 
 module.exports = {
   reactStrictMode: true,
