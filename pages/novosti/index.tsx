@@ -22,12 +22,12 @@ const newsPage = ({ newsArticles }: { newsArticles: NewsArticle[] }) => {
               <section>
                 <div /* style={{ maxHeight: '220px', overflow: 'hidden' }} */>
                   <ReactMarkdown>
-                    {takeUntilNthSpace(article.md, 6)}
+                    {takeUntilNthNewLine(article.md, 6)}
                   </ReactMarkdown>
                 </div>
               </section>
               <Link href={`/novosti/${idx}`}>
-                <a>Citaj dalje...</a>
+                <a>Čitaj dalje...</a>
               </Link>
             </article>
           ))}
@@ -38,13 +38,13 @@ const newsPage = ({ newsArticles }: { newsArticles: NewsArticle[] }) => {
   );
 };
 
-function takeUntilNthSpace(text: string, n: number) {
+function takeUntilNthNewLine(text: string, n: number) {
   let res = '';
-  let spaceRepetition = 0;
+  let nlRepetition = 0;
   for (const char of text) {
     if (char === '\n') {
-      spaceRepetition += 1;
-      if (spaceRepetition >= n) return res;
+      nlRepetition += 1;
+      if (nlRepetition >= n) return res;
     }
     res += char;
   }
