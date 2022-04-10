@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { CSSProperties } from 'react';
 import { gColors } from 'styles/style-constants';
 import { EmployeeFns } from 'util/employee-util';
-import { EmployeePhoto } from './employee-photo';
+import { EmployeePhotoWLink } from './employee-photo';
 import styles from './employee.module.scss';
 
 export function EmployeeCard({
@@ -24,7 +24,7 @@ export function EmployeeCard({
       className={styles['lawyer-info']}
       style={{ ...(hide && { display: 'none' }) }}
     >
-      <EmployeePhoto employee={employee} />
+      <EmployeePhotoWLink employee={employee} />
 
       <div className={styles['member-details']}>
         <div className={styles['member-details-row-1']}>

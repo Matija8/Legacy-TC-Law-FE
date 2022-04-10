@@ -17,19 +17,13 @@
   margin: 0;
 }
 
-.photo-container {
-  // TODO
-  // display: grid;
-  // place-items: center center;
-  // width: fit-content;
-  // min-height: fit-content;
-  background-color: colors.$red1;
-}
-
 .photo {
+  // https://www.w3schools.com/howto/howto_css_image_responsive.asp
   object-fit: contain;
-  max-width: 100%; // TODO
+  width: 100%;
+  height: auto;
   max-height: 330px;
+  // border-bottom: 1px solid colors.$red1;
 }
 
 .member-details {

@@ -8,7 +8,9 @@ const employeePage = ({ employee }: { employee: Employee }) => {
   return (
     <TcLawPage title={EmployeeFns.getNameSurname(employee)}>
       <div className={styles['employee-row']}>
-        <EmployeePhoto employee={employee} />
+        <div style={{ minWidth: '200px' /* TODO */ }}>
+          <EmployeePhoto employee={employee} />
+        </div>
         <section id="opis">
           <h2>{EmployeeFns.getNameSurname(employee)}</h2>
           <p>{EmployeeFns.getLongTitle(employee)}</p>
@@ -26,7 +28,9 @@ const employeePage = ({ employee }: { employee: Employee }) => {
               <p key={idx}>{educationText}</p>
             ))}
           </section>
-          <p><b>Jezici:</b> {employee.languages}</p>
+          <p>
+            <b>Jezici:</b> {employee.languages}
+          </p>
         </section>
       </div>
     </TcLawPage>
