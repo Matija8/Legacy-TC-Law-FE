@@ -1,0 +1,11 @@
+@use 'styles/breakpoints.scss' as breakPts;
+$breakpointTablet: breakPts.$breakpointTablet;
+
+.employee-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  @media (min-width: $breakpointTablet) {
+    flex-direction: row;
+  }
+}

@@ -2,12 +2,12 @@ import { XImage } from 'components/image';
 import { Employee } from 'data/employees';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
-import { getPageHrefForEmployee } from 'util/employee-util';
+import { EmployeeFns } from 'util/employee-util';
 import styles from './employee.module.scss';
 
 export function EmployeePhoto({ employee }: { employee: Employee }) {
   const { name, surname, title, pagePath, memberPhotoId } = employee;
-  const pageHref = getPageHrefForEmployee(employee);
+  const pageHref = EmployeeFns.getPageHref(employee);
   const pagePathLinkStyle: CSSProperties = {
     ...(!pagePath && { pointerEvents: 'none' }),
   };

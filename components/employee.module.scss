@@ -18,12 +18,17 @@
 }
 
 .photo-container {
+  // TODO
+  // display: grid;
+  // place-items: center center;
+  // width: fit-content;
+  // min-height: fit-content;
   background-color: colors.$red1;
 }
 
 .photo {
   object-fit: contain;
-  max-width: 100%;
+  max-width: 100%; // TODO
   max-height: 330px;
 }
 
