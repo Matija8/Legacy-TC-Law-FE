@@ -9,7 +9,6 @@ export function EmployeePhoto({ employee }: { employee: Employee }) {
   const { name, surname, title, memberPhotoId } = employee;
   return (
     <XImage
-      style={{ cursor: 'pointer' }}
       className={styles.photo}
       src={`${process.env.basePath}/team/${memberPhotoId}.jpg`}
       alt={`${name} ${surname} ${title} photo`}
@@ -21,6 +20,7 @@ export function EmployeePhotoWLink({ employee }: { employee: Employee }) {
   const { pagePath } = employee;
   const pageHref = EmployeeFns.getPageHref(employee);
   const pagePathLinkStyle: CSSProperties = {
+    cursor: pagePath ? 'pointer' : 'no-drop',
     ...(!pagePath && { pointerEvents: 'none' }),
   };
   return (
