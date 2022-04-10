@@ -1,10 +1,14 @@
+import { EmployeePhoto } from 'components/employee-photo';
 import { TcLawPage } from 'components/_page';
 import { Employee, lawyers } from 'data/employees';
 
 const employeePage = ({ employee }: { employee: Employee }) => {
   return (
     <TcLawPage title={`${employee.name} ${employee.surname}`}>
-      <p>{JSON.stringify(employee)}</p>
+      <div style={{ display: 'flex' }}>
+        <EmployeePhoto employee={employee} />
+        <p>{JSON.stringify(employee)}</p>
+      </div>
     </TcLawPage>
   );
 };

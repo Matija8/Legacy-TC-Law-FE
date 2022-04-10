@@ -4,20 +4,19 @@ import { Employee } from 'data/employees';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
 import { gColors } from 'styles/style-constants';
-import styles from './lawyer.module.scss';
+import { getPageHrefForEmployee } from 'util/employee-util';
+import { EmployeePhoto } from './employee-photo';
+import styles from './employee.module.scss';
 
-export function Lawyer({
-  name,
-  surname,
-  title,
-  pagePath,
-  memberPhotoId,
-  email,
+export function EmployeeCard({
   hide,
-}: Employee & {
+  employee,
+}: {
+  employee: Employee;
   hide?: boolean;
 }) {
-  const pageHref = pagePath ? `/nas-tim/${pagePath}` : '#';
+  const { name, surname, title, pagePath, memberPhotoId, email } = employee;
+  const pageHref = getPageHrefForEmployee(employee);
   const pagePathLinkStyle: CSSProperties = {
     ...(!pagePath && { pointerEvents: 'none' }),
   };
@@ -26,18 +25,7 @@ export function Lawyer({
       className={styles['lawyer-info']}
       style={{ ...(hide && { display: 'none' }) }}
     >
-      <div className={styles['photo-container']}>
-        <Link href={pageHref}>
-          <a style={pagePathLinkStyle}>
-            <XImage
-              style={{ cursor: 'pointer' }}
-              className={styles.photo}
-              src={`${process.env.basePath}/team/${memberPhotoId}.jpg`}
-              alt={`${name} ${surname} ${title} photo`}
-            />
-          </a>
-        </Link>
-      </div>
+      <EmployeePhoto employee={employee} />
 
       <div className={styles['member-details']}>
         <div className={styles['member-details-row-1']}>

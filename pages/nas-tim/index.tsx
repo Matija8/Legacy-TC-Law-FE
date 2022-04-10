@@ -1,4 +1,4 @@
-import { Lawyer } from 'components/lawyer';
+import { EmployeeCard } from 'components/employee-card';
 import { TcLawPage } from 'components/_page';
 import { lawyers } from 'data/employees';
 import { NextPage } from 'next';
@@ -36,7 +36,7 @@ const ourTeamPage: NextPage = () => {
 
       <section className={styles['team-photos']}>
         {lawyers.map((employee) => (
-          <Lawyer {...employee} key={employee.key} />
+          <EmployeeCard employee={employee} key={employee.key} />
         ))}
       </section>
     </TcLawPage>
