@@ -1,0 +1,9 @@
+// @use 'styles/breakpoints.scss' as breakpoints;
+
+.team-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  row-gap: 3rem;
+  column-gap: 4%;
+  place-items: start center;
+}

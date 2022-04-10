@@ -1,40 +1,32 @@
-import { Footer } from 'components/footer';
-import { Header } from 'components/header';
-import { SiteHead } from 'components/site-head';
+import { TcLawPage } from 'components/_page';
 import { NewsArticle, NewsArticleMeta, newsArticles } from 'data/news';
 import fs from 'fs/promises';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
-import styles from 'styles/Home.module.scss';
 
 const newsPage = ({ newsArticles }: { newsArticles: NewsArticle[] }) => {
   return (
-    <div className={styles.container}>
-      <SiteHead title="Novosti" />
-      <Header />
-      <main className={styles.main}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {newsArticles.slice(0, 3).map((article, idx) => (
-            <article
-              key={`article ${idx} ${article.title}`}
-              style={{ border: 'solid 1px', padding: '1rem' }}
-            >
-              <section>
-                <div /* style={{ maxHeight: '220px', overflow: 'hidden' }} */>
-                  <ReactMarkdown>
-                    {takeUntilNthNewLine(article.md, 6)}
-                  </ReactMarkdown>
-                </div>
-              </section>
-              <Link href={`/novosti/${idx}`}>
-                <a>Čitaj dalje...</a>
-              </Link>
-            </article>
-          ))}
-        </div>
-      </main>
-      <Footer />
-    </div>
+    <TcLawPage title="Novosti">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        {newsArticles.slice(0, 3).map((article, idx) => (
+          <article
+            key={`article ${idx} ${article.title}`}
+            style={{ border: 'solid 1px', padding: '1rem' }}
+          >
+            <section>
+              <div /* style={{ maxHeight: '220px', overflow: 'hidden' }} */>
+                <ReactMarkdown>
+                  {takeUntilNthNewLine(article.md, 6)}
+                </ReactMarkdown>
+              </div>
+            </section>
+            <Link href={`/novosti/${idx}`}>
+              <a>Čitaj dalje...</a>
+            </Link>
+          </article>
+        ))}
+      </div>
+    </TcLawPage>
   );
 };
 

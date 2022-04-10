@@ -1,25 +1,17 @@
-import { Footer } from 'components/footer';
-import { Header } from 'components/header';
-import { SiteHead } from 'components/site-head';
+import { TcLawPage } from 'components/_page';
 import { NewsArticle, NewsArticleMeta, newsArticles } from 'data/news';
 import fs from 'fs/promises';
 import ReactMarkdown from 'react-markdown';
-import styles from 'styles/Home.module.scss';
 
 const newsArticlePage = ({ newsArticle }: { newsArticle: NewsArticle }) => {
   return (
-    <div className={styles.container}>
-      <SiteHead title="Novosti" />
-      <Header />
-      <main className={styles.main}>
-        {/* <h2 className="heading-underlined">Novosti</h2> */}
+    <TcLawPage title="Novosti">
+      {/* <h2 className="heading-underlined">Novosti</h2> */}
 
-        <section style={{ margin: '40px 0 70px' }}>
-          <ReactMarkdown>{newsArticle.md}</ReactMarkdown>
-        </section>
-      </main>
-      <Footer />
-    </div>
+      <section style={{ margin: '40px 0 70px' }}>
+        <ReactMarkdown>{newsArticle.md}</ReactMarkdown>
+      </section>
+    </TcLawPage>
   );
 };
 

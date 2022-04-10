@@ -1,19 +1,11 @@
-import { Footer } from 'components/footer';
-import { Header } from 'components/header';
-import { SiteHead } from 'components/site-head';
+import { TcLawPage } from 'components/_page';
 import { Employee, lawyers } from 'data/employees';
-import styles from 'styles/Home.module.scss';
 
 const employeePage = ({ employee }: { employee: Employee }) => {
   return (
-    <div className={styles.container}>
-      <SiteHead title="" />
-      <Header />
-      <main className={styles.main}>
-        <p>{JSON.stringify(employee)}</p>
-      </main>
-      <Footer />
-    </div>
+    <TcLawPage title={`${employee.name} ${employee.surname}`}>
+      <p>{JSON.stringify(employee)}</p>
+    </TcLawPage>
   );
 };
 

@@ -3,6 +3,7 @@ export interface Employee {
   surname: string;
   email?: string;
   title: string;
+  longTitle?: string;
   pagePath?: string;
   memberPhotoId: string;
   key: string;

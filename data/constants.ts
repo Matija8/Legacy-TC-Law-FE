@@ -10,3 +10,12 @@ export const validationRegexes = {
 };
 
 export const requiredFieldErrorText = '*neophodno polje';
+
+// TODO
+export const pageTitles = {
+  nasTim: ''
+} as const;
+
+export const pageSectionTitles = {
+  nasTim: ''
+}

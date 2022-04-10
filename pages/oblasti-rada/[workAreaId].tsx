@@ -1,33 +1,25 @@
-import { Footer } from 'components/footer';
-import { Header } from 'components/header';
-import { SiteHead } from 'components/site-head';
 import { WorkAreaGrid } from 'components/work-area-grid';
+import { TcLawPage } from 'components/_page';
 import { WorkArea, workAreas } from 'data/oblasti-rada';
-import styles from 'styles/Home.module.scss';
 
 const WorkAreaPage = ({ workArea }: { workArea: WorkArea }) => {
   return (
-    <div className={styles.container}>
-      <SiteHead title="Oblasti rada" />
-      <Header />
-      <main className={styles.main}>
-        <h2 className="heading-underlined">Oblasti rada</h2>
+    <TcLawPage title="Oblasti rada">
+      <h2 className="heading-underlined">Oblasti rada</h2>
 
-        <section style={{ margin: '40px 0 70px' }}>
-          <h3 className="pre-wrap">{workArea.title}</h3>
-          {workArea.text
-            .split('\n')
-            .map((p) => p.trim())
-            .filter(Boolean)
-            .map((p, idx) => (
-              <p key={idx}>{p}</p>
-            ))}
-        </section>
+      <section style={{ margin: '40px 0 70px' }}>
+        <h3 className="pre-wrap">{workArea.title}</h3>
+        {workArea.text
+          .split('\n')
+          .map((p) => p.trim())
+          .filter(Boolean)
+          .map((p, idx) => (
+            <p key={idx}>{p}</p>
+          ))}
+      </section>
 
-        <WorkAreaGrid slice={8} />
-      </main>
-      <Footer />
-    </div>
+      <WorkAreaGrid slice={8} />
+    </TcLawPage>
   );
 };
 

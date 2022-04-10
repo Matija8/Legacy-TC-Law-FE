@@ -1,22 +1,13 @@
-import { Footer } from 'components/footer';
-import { Header } from 'components/header';
-import { SiteHead } from 'components/site-head';
 import { WorkAreaGrid } from 'components/work-area-grid';
+import { TcLawPage } from 'components/_page';
 import { NextPage } from 'next';
-import styles from 'styles/Home.module.scss';
 
 const contact: NextPage = () => {
   return (
-    <div className={styles.container}>
-      {/* <style jsx>{``}</style> */}
-      <SiteHead title="Oblasti rada" />
-      <Header />
-      <main className={styles.main}>
-        <h2 className="heading-underlined">Oblasti rada</h2>
-        <WorkAreaGrid />
-      </main>
-      <Footer />
-    </div>
+    <TcLawPage title="Oblasti rada">
+      <h2 className="heading-underlined">Oblasti Rada</h2>
+      <WorkAreaGrid />
+    </TcLawPage>
   );
 };
 

@@ -3,7 +3,8 @@ import Head from 'next/head';
 export function SiteHead({ title }: { title: string }) {
   return (
     <Head>
-      <title>Trifunovic & Co Law Office - {title}</title>
+      {/* <title>Trifunovic & Co Law Office - {title}</title> */}
+      <title>{title ? `${title} - TCL` : 'TCL'}</title>
       <link rel="icon" href={`${process.env.basePath}/favicon.png`} />
       <meta
         name="description"
