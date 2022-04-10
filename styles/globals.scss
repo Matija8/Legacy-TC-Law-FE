@@ -5,8 +5,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: avenir -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   height: 100%;
   min-height: 100vh;
   width: 100%;
@@ -31,7 +30,6 @@ body.mobile-nav-open {
 p,
 li,
 td {
-  font-family: avenir;
   text-align: justify;
   /* letter-spacing: 1px; */
   box-sizing: border-box;
