@@ -1,4 +1,4 @@
-import { gLinks } from 'data/constants';
+import { gTextConstants, gLinks } from 'data/constants';
 import { BsLinkedin } from 'react-icons/bs';
 import { gColors } from 'styles/style-constants';
 import { FirmAddress } from './address';
@@ -22,7 +22,7 @@ export function ContactGroup() {
       </address>
 
       <p>
-        E-mail: <a href={gLinks.email}>office@tclaw.rs</a>
+        E-mail: <a href={gLinks.email}>{gTextConstants.officeEmail}</a>
       </p>
 
       <div className="icon-flex-row">

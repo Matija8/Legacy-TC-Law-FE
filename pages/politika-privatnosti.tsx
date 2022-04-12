@@ -1,6 +1,6 @@
 import { PhoneNumberLink } from 'components/address';
 import { TcLawPage } from 'components/_page';
-import { gLinks } from 'data/constants';
+import { gLinks, gTextConstants } from 'data/constants';
 import { NextPage } from 'next';
 import styles from 'styles/Home.module.scss';
 
@@ -498,8 +498,8 @@ const newsPage: NextPage = () => {
           Molimo vas da sva pitanja u vezi ove Izjave o privatnosti, načina na
           koji obrađujemo vaše podatke o ličnosti i druge zahteve u vezi zaštite
           ličnih podataka uputite na e-mail{' '}
-          <a href={gLinks.email}>office@tclaw.rs</a>; kontakt telefon:{' '}
-          <PhoneNumberLink />
+          <a href={gLinks.email}>{gTextConstants.officeEmail}</a>; kontakt
+          telefon: <PhoneNumberLink />
         </p>
       </section>
     </TcLawPage>

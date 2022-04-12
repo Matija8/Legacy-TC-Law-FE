@@ -13,9 +13,13 @@ export const requiredFieldErrorText = '*neophodno polje';
 
 // TODO
 export const pageTitles = {
-  nasTim: ''
+  nasTim: '',
 } as const;
 
 export const pageSectionTitles = {
-  nasTim: ''
-}
+  nasTim: '',
+};
+
+export const gTextConstants = {
+  officeEmail: 'office@tclaw.rs',
+};
