@@ -17,9 +17,7 @@ export function ContactGroup() {
       `}</style>
       <h4>Advokatska kancelarija</h4>
 
-      <address>
-        <FirmAddress />
-      </address>
+      <FirmAddress />
 
       <p>
         E-mail: <a href={gLinks.email}>{gTextConstants.officeEmail}</a>

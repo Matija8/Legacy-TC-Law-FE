@@ -8,7 +8,7 @@ import styles from './index.module.scss';
 
 const Home: NextPage = () => {
   return (
-    <TcLawPage title=''>
+    <TcLawPage title="">
       <section
         id="oblasti-rada"
         style={{ width: '100%', marginBottom: '3rem' }}
@@ -43,9 +43,9 @@ const Home: NextPage = () => {
 
       <WorkAreaGrid />
 
-      <section id="novosti">
+      {/* <section id="novosti">
         <h2 className="heading-underlined">Novosti</h2>
-      </section>
+      </section> */}
 
       <section id="nas-tim">
         <h2 className="heading-underlined">Naš Tim</h2>

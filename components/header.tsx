@@ -62,11 +62,9 @@ export function Header() {
               />
             </a>
           </Link>
-          <address
+          <FirmAddress
             className={`${styles['hide-narrow-desktop']} ${styles['header-top-address']}`}
-          >
-            <FirmAddress />
-          </address>
+          />
         </div>
 
         <hr className={`red-horizontal-ruler ${styles['hide-mobile']}`} />

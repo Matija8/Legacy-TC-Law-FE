@@ -29,7 +29,15 @@ export function TelFax({
 const gMapsLink =
   'https://www.google.com/maps/place/Trifunovic%26Co+Law+Office/@44.8098279,20.4600349,15z/data=!4m5!3m4!1s0x475a7aa8ab86039f:0x184d5a50bfafe45d!8m2!3d44.8086604!4d20.4636218';
 
-export function FirmAddress({
+export function FirmAddress({ className }: { className?: string }) {
+  return (
+    <address className={className ?? ''} style={{ fontStyle: 'initial' }}>
+      <FirmAddressText />
+    </address>
+  );
+}
+
+function FirmAddressText({
   aStyle = { color: 'grey' },
 }: {
   aStyle?: CSSProperties;
