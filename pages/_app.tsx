@@ -1,14 +1,9 @@
 import '../styles/globals.scss';
-import type { AppProps } from 'next/app';
-import { CookiesAreUsedBanner } from 'components/cookies-used-banner';
+// import type { AppProps } from 'next/app';
+// TODO: AppProps
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Component {...pageProps} />
-      <CookiesAreUsedBanner key="Cookies banner" />
-    </>
-  );
+function MyApp({ Component, pageProps }: /* AppProps */ any) {
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;
