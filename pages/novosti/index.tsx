@@ -18,8 +18,9 @@ const NewsPage = ({
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          // gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          // gridTemplateColumns: 'repeat(3, 1fr)',
+          // TODO: Have max 3 columns via media query!
+          gridTemplateColumns: 'repeat(auto-fit, minmax(330px, 1fr))',
           gap: '2rem',
         }}
       >
