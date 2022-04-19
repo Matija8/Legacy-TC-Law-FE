@@ -2,33 +2,59 @@ import { TcLawPage } from 'components/_page';
 import { NewsArticle, NewsArticleMeta, newsArticles } from 'data/news';
 import fs from 'fs/promises';
 import Link from 'next/link';
+import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-const newsPage = ({ newsArticles }: { newsArticles: NewsArticle[] }) => {
+const NewsPage = ({
+  newsArticles,
+}: {
+  newsArticles: NewsArticle[];
+}): JSX.Element => {
+  const [rowsShown, setRowsShown] = useState(2);
+  const newsArticlesPerRow = 3;
+  const loadMoreNews = () => setRowsShown(rowsShown + 2);
   return (
     <TcLawPage title="Novosti">
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        {newsArticles.slice(0, 3).map((article, idx) => (
-          <article
-            key={`article ${idx} ${article.title}`}
-            style={{ border: 'solid 1px', padding: '1rem' }}
-          >
-            <section>
-              <div /* style={{ maxHeight: '220px', overflow: 'hidden' }} */>
-                <ReactMarkdown>
-                  {takeUntilNthNewLine(article.md, 6)}
-                </ReactMarkdown>
-              </div>
-            </section>
-            <Link href={`/novosti/${idx}`}>
-              <a>Čitaj dalje...</a>
-            </Link>
-          </article>
-        ))}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          // gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gap: '2rem',
+        }}
+      >
+        {newsArticles
+          // .concat(newsArticles) // For testing
+          .slice(0, newsArticlesPerRow * rowsShown)
+          .map((article, idx) => (
+            <NewsArticle
+              article={article}
+              idx={idx}
+              key={`article ${idx} ${article.title}`}
+            ></NewsArticle>
+          ))}
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <button onClick={loadMoreNews}>Učitaj još novosti</button>
       </div>
     </TcLawPage>
   );
 };
+
+function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
+  return (
+    <article style={{ border: 'solid 1px', padding: '1rem' }}>
+      <section>
+        <div /* style={{ maxHeight: '220px', overflow: 'hidden' }} */>
+          <ReactMarkdown>{takeUntilNthNewLine(article.md, 6)}</ReactMarkdown>
+        </div>
+      </section>
+      <Link href={`/novosti/${idx}`}>
+        <a>Čitaj dalje...</a>
+      </Link>
+    </article>
+  );
+}
 
 function takeUntilNthNewLine(text: string, n: number) {
   let res = '';
@@ -66,4 +92,4 @@ async function getArticleWithMarkdown(
   };
 }
 
-export default newsPage;
+export default NewsPage;

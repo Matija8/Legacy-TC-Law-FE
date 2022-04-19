@@ -2,14 +2,17 @@
   "name": "tc-law-website",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "open-cli http://localhost:3000 && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "export": "next build && next export",
     "gh-add-nojekyll": "touch ./out/.nojekyll",
     "gh-predeploy": "npm run export && npm run gh-add-nojekyll",
-    "ghdeploy": "npm run gh-predeploy && gh-pages -d out --dotfiles"
+    "gh-deploy": "npm run gh-predeploy && gh-pages -d out --dotfiles",
+    "rm-packages": "rm -rf node_modules && rm -f yarn.lock && rm -f package-lock.json",
+    "install:npm": "npm i && npm i -D",
+    "install:yarn": "yarn"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -32,6 +35,7 @@
     "eslint": "8.5.0",
     "eslint-config-next": "12.0.7",
     "gh-pages": "^3.2.3",
+    "open-cli": "^7.0.1",
     "typescript": "4.5.4"
   }
 }
