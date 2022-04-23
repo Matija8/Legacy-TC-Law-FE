@@ -1,12 +1,13 @@
 import { NewsArticle, newsArticles } from 'data/news';
 import { NewsUtil } from './news-util';
+import { NewsUtilServer } from './news-util-server';
 
 describe('news util', () => {
   let article1: NewsArticle;
   beforeAll(async () => {
-    const mdPath = NewsUtil.fullMdPath('1.md');
-    article1 = await NewsUtil.getArticleWithMarkdown(
-      newsArticles.find((article) => article.mdPath === mdPath)!,
+    const mdPath = NewsUtil.getFullMdPathFromId('1');
+    article1 = await NewsUtilServer.getArticleWithMarkdown(
+      newsArticles.find((article) => article.fullMdPath === mdPath)!,
     );
   });
 

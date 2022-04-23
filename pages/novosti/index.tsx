@@ -1,9 +1,9 @@
 import { TcLawPage } from 'components/_page';
-import { NewsArticle, NewsArticleMeta, newsArticles } from 'data/news';
-import fs from 'fs/promises';
+import { NewsArticle, newsArticles } from 'data/news';
 import Link from 'next/link';
 import { useState } from 'react';
 import { NewsUtil } from 'util/news-util';
+import { NewsUtilServer } from 'util/news-util-server';
 
 const NewsPage = ({
   newsArticles,
@@ -31,7 +31,7 @@ const NewsPage = ({
             <NewsArticle
               article={article}
               idx={idx}
-              key={`article ${idx} ${article.titleOverride}`}
+              key={`article ${article.id}`}
             ></NewsArticle>
           ))}
       </div>
@@ -68,7 +68,9 @@ function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
 
 export async function getStaticProps() {
   const newsArticlesWMardkown = await Promise.all(
-    newsArticles.map(async (article) => await NewsUtil.getArticleWithMarkdown(article)),
+    newsArticles.map(
+      async (article) => await NewsUtilServer.getArticleWithMarkdown(article),
+    ),
   );
   return {
     props: {

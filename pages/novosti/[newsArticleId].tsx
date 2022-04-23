@@ -1,7 +1,7 @@
 import { TcLawPage } from 'components/_page';
-import { NewsArticle, NewsArticleMeta, newsArticles } from 'data/news';
-import fs from 'fs/promises';
+import { NewsArticle, newsArticles } from 'data/news';
 import ReactMarkdown from 'react-markdown';
+import { NewsUtilServer } from 'util/news-util-server';
 
 const newsArticlePage = ({ newsArticle }: { newsArticle: NewsArticle }) => {
   return (
@@ -35,19 +35,7 @@ export async function getStaticProps({
   const newsArticle = newsArticles[Number(params.newsArticleId)];
   return {
     props: {
-      newsArticle: await getArticleWithMarkdown(newsArticle),
+      newsArticle: await NewsUtilServer.getArticleWithMarkdown(newsArticle),
     },
-  };
-}
-
-async function getArticleWithMarkdown(
-  newsArticle: NewsArticleMeta,
-): Promise<NewsArticle> {
-  async function getArticleMarkdown(newsArticle: NewsArticleMeta) {
-    return await fs.readFile(newsArticle.mdPath, 'utf-8');
-  }
-  return {
-    ...newsArticle,
-    md: await getArticleMarkdown(newsArticle),
   };
 }
