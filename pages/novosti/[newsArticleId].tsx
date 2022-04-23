@@ -24,7 +24,6 @@ export async function getStaticPaths() {
     })),
     fallback: false,
   };
-  console.log(paths);
   return paths;
 }
 

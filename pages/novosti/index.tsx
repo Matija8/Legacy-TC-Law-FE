@@ -3,7 +3,7 @@ import { NewsArticle, NewsArticleMeta, newsArticles } from 'data/news';
 import fs from 'fs/promises';
 import Link from 'next/link';
 import { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
+import { NewsUtil } from 'util/news-util';
 
 const NewsPage = ({
   newsArticles,
@@ -43,31 +43,21 @@ const NewsPage = ({
 };
 
 function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
+  const { title, body } = NewsUtil.mdToPreview(article.md);
   return (
     <article style={{ border: 'solid 1px', padding: '1rem' }}>
       <section>
-        <div /* style={{ maxHeight: '220px', overflow: 'hidden' }} */>
-          <ReactMarkdown>{takeUntilNthNewLine(article.md, 6)}</ReactMarkdown>
+        <div>
+          <h3>{title}</h3>
+          <p> {body}...</p>
         </div>
       </section>
+      {/* TODO: Position read more link at the bottom fixed, not below the body */}
       <Link href={`/novosti/${idx}`}>
         <a>Čitaj dalje...</a>
       </Link>
     </article>
   );
-}
-
-function takeUntilNthNewLine(text: string, n: number) {
-  let res = '';
-  let nlRepetition = 0;
-  for (const char of text) {
-    if (char === '\n') {
-      nlRepetition += 1;
-      if (nlRepetition >= n) return res;
-    }
-    res += char;
-  }
-  return res;
 }
 
 export async function getStaticProps() {
