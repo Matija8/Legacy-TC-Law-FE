@@ -31,7 +31,7 @@ const NewsPage = ({
             <NewsArticle
               article={article}
               idx={idx}
-              key={`article ${idx} ${article.title}`}
+              key={`article ${idx} ${article.titleOverride}`}
             ></NewsArticle>
           ))}
       </div>
@@ -68,24 +68,12 @@ function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
 
 export async function getStaticProps() {
   const newsArticlesWMardkown = await Promise.all(
-    newsArticles.map(async (article) => await getArticleWithMarkdown(article)),
+    newsArticles.map(async (article) => await NewsUtil.getArticleWithMarkdown(article)),
   );
   return {
     props: {
       newsArticles: newsArticlesWMardkown,
     },
-  };
-}
-
-async function getArticleWithMarkdown(
-  newsArticle: NewsArticleMeta,
-): Promise<NewsArticle> {
-  async function getArticleMarkdown(newsArticle: NewsArticleMeta) {
-    return await fs.readFile(newsArticle.mdPath, 'utf-8');
-  }
-  return {
-    ...newsArticle,
-    md: await getArticleMarkdown(newsArticle),
   };
 }
 

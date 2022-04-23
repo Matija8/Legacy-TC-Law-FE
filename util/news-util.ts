@@ -1,4 +1,7 @@
+import { NewsArticle, NewsArticleMeta } from 'data/news';
+import fs from 'fs/promises';
 import markdownToTxt from 'markdown-to-txt';
+import path from 'path';
 
 export namespace NewsUtil {
   function takeUntilNthNewLine(text: string, n: number) {
@@ -82,5 +85,21 @@ export namespace NewsUtil {
 
   export function isWhitespace(char: string) {
     return char.trim() === '';
+  }
+
+  export async function getArticleWithMarkdown(
+    newsArticle: NewsArticleMeta,
+  ): Promise<NewsArticle> {
+    async function getArticleMarkdown(newsArticle: NewsArticleMeta) {
+      return await fs.readFile(newsArticle.mdPath, 'utf-8');
+    }
+    return {
+      ...newsArticle,
+      md: await getArticleMarkdown(newsArticle),
+    };
+  }
+
+  export function fullMdPath(localPath: string) {
+    return path.join(process.cwd(), 'data', 'news-markdowns', localPath);
   }
 }
