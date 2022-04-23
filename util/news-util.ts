@@ -18,34 +18,49 @@ export namespace NewsUtil {
     return markdownToTxt(mdText);
   }
 
+  function mdToPreview2(mdText: string) {
+    let { title, body } = splitMarkdownIntoTitleAndContent(mdText);
+    // Take first paragraph only
+    body = body.split('\n')[0];
+    body = mdToTxt(body);
+    return { title, body };
+  }
+
   export function mdToPreview(mdText: string) {
     let { title, body } = splitMarkdownIntoTitleAndContent(mdText);
-    body = NewsUtil.takeWordsUntilNthCharacter(body, 150);
+    // Take words until 150th char
+    body = NewsUtil.takeWordsUntilNthCharacter(body, 150) + '...';
     body = mdToTxt(body);
     return { title, body };
   }
 
   function splitMarkdownIntoTitleAndContent(mdText: string) {
     // TODO
-    const lines = mdText.split('\n').filter((line) => line.trim() !== '');
+    const lines = mdText
+      .split('\n\n')
+      .map((line) => line.trim())
+      .filter(Boolean);
     if (lines.length < 1) {
       throw Error();
     }
-    const title = (() => {
-      let titleLine = lines[0].trim();
-      const lastStartingHashIndex = (() => {
-        let startIndex = 0;
-        while (titleLine[startIndex] === '#') {
-          startIndex++;
-        }
-        return startIndex;
-      })();
-      return titleLine.slice(lastStartingHashIndex);
-    })();
+    const title = getTitleTextFromTitleLineMd(lines[0]);
     return {
       title,
       body: lines.slice(1).join('\n\n'),
     };
+  }
+
+  function getTitleTextFromTitleLineMd(titleLine: string) {
+    // TODO: Just use mdToTxt?
+    titleLine = titleLine.trimStart();
+    const lastStartingHashIndex = (() => {
+      let startIndex = 0;
+      while (titleLine[startIndex] === '#') {
+        startIndex++;
+      }
+      return startIndex;
+    })();
+    return titleLine.slice(lastStartingHashIndex).trim();
   }
 
   export function takeWordsUntilNthCharacter(text: string, n: number) {

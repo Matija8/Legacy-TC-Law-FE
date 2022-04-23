@@ -45,11 +45,17 @@ const NewsPage = ({
 function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
   const { title, body } = NewsUtil.mdToPreview(article.md);
   return (
-    <article style={{ border: 'solid 1px', padding: '1rem' }}>
+    <article
+      style={{
+        border: 'solid 1px',
+        padding: '1rem',
+        // background: 'linear-gradient(to bottom, red, transparent)',
+      }}
+    >
       <section>
         <div>
           <h3>{title}</h3>
-          <p> {body}...</p>
+          <p>{body}</p>
         </div>
       </section>
       {/* TODO: Position read more link at the bottom fixed, not below the body */}
