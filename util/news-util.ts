@@ -79,8 +79,8 @@ export namespace NewsUtil {
     })();
     return text.slice(0, lastWhitespaceCharIndex);
   }
-}
 
-function isWhitespace(char: string) {
-  return char.trim() === '';
+  export function isWhitespace(char: string) {
+    return char.trim() === '';
+  }
 }
