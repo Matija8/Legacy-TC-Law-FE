@@ -1,15 +1,15 @@
 import { WorkAreaGrid } from 'components/work-area-grid';
 import { TcLawPage } from 'components/_page';
-import { WorkArea, workAreas } from 'data/oblasti-rada';
+import { WorkDomain, workAreas } from 'data/oblasti-rada';
 
-const WorkAreaPage = ({ workArea }: { workArea: WorkArea }) => {
+const WorkAreaPage = ({ domain }: { domain: WorkDomain }) => {
   return (
     <TcLawPage title="Oblasti rada">
       <h2 className="heading-underlined">Oblasti rada</h2>
 
       <section style={{ margin: '40px 0 70px' }}>
-        <h3 className="pre-wrap">{workArea.title}</h3>
-        {workArea.text
+        <h3 className="pre-wrap">{domain.title}</h3>
+        {domain.text
           .split('\n')
           .map((p) => p.trim())
           .filter(Boolean)
@@ -27,7 +27,7 @@ export default WorkAreaPage;
 
 export async function getStaticPaths() {
   return {
-    paths: workAreas.map(({ id }) => ({ params: { workAreaId: `${id}` } })),
+    paths: workAreas.map(({ id }) => ({ params: { workDomainId: `${id}` } })),
     fallback: false,
   };
 }
@@ -35,13 +35,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({
   params,
 }: {
-  params: { workAreaId: string };
+  params: { workDomainId: string };
 }) {
   return {
     props: {
-      workArea: {
-        ...workAreas.find(({ id }) => id === params.workAreaId),
-        icon: null,
+      domain: {
+        ...workAreas.find(({ id }) => id === params.workDomainId),
+        icon: null, // Icon is otherwise a function, which can't be serialized
       },
     },
   };

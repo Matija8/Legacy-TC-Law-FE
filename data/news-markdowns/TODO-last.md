@@ -1,3 +1,7 @@
+---
+domain: Porezi-carine-i-devizno-poslovanje
+---
+
 # Izmene Zakona o porezima na imovinu
 
 Nova 2021. godina donosi i značajne izmene Zakona o porezima na imovinu (u daljem tekstu: Zakon)1, počev od prenosa nadležnosti za utvrđivanje, naplatu i kontrolu poreza na nasleđe i poklon i poreza na prenos apsolutnih prava sa Poreske uprave na jedinice lokalne samouprave, preko izjednačavanja otvorenih i alternativnih investicionih fondova sa ostalim obveznicima poreza na imovinu, do preciziranja načina utvrđivanja cena nepokretnosti radi određivanja poreske osnovice. Takođe, pomoćni objekti postaju predmet oporezivanja porezom na imovinu, kao i digitalna imovina kada je predmet nasleđivanja i poklona, a utvrđeni su i dodatni uslovi za ostvarivanje poreskog kredita i poresko oslobođenje kod kupovine prvog stana.

@@ -17,10 +17,12 @@ describe('news util', () => {
 
   test('mdToPreview returns title with starting # stripped', async () => {
     const { md } = article1;
-    const expectedArticle1Title = 'Novine u Zakonu o privrednim društvima';
-    expect(md.split('\n')[0]).toBe(`# ${expectedArticle1Title}`);
-
     const { title } = NewsUtil.mdToPreview(md);
-    expect(title).toBe(expectedArticle1Title);
+    expect(title).toBe('Novine u Zakonu o privrednim društvima');
+  });
+
+  test('mdToPreview returns correct domain', async () => {
+    const { domain } = article1;
+    expect(domain).toBe(`Privredno-pravo`);
   });
 });

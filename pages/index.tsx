@@ -43,10 +43,6 @@ const Home: NextPage = () => {
 
       <WorkAreaGrid />
 
-      {/* <section id="novosti">
-        <h2 className="heading-underlined">Novosti</h2>
-      </section> */}
-
       <section id="nas-tim">
         <h2 className="heading-underlined">Naš Tim</h2>
         <EmployeeCarousel />

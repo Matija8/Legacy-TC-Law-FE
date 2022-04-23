@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { NewsUtil } from 'util/news-util';
 import { NewsUtilServer } from 'util/news-util-server';
+import { WorkDomainUtil } from 'util/work-domain-util';
 
 const NewsPage = ({
   newsArticles,
@@ -44,6 +45,7 @@ const NewsPage = ({
 
 function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
   const { title, body } = NewsUtil.mdToPreview(article.md);
+  const workDomain = WorkDomainUtil.findWorkDomainById(article.domain);
   return (
     <article
       style={{
@@ -54,6 +56,17 @@ function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
     >
       <section>
         <div>
+          {/* T*DO */}
+          {workDomain?.title &&
+            workDomain?.title.split('\n').map((titleLine) => (
+              <p
+                key={titleLine}
+                style={{ textAlign: 'initial', margin: 0 }}
+                className="article-work-domain"
+              >
+                {titleLine}
+              </p>
+            ))}
           <h3>{title}</h3>
           <p>{body}</p>
         </div>

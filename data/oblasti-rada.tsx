@@ -15,7 +15,7 @@ import { VscOrganization } from 'react-icons/vsc';
 
 // TODO: Header Nav from workAreas!?
 
-export type WorkAreaId =
+export type WorkDomainId =
   | 'Korporativno-pravo-M&A'
   | 'Privredno-pravo'
   | 'Gradjenje'
@@ -29,14 +29,15 @@ export type WorkAreaId =
   | 'neprofitne-organizacije'
   | 'usluge-fizickim-licima';
 
-export interface WorkArea {
-  id: WorkAreaId;
+export interface WorkDomain {
+  id: WorkDomainId;
   title: string;
   text: string;
   icon: (props: { size: number }) => JSX.Element;
 }
 
-export const workAreas: WorkArea[] = [
+// TODO: Rename to Domain
+export const workAreas: WorkDomain[] = [
   {
     id: 'Korporativno-pravo-M&A',
     title: 'Korporativno pravo/M&A',
