@@ -1,5 +1,5 @@
 import { TcLawPage } from 'components/_page';
-import { NewsArticle, newsArticles } from 'data/news';
+import { NewsArticle } from 'model/news-model';
 import ReactMarkdown from 'react-markdown';
 import { NewsUtilServer } from 'util/news-util-server';
 
@@ -18,13 +18,14 @@ const newsArticlePage = ({ newsArticle }: { newsArticle: NewsArticle }) => {
 export default newsArticlePage;
 
 export async function getStaticPaths() {
-  const paths = {
-    paths: newsArticles.map(({}, idx) => ({
-      params: { newsArticleId: `${idx}` },
+  // TODO: Use title as path (or use title as id??)?!
+  const staticPathsRet = {
+    paths: (await NewsUtilServer.getArticleIds()).map((id) => ({
+      params: { newsArticleId: id },
     })),
     fallback: false,
   };
-  return paths;
+  return staticPathsRet;
 }
 
 export async function getStaticProps({
@@ -32,10 +33,9 @@ export async function getStaticProps({
 }: {
   params: { newsArticleId: string };
 }) {
-  const newsArticle = newsArticles[Number(params.newsArticleId)];
   return {
     props: {
-      newsArticle: await NewsUtilServer.getArticleWithMarkdown(newsArticle),
+      newsArticle: await NewsUtilServer.getArticleById(params.newsArticleId),
     },
   };
 }

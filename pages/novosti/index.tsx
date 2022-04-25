@@ -1,5 +1,5 @@
 import { TcLawPage } from 'components/_page';
-import { NewsArticle, newsArticles } from 'data/news';
+import { NewsArticle } from 'model/news-model';
 import Link from 'next/link';
 import { useState } from 'react';
 import { NewsUtil } from 'util/news-util';
@@ -80,14 +80,9 @@ function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
 }
 
 export async function getStaticProps() {
-  const newsArticlesWMardkown = await Promise.all(
-    newsArticles.map(
-      async (article) => await NewsUtilServer.getArticleWithMarkdown(article),
-    ),
-  );
   return {
     props: {
-      newsArticles: newsArticlesWMardkown,
+      newsArticles: await NewsUtilServer.getArticles(),
     },
   };
 }

@@ -29,6 +29,7 @@ export type WorkDomainId =
   | 'neprofitne-organizacije'
   | 'usluge-fizickim-licima';
 
+// TODO: Move this interface to model/workDomain
 export interface WorkDomain {
   id: WorkDomainId;
   title: string;

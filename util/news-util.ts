@@ -85,12 +85,11 @@ export namespace NewsUtil {
     return char.trim() === '';
   }
 
-  export function getFullMdPathFromId(localPath: string) {
-    return path.join(
-      process.cwd(),
-      'data',
-      'news-markdowns',
-      localPath + '.md',
-    );
+  export function getNewsArticlesDirPath() {
+    return path.join(process.cwd(), 'public', 'news-articles');
+  }
+
+  export function getFullFsMdPathFromId(localPath: string) {
+    return path.join(getNewsArticlesDirPath(), localPath + '.md');
   }
 }
