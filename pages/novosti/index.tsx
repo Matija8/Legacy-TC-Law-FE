@@ -44,7 +44,7 @@ const NewsPage = ({
 };
 
 function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
-  const { title, body } = NewsUtil.mdToPreview(article.md);
+  const { title, body } = NewsUtil.getArticlePreview(article);
   const workDomain = WorkDomainUtil.findWorkDomainById(article.domain);
   return (
     <article

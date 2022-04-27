@@ -1,14 +1,20 @@
 import { EmployeeCarousel } from 'components/carousel';
 import { ContactForm } from 'components/contact-form';
+import { FrontHead } from 'components/frontpage-head';
 import { GoogleMap } from 'components/google-map';
 import { WorkAreaGrid } from 'components/work-area-grid';
+import { NewsArticle } from 'model/news-model';
 import type { NextPage } from 'next';
+import { NewsUtilServer } from 'util/news-util-server';
 import { TcLawPage } from '../components/_page';
 import styles from './index.module.scss';
 
-const Home: NextPage = () => {
+type Props = { newsArticles: NewsArticle[] };
+
+const Home: NextPage<Props> = ({ newsArticles }: Props) => {
   return (
     <TcLawPage title="">
+      <FrontHead newsArticles={newsArticles} />
       <section
         id="oblasti-rada"
         style={{ width: '100%', marginBottom: '3rem' }}
@@ -59,5 +65,13 @@ const Home: NextPage = () => {
     </TcLawPage>
   );
 };
+
+export async function getStaticProps() {
+  return {
+    props: {
+      newsArticles: await NewsUtilServer.getArticles(),
+    },
+  };
+}
 
 export default Home;

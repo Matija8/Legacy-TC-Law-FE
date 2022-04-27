@@ -18,13 +18,12 @@ describe('news util', () => {
     expect(NewsUtil.isWhitespace('\n')).toBe(true);
   });
 
-  test('mdToPreview returns title with starting # stripped', async () => {
-    const { md } = article1;
-    const { title } = NewsUtil.mdToPreview(md);
+  test('getArticlePreview returns title with starting # stripped', async () => {
+    const { title } = NewsUtil.getArticlePreview(article1);
     expect(title).toBe('Novine u Zakonu o privrednim društvima');
   });
 
-  test('mdToPreview returns correct domain', async () => {
+  test('article has correct domain', async () => {
     const { domain } = article1;
     expect(domain).toBe(`Privredno-pravo`);
   });
