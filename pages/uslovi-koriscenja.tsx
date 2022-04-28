@@ -8,7 +8,7 @@ const newsPage: NextPage = () => {
     <TcLawPage title="Uslovi koriščenja">
       <h2 className="heading-underlined">Uslovi koriščenja</h2>
 
-      <section className={styles.section}>
+      <section>
         <h3>Prihvatanje uslova korišćenja</h3>
         <p>
           Pristupanjem, pregledanjem ili korišćenjem veb-sajta naše kancelarije
@@ -29,7 +29,7 @@ const newsPage: NextPage = () => {
         </p>
       </section>
 
-      <section className={styles.section}>
+      <section>
         <h3>Intelektualna svojina</h3>
         <p>
           Sva prava intelektualne svojine na sadržajima koji se nalaze na ovom
@@ -45,7 +45,7 @@ const newsPage: NextPage = () => {
         </p>
       </section>
 
-      <section className={styles.section}>
+      <section>
         <h3>Odricanje od odgovornosti</h3>
         <p>
           Ovaj veb-sajt sadrži opšte informacije o oblastima rada i članovima
@@ -97,7 +97,7 @@ const newsPage: NextPage = () => {
         </p>
       </section>
 
-      <section className={styles.section}>
+      <section>
         <h3>Izmene sadržaja i uslova korišćenja; ukidanje veb-sajta</h3>
         <p>
           Možemo, u svako doba i bez obaveštenja, da povučemo ili izmenimo bilo
@@ -111,7 +111,7 @@ const newsPage: NextPage = () => {
         </p>
       </section>
 
-      <section className={styles.section}>
+      <section>
         <h3>Ostale odredbe</h3>
         <p>
           Na sve sadržaje na ovom veb-sajtu primenjuje se pravo Republike

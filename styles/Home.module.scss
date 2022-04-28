@@ -17,7 +17,6 @@
 }
 
 .main {
-  // TODO: Flex column with set gap?
   padding: 2rem 0 4rem;
   flex-grow: 1;
 
@@ -26,10 +25,13 @@
   }
 }
 
-.italic {
-  font-style: italic;
+.main > section {
+  margin-bottom: 1rem;
+  @media (min-width: breakPts.$breakpointTablet) {
+    margin-bottom: 2rem;
+  }
 }
 
-.section {
-  margin-bottom: 2rem;
+.italic {
+  font-style: italic;
 }

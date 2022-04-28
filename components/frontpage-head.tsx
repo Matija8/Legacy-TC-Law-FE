@@ -5,7 +5,7 @@ import { NewsUtil } from '../util/news-util';
 export function FrontHead({ newsArticles }: { newsArticles: NewsArticle[] }) {
   newsArticles = newsArticles.slice(0, 3);
   return (
-    <div className="root">
+    <section className="root">
       <style jsx>{`
         .root > div {
           flex: 1;
@@ -24,7 +24,7 @@ export function FrontHead({ newsArticles }: { newsArticles: NewsArticle[] }) {
         const { title } = NewsUtil.getArticlePreview(article);
         return <div key={title}>{title}</div>;
       })}
-    </div>
+    </section>
   );
 }
 
