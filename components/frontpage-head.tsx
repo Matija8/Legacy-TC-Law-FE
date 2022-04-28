@@ -16,9 +16,9 @@ export function FrontHead({ newsArticles }: { newsArticles: NewsArticle[] }) {
         }
       `}</style>
       <div>
-        <p>Stručnost.</p>
-        <p style={{ color: gColors.red1 }}>Efikasnost.</p>
-        <p>Pouzdanost.</p>
+        <Keyword>Stručnost.</Keyword>
+        <Keyword isRed>Efikasnost.</Keyword>
+        <Keyword>Pouzdanost.</Keyword>
       </div>
       {newsArticles.map((article) => {
         const { title } = NewsUtil.getArticlePreview(article);
@@ -26,4 +26,14 @@ export function FrontHead({ newsArticles }: { newsArticles: NewsArticle[] }) {
       })}
     </div>
   );
+}
+
+function Keyword({
+  isRed,
+  children,
+}: {
+  isRed?: boolean;
+  children: React.ReactNode;
+}) {
+  return <h2 style={{ ...(isRed && { color: gColors.red1 }) }}>{children}</h2>;
 }
