@@ -4,4 +4,11 @@ https://stackoverflow.com/questions/26626256/how-to-insert-a-line-break-br-in-ma
 Links
 https://www.markdownguide.org/basic-syntax/#links
 
-underlined text is not possible (<ins> doesn't work)
+Underlined text is not possible?? (<ins> doesn't work)
+Plugin maybe?
+
+Footnotes
+https://www.markdownguide.org/extended-syntax/#footnotes
+
+Plugins
+https://github.com/remarkjs/react-markdown#use-a-plugin

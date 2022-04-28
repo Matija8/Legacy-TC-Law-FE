@@ -1,6 +1,7 @@
 import { TcLawPage } from 'components/_page';
 import { NewsArticle } from 'model/news-model';
 import ReactMarkdown from 'react-markdown';
+import remarkFootnotes from 'remark-footnotes';
 import { NewsUtilServer } from 'util/news-util-server';
 
 const newsArticlePage = ({ newsArticle }: { newsArticle: NewsArticle }) => {
@@ -9,7 +10,9 @@ const newsArticlePage = ({ newsArticle }: { newsArticle: NewsArticle }) => {
       {/* <h2 className="heading-underlined">Novosti</h2> */}
 
       <section style={{ margin: '40px 0 70px' }}>
-        <ReactMarkdown>{newsArticle.md}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkFootnotes]}>
+          {newsArticle.md}
+        </ReactMarkdown>
       </section>
     </TcLawPage>
   );
