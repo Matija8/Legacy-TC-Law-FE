@@ -23,3 +23,12 @@ export const pageSectionTitles = {
 export const gTextConstants = {
   officeEmail: 'office@tclaw.rs',
 };
+
+export const formInputLimits = {
+  email: {
+    maxLength: 320,
+  },
+  motivationalLetter: {
+    maxLength: 4000,
+  },
+};

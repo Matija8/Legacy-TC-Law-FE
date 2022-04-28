@@ -2,7 +2,11 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
 import { RoundBtn } from 'components/round-btn';
-import { requiredFieldErrorText, validationRegexes } from 'data/constants';
+import {
+  formInputLimits,
+  requiredFieldErrorText,
+  validationRegexes,
+} from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import Link from 'next/link';
 import { RoundSubmittingBtn } from './round-submitting-button';
@@ -89,6 +93,9 @@ export function CareerForm() {
             }
             onChange={handleChange}
             onBlur={handleBlur}
+            inputProps={{
+              maxLength: formInputLimits.email.maxLength,
+            }}
           />
 
           <TextField
@@ -104,6 +111,9 @@ export function CareerForm() {
             helperText={errors.motivationalLetter || requiredFieldErrorText}
             onChange={handleChange}
             onBlur={handleBlur}
+            inputProps={{
+              maxLength: formInputLimits.motivationalLetter.maxLength,
+            }}
           />
 
           <FormControlLabel
