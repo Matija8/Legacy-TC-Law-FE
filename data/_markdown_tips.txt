@@ -1,0 +1,7 @@
+Line breaks
+https://stackoverflow.com/questions/26626256/how-to-insert-a-line-break-br-in-markdown
+
+Links
+https://www.markdownguide.org/basic-syntax/#links
+
+underlined text is not possible (<ins> doesn't work)
