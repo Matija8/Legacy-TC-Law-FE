@@ -9,7 +9,7 @@ export namespace NewsUtilServer {
     const articleIds = fileNames
       .filter((f) => f.endsWith('.md'))
       .map((f) => f.substring(0, f.lastIndexOf('.md')));
-    return articleIds.sort().reverse();
+    return articleIds.sort((a, b) => Number(a) - Number(b)).reverse();
   }
 
   export async function getArticleById(
