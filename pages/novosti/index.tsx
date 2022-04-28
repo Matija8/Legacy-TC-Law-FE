@@ -1,4 +1,5 @@
 import { TcLawPage } from 'components/_page';
+import { WorkDomain } from 'data/oblasti-rada';
 import { NewsArticle } from 'model/news-model';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -57,16 +58,7 @@ function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
       <section>
         <div>
           {/* T*DO */}
-          {workDomain?.title &&
-            workDomain?.title.split('\n').map((titleLine) => (
-              <p
-                key={titleLine}
-                style={{ textAlign: 'initial', margin: 0 }}
-                className="article-work-domain"
-              >
-                {titleLine}
-              </p>
-            ))}
+          {workDomain && <WorkDomainTag wd={workDomain} />}
           <h3>{title}</h3>
           <p>{body}</p>
         </div>
@@ -76,6 +68,19 @@ function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
         <a>Čitaj dalje...</a>
       </Link>
     </article>
+  );
+}
+
+function WorkDomainTag({ wd }: { wd: WorkDomain }) {
+  // TODO: Test for article without workdomain?
+  return (
+    <p
+      key={wd.title}
+      style={{ textAlign: 'initial', margin: 0 }}
+      className="article-work-domain"
+    >
+      {WorkDomainUtil.getShortTitle(wd)}
+    </p>
   );
 }
 

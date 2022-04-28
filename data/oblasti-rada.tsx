@@ -33,12 +33,13 @@ export type WorkDomainId =
 export interface WorkDomain {
   id: WorkDomainId;
   title: string;
+  shortTitle?: string;
   text: string;
   icon: (props: { size: number }) => JSX.Element;
 }
 
 // TODO: Rename to Domain
-export const workAreas: WorkDomain[] = [
+export let workAreas: WorkDomain[] = [
   {
     id: 'Korporativno-pravo-M&A',
     title: 'Korporativno pravo/M&A',
@@ -186,3 +187,8 @@ export const workAreas: WorkDomain[] = [
     icon: MdPeople,
   },
 ];
+
+workAreas = workAreas.map((wd) => ({
+  ...wd,
+  shortTitle: wd.title.split('\n')[0],
+}));
