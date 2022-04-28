@@ -32,7 +32,6 @@ const NewsPage = ({
           .map((article, idx) => (
             <NewsArticle
               article={article}
-              idx={idx}
               key={`article ${article.id}`}
             ></NewsArticle>
           ))}
@@ -44,7 +43,7 @@ const NewsPage = ({
   );
 };
 
-function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
+function NewsArticle({ article }: { article: NewsArticle }) {
   const { title, body } = NewsUtil.getArticlePreview(article);
   const workDomain = WorkDomainUtil.findWorkDomainById(article.domain);
   return (
@@ -64,7 +63,7 @@ function NewsArticle({ article, idx }: { article: NewsArticle; idx: number }) {
         </div>
       </section>
       {/* TODO: Position read more link at the bottom fixed, not below the body */}
-      <Link href={`/novosti/${idx}`}>
+      <Link href={`/novosti/${article.id}`}>
         <a>Čitaj dalje...</a>
       </Link>
     </article>
