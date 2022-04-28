@@ -126,7 +126,6 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
 
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}
-            submitForm={submitForm}
             disabled={Object.keys(errors).length > 0}
           />
         </form>

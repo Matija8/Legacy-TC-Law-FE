@@ -141,7 +141,6 @@ export function CareerForm() {
 
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}
-            submitForm={submitForm}
             disabled={Object.keys(errors).length > 0}
           />
         </form>

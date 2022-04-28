@@ -119,7 +119,6 @@ export function NewsletterForm() {
 
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}
-            submitForm={submitForm}
             text={'Prijavite se'}
             disabled={Object.keys(errors).length > 0}
           />

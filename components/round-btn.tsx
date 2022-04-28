@@ -29,6 +29,7 @@ export function RoundBtn({
         'mail-btn-disabled': disabled,
         'animated-btn': !disabled && !animationDisabled,
       })}
+      disabled={disabled}
       onClick={() => !disabled && onClick?.()}
       style={style}
       type={type}
@@ -63,7 +64,7 @@ export function RoundBtn({
           }
 
           .mail-btn:hover {
-            ${(options.hoverEffects && !disabled) ? 'opacity: 0.9' : ''};
+            ${options.hoverEffects && !disabled ? 'opacity: 0.9' : ''};
           }
 
           .animated-btn:active {

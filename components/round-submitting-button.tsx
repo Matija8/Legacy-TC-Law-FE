@@ -2,12 +2,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { RoundBtn } from './round-btn';
 
 export function RoundSubmittingBtn({
-  submitForm,
   isSubmitting,
   disabled = false,
   text = 'Pošaljite',
 }: {
-  submitForm: () => void;
   isSubmitting: boolean;
   disabled?: boolean;
   text?: string;
@@ -15,14 +13,14 @@ export function RoundSubmittingBtn({
   return (
     <RoundBtn
       type="submit"
-      disabled={disabled}
+      disabled={disabled || isSubmitting}
       animationDisabled={isSubmitting}
-      onClick={() => {
-        if (!isSubmitting && !disabled) {
-          // TODO: Disabled prop on btn
-          submitForm();
-        }
-      }}
+      // https://stackoverflow.com/questions/61557815/react-formik-onsubmit-async-called-twice
+      // onClick={() => {
+      //   if (!isSubmitting && !disabled) {
+      //     submitForm();
+      //   }
+      // }}
       style={{ height: 40 }}
     >
       {isSubmitting ? (
