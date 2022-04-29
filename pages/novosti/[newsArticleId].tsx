@@ -2,16 +2,29 @@ import { TcLawPage } from 'components/_page';
 import { NewsArticle } from 'model/news-model';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-// import remarkUnderline from 'remark-underline'; // TODO
+import rehypeRaw from 'rehype-raw';
 import { NewsUtilServer } from 'util/news-util-server';
 
 const newsArticlePage = ({ newsArticle }: { newsArticle: NewsArticle }) => {
   return (
     <TcLawPage title="Novosti">
+      {/* <style jsx>{`
+        .react-markdown > h2 {
+          margin-top: 2rem;
+        }
+      `}</style> */}
       {/* <h2 className="heading-underlined">Novosti</h2> */}
 
-      <section style={{ margin: '40px 0 70px' }}>
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+      <section className="react-markdown" style={{ margin: '40px 0 70px' }}>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeRaw]}
+          components={{
+            u: ({ node, ...props }) => (
+              <u style={{ textDecoration: 'underline' }} {...props} />
+            ),
+          }}
+        >
           {newsArticle.md}
         </ReactMarkdown>
       </section>
