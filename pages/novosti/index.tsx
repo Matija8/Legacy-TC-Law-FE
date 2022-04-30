@@ -1,3 +1,4 @@
+import { Markdown } from 'components/markdown';
 import { TcLawPage } from 'components/_page';
 import { WorkDomain } from 'data/oblasti-rada';
 import { NewsArticle } from 'model/news-model';
@@ -59,7 +60,8 @@ function NewsArticle({ article }: { article: NewsArticle }) {
           {/* T*DO */}
           {workDomain && <WorkDomainTag wd={workDomain} />}
           <h3>{title}</h3>
-          <p>{body}</p>
+          {/* <p>{body}</p> */}
+          <Markdown>{body}</Markdown>
         </div>
       </section>
       {/* TODO: Position read more link at the bottom fixed, not below the body */}

@@ -23,7 +23,7 @@ export namespace NewsUtil {
     let { title, body } = splitMarkdownIntoTitleAndContent(mdText);
     // Take words until 150th char
     body = takeWordsUntilNthCharacter(body, 150) + '...';
-    body = mdToTxt(body);
+    // body = mdToTxt(body);
     return { title, body };
   }
 
