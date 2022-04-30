@@ -18,7 +18,7 @@ const WorkAreaPage = ({ domain }: { domain: WorkDomain }) => {
           ))}
       </section>
 
-      <WorkAreaGrid slice={8} />
+      <WorkAreaGrid />
     </TcLawPage>
   );
 };

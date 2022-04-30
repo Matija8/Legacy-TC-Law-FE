@@ -5,8 +5,9 @@ import {
 import { workAreas } from 'data/oblasti-rada';
 import styles from './work-area-grid.module.scss';
 
-export function WorkAreaGrid({ slice }: { slice?: number }) {
-  const slicedWorkAreas = slice ? workAreas.slice(0, slice) : workAreas;
+export function WorkAreaGrid(/* { slice }: { slice?: number } */) {
+  // const slicedWorkAreas = slice ? workAreas.slice(0, slice) : workAreas;
+  const slicedWorkAreas = workAreas;
   return (
     <section className={styles['work-areas-grid']}>
       {slicedWorkAreas.map((workArea) => (
