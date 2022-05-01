@@ -1,6 +1,7 @@
 import { NewsArticle } from 'model/news-model';
 import { gColors } from 'styles/style-constants';
 import { NewsUtil } from '../util/news-util';
+import { Markdown } from './markdown';
 
 export function FrontHead({ newsArticles }: { newsArticles: NewsArticle[] }) {
   newsArticles = newsArticles.slice(0, 3);
@@ -20,10 +21,9 @@ export function FrontHead({ newsArticles }: { newsArticles: NewsArticle[] }) {
         <Keyword isRed>Efikasnost.</Keyword>
         <Keyword>Pouzdanost.</Keyword>
       </div>
-      {newsArticles.map((article) => {
-        const { title } = NewsUtil.getArticlePreview(article);
-        return <div key={title}>{title}</div>;
-      })}
+      {newsArticles.map((article) => (
+        <NewsArticleCard key={article.id} article={article} />
+      ))}
     </section>
   );
 }
@@ -35,5 +35,19 @@ function Keyword({
   isRed?: boolean;
   children: React.ReactNode;
 }) {
-  return <h2 style={{ ...(isRed && { color: gColors.red1 }) }}>{children}</h2>;
+  return (
+    <h2 style={{ marginTop: 0, ...(isRed && { color: gColors.red1 }) }}>
+      {children}
+    </h2>
+  );
+}
+
+function NewsArticleCard({ article }: { article: NewsArticle }) {
+  const { title, body } = NewsUtil.getArticlePreview(article);
+  return (
+    <div>
+      <h3>{title}</h3>
+      <Markdown>{body}</Markdown>
+    </div>
+  );
 }
