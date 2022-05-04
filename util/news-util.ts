@@ -19,10 +19,15 @@ export namespace NewsUtil {
     return path.join(getNewsArticlesDirPath(), localPath + '.md');
   }
 
+  function removeFootnotes(text: string) {
+    return text.replaceAll(/\[\^[^\]]*]/g, '');
+  }
+
   function mdToPreview(mdText: string) {
     let { title, body } = splitMarkdownIntoTitleAndContent(mdText);
     // Take words until 150th char
     body = takeWordsUntilNthCharacter(body, 150) + '...';
+    body = removeFootnotes(body);
     // body = mdToTxt(body);
     return { title, body };
   }
