@@ -2,15 +2,15 @@ import { useState, useEffect } from 'react';
 
 function getWindowDimensions() {
   try {
-    const { innerWidth: width, innerHeight: height } = window;
+    const { innerWidth: windowWidth, innerHeight: windowHeight } = window;
     return {
-      width,
-      height,
+      windowWidth,
+      windowHeight,
     };
   } catch (err) {}
   return {
-    width: 300,
-    height: 300,
+    windowWidth: 300,
+    windowHeight: 300,
   };
 }
 

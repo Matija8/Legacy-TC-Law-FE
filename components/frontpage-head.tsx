@@ -1,10 +1,14 @@
+import { useWindowDimensions } from 'hooks/use-window-dimensions-hook';
 import { NewsArticle } from 'model/news-model';
 import { gColors } from 'styles/style-constants';
 import { NewsUtil } from '../util/news-util';
 import { Markdown } from './markdown';
 
 export function FrontHead({ newsArticles }: { newsArticles: NewsArticle[] }) {
-  newsArticles = newsArticles.slice(0, 3);
+  const { windowWidth } = useWindowDimensions();
+  // TODO: Use css breakpoints
+  const articlesShown = Math.min((windowWidth - 200) / 400, 3);
+  newsArticles = newsArticles.slice(0, articlesShown);
   return (
     <section className="root">
       <style jsx>{`
