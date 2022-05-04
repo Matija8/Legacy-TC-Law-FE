@@ -123,13 +123,12 @@ export function Header() {
             <ChangeLanguage />
             <div className={styles['hide-desktop']}>
               <Hamburger
+                label="menu"
                 toggled={menuOpen}
                 onToggle={() => {
                   setMenuOpen(!menuOpen);
                 }}
-              >
-                Menu
-              </Hamburger>
+              />
             </div>
             <div className={styles['hide-narrow-desktop']}>
               <RoundBtn>
