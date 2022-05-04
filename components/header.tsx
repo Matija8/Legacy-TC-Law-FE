@@ -120,7 +120,8 @@ export function Header() {
           </nav>
 
           <div className={styles['header-bottom-right']}>
-            <ChangeLanguage />
+            {/* TODO: i18n */}
+            {/* <ChangeLanguage /> */}
             <div className={styles['hide-desktop']}>
               <Hamburger
                 label="menu"
