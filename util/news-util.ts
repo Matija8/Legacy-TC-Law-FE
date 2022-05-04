@@ -1,6 +1,7 @@
 import markdownToTxt from 'markdown-to-txt';
 import { NewsArticle } from 'model/news-model';
 import path from 'path';
+import { MarkdownUtil } from './markdown-util';
 
 export namespace NewsUtil {
   export function getArticlePreview(article: NewsArticle) {
@@ -19,15 +20,11 @@ export namespace NewsUtil {
     return path.join(getNewsArticlesDirPath(), localPath + '.md');
   }
 
-  function removeFootnotes(text: string) {
-    return text.replaceAll(/\[\^[^\]]*]/g, '');
-  }
-
   function mdToPreview(mdText: string) {
     let { title, body } = splitMarkdownIntoTitleAndContent(mdText);
     // Take words until 150th char
     body = takeWordsUntilNthCharacter(body, 150) + '...';
-    body = removeFootnotes(body);
+    body = MarkdownUtil.removeFootnotes(body);
     // body = mdToTxt(body);
     return { title, body };
   }

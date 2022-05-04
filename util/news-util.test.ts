@@ -36,7 +36,7 @@ describe('news util', () => {
   });
 
   test('getArticleById throws if no article with id was found', async () => {
-    expect(articleIds.length).toBe(4);
+    expect(articleIds.length).toBe(23);
   });
 
   test('There is a same number of article ids & articles', () => {
