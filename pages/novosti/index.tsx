@@ -16,7 +16,9 @@ const NewsPage = ({
 }): JSX.Element => {
   const [rowsShown, setRowsShown] = useState(2);
   const newsArticlesPerRow = 3;
-  const loadMoreNews = () => setRowsShown(rowsShown + 2);
+  const allArticlesLoaded =
+    newsArticles.length <= rowsShown * newsArticlesPerRow;
+  const loadMoreNews = () => !allArticlesLoaded && setRowsShown(rowsShown + 2);
   return (
     <TcLawPage title="Novosti">
       <div
@@ -41,7 +43,9 @@ const NewsPage = ({
       <div
         style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}
       >
-        <RoundBtn onClick={loadMoreNews}>Učitaj još novosti</RoundBtn>
+        <RoundBtn disabled={allArticlesLoaded} onClick={loadMoreNews}>
+          {allArticlesLoaded ? 'Nema više novosti' : 'Učitaj još novosti'}
+        </RoundBtn>
       </div>
     </TcLawPage>
   );
