@@ -55,6 +55,7 @@ export const lawyers: Employee[] = [
     pagePath: 'katarina-savic',
     memberPhotoId: 'Katarina',
     education: ['Pravni fakultet Univerziteta u Beogradu.'],
+    test: true,
   },
   {
     name: 'Marko',
@@ -63,6 +64,7 @@ export const lawyers: Employee[] = [
     // pagePath: 'marko-ilic', // Test case for no path
     memberPhotoId: 'Marko',
     education: ['Pravni fakultet Univerziteta u Beogradu.'],
+    test: true,
   },
   {
     name: 'Matija',
