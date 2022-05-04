@@ -1,4 +1,5 @@
 import { Markdown } from 'components/markdown';
+import { RoundBtn } from 'components/round-btn';
 import { TcLawPage } from 'components/_page';
 import { WorkDomain } from 'data/oblasti-rada';
 import { NewsArticle } from 'model/news-model';
@@ -37,8 +38,10 @@ const NewsPage = ({
             ></NewsArticle>
           ))}
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <button onClick={loadMoreNews}>Učitaj još novosti</button>
+      <div
+        style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}
+      >
+        <RoundBtn onClick={loadMoreNews}>Učitaj još novosti</RoundBtn>
       </div>
     </TcLawPage>
   );
