@@ -13,7 +13,7 @@ export function FrontHead({ newsArticles }: { newsArticles: NewsArticle[] }) {
         }
         .root {
           display: flex;
-          gap: 1rem;
+          gap: 3rem;
         }
       `}</style>
       <div>
@@ -46,7 +46,7 @@ function NewsArticleCard({ article }: { article: NewsArticle }) {
   const { title, body } = NewsUtil.getArticlePreview(article);
   return (
     <div>
-      <h3>{title}</h3>
+      <h3 style={{ marginTop: 0 }}>{title}</h3>
       <Markdown>{body}</Markdown>
     </div>
   );
