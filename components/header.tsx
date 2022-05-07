@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+import { gLinks, gTextConstants } from 'data/constants';
 import { workAreas } from 'data/oblasti-rada';
 import Hamburger from 'hamburger-react';
 import Link from 'next/link';
@@ -7,19 +9,15 @@ import { BsChevronDown } from 'react-icons/bs';
 import { breakPointTablet } from 'styles/breakpoints';
 import { gColors } from 'styles/style-constants';
 import { FirmAddress } from './address';
+import styles from './header.module.scss';
 import { XImage } from './image';
 import { RoundBtn } from './round-btn';
-import styles from './header.module.scss';
-import classNames from 'classnames';
-import { gLinks, gTextConstants } from 'data/constants';
 
 const liPadding = '10px';
 
-const breakpoint1 = breakPointTablet; // TODO
-
 export function Header() {
+  // TODO: Menu open hook
   const [menuOpen, setMenuOpen] = useState(false);
-  const [sublistOpen, setSublistOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -77,33 +75,7 @@ export function Header() {
             })}
             style={{ top: headerHeight }}
           >
-            <div className={styles['submenu-holding-li']}>
-              <NavItem
-                closeMenu={closeMenu}
-                href="/oblasti-rada"
-                toggleSubList={() => setSublistOpen(!sublistOpen)}
-                className="UPPER"
-              >
-                Oblasti rada
-              </NavItem>
-              <ul
-                className={classNames({
-                  [styles.submenu]: true,
-                  [styles['submenu-sub-list-closed']]: !sublistOpen,
-                })}
-              >
-                {workAreas.map(({ title, id }) => (
-                  <NavItem
-                    className="normal-text-size"
-                    key={title}
-                    closeMenu={closeMenu}
-                    href={`/oblasti-rada/${id}`}
-                  >
-                    <span className={'pre-wrap'}>{title} </span>
-                  </NavItem>
-                ))}
-              </ul>
-            </div>
+            <WorkAreasMenu closeMainMenu={closeMenu} />
 
             <NavItem closeMenu={closeMenu} href="/novosti" className="UPPER">
               Novosti
@@ -142,6 +114,39 @@ export function Header() {
         </div>
       </div>
     </header>
+  );
+}
+
+function WorkAreasMenu({ closeMainMenu }: { closeMainMenu: () => void }) {
+  const [sublistOpen, setSublistOpen] = useState(false);
+  return (
+    <div className={styles['submenu-holding-li']}>
+      <NavItem
+        closeMenu={closeMainMenu}
+        href="/oblasti-rada"
+        toggleSubList={() => setSublistOpen(!sublistOpen)}
+        className="UPPER"
+      >
+        Oblasti rada
+      </NavItem>
+      <ul
+        className={classNames({
+          [styles.submenu]: true,
+          [styles['submenu-sub-list-closed']]: !sublistOpen,
+        })}
+      >
+        {workAreas.map(({ title, id }) => (
+          <NavItem
+            className="normal-text-size"
+            key={title}
+            closeMenu={closeMainMenu}
+            href={`/oblasti-rada/${id}`}
+          >
+            <span className={'pre-wrap'}>{title} </span>
+          </NavItem>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -210,6 +215,7 @@ function NavItem({
           className="navItem"
           onClick={() => {
             if (isActivePage) {
+              // TODO: Hook for this?
               closeMenu();
             }
           }}
