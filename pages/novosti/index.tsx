@@ -1,3 +1,6 @@
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 import { Markdown } from 'components/markdown';
 import { RoundBtn } from 'components/round-btn';
 import { TcLawPage } from 'components/_page';
@@ -34,10 +37,10 @@ const NewsPage = ({
           // .concat(newsArticles) // For testing
           .slice(0, newsArticlesPerRow * rowsShown)
           .map((article, idx) => (
-            <NewsArticle
+            <NewsArticleCard
               article={article}
               key={`article ${article.id}`}
-            ></NewsArticle>
+            ></NewsArticleCard>
           ))}
       </div>
       <div
@@ -51,18 +54,20 @@ const NewsPage = ({
   );
 };
 
-function NewsArticle({ article }: { article: NewsArticle }) {
+function NewsArticleCard({ article }: { article: NewsArticle }) {
   const { title, body } = NewsUtil.getArticlePreview(article);
   const workDomain = WorkDomainUtil.findWorkDomainById(article.domain);
   return (
-    <article
+    <Card
+      elevation={2}
       style={{
-        border: 'solid 1px',
-        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        // padding: '1rem',
         // background: 'linear-gradient(to bottom, red, transparent)',
       }}
     >
-      <section>
+      <CardContent>
         <div>
           {/* T*DO */}
           {workDomain && <WorkDomainTag wd={workDomain} />}
@@ -70,12 +75,14 @@ function NewsArticle({ article }: { article: NewsArticle }) {
           {/* <p>{body}</p> */}
           <Markdown>{body}</Markdown>
         </div>
-      </section>
-      {/* TODO: Position read more link at the bottom fixed, not below the body */}
-      <Link href={`/novosti/${article.id}`}>
-        <a>Čitaj dalje...</a>
-      </Link>
-    </article>
+      </CardContent>
+      {/* <div style={{ display: 'flex', flexGrow: 1 }}></div> */}
+      <CardActions style={{ marginTop: 'auto', padding: '0 1rem 1rem 1rem' }}>
+        <Link href={`/novosti/${article.id}`}>
+          <a>Čitaj dalje...</a>
+        </Link>
+      </CardActions>
+    </Card>
   );
 }
 
@@ -84,7 +91,7 @@ function WorkDomainTag({ wd }: { wd: WorkDomain }) {
   return (
     <p
       key={wd.title}
-      style={{ textAlign: 'initial', margin: 0 }}
+      style={{ textAlign: 'initial', margin: 0, color: 'grey' }}
       className="article-work-domain"
     >
       {WorkDomainUtil.getShortTitle(wd)}
