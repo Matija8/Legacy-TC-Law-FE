@@ -1,0 +1,10 @@
+@use 'styles/breakpoints.scss' as breakPts;
+@use 'styles/Home.module.scss' as homeStyles;
+
+.footer {
+  @include homeStyles.container-padding;
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 2rem;
+}

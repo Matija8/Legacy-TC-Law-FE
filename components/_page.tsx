@@ -13,7 +13,7 @@ export function TcLawPage({
   title: string;
 }) {
   return (
-    <div className={homeStyles.container}>
+    <div className={homeStyles['root-container']}>
       <SiteHead title={title} />
       <Header />
       <main className={homeStyles.main}>{children}</main>

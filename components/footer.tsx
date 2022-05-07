@@ -1,3 +1,5 @@
+import footerStyles from './footer.module.scss';
+
 import Link from 'next/link';
 import { breakPointTablet } from 'styles/breakpoints';
 import { gColors } from 'styles/style-constants';
@@ -7,13 +9,8 @@ import { NewsletterForm } from './newsletter-form';
 
 export function Footer() {
   return (
-    <footer>
+    <footer className={footerStyles.footer}>
       <style jsx>{`
-        footer {
-          padding: 0;
-          margin-bottom: 2rem;
-        }
-
         p {
           // font-size: 1.1rem;
           color: rgb(51, 51, 51);

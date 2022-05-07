@@ -1,27 +1,34 @@
 @use 'styles/breakpoints.scss' as breakPts;
 
-@mixin container-pad {
-  padding: 0 2rem;
-  @media (min-width: breakPts.$breakpointTablet) {
-    padding: 0 10rem;
-  }
-}
+$maxWidth: 1440px;
 
-.container {
-  @include container-pad;
-  margin: 0 auto;
+.root-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  max-width: 1440px;
+}
+
+@mixin container-padding {
+  // TODO: max-width & margin: auto?
+  max-width: $maxWidth;
+  margin: 0 auto;
+
+  padding-left: 2rem;
+  padding-right: 2rem;
+  @media (min-width: breakPts.$breakpointTablet) {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
 }
 
 .main {
-  padding: 2rem 0 4rem;
+  @include container-padding;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
   flex-grow: 1;
 
   @media (min-width: breakPts.$breakpointTablet) {
-    padding: 4rem 0 4rem;
+    padding-top: 4rem;
   }
 }
 
