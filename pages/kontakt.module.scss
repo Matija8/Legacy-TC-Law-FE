@@ -1,12 +1,11 @@
 @use 'styles/breakpoints.scss' as breakpoints;
 
-.address-and-kontakt {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding-bottom: 1rem;
+.contact {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   @media (min-width: breakpoints.$breakpointTablet) {
-    flex-direction: row;
-    justify-content: space-between;
+    grid-template-columns: 50fr 60fr;
+    gap: 2rem;
   }
 }

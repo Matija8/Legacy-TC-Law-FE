@@ -7,7 +7,7 @@ import { NewsArticle } from 'model/news-model';
 import type { NextPage } from 'next';
 import { NewsUtilServer } from 'util/news-util-server';
 import { TcLawPage } from '../components/_page';
-import styles from './index.module.scss';
+import contactStyles from './kontakt.module.scss';
 
 type Props = { newsArticles: NewsArticle[] };
 
@@ -57,7 +57,7 @@ const Home: NextPage<Props> = ({ newsArticles }: Props) => {
       <section id="kontakt">
         <h2 className="heading-underlined">Kontakt</h2>
 
-        <div className={styles.contact}>
+        <div className={contactStyles.contact}>
           <ContactForm />
           <GoogleMap />
         </div>
