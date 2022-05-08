@@ -1,36 +1,34 @@
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
-import { requiredFieldErrorText, validationRegexes } from 'data/constants';
+import { RoundBtn } from 'components/round-btn';
+import {
+  formInputLimits,
+  requiredFieldErrorText,
+  validationRegexes,
+} from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import Link from 'next/link';
-import { CSSProperties } from 'react';
-import { RoundSubmittingBtn } from './round-submitting-button';
+import { RoundSubmittingBtn } from '../round-submitting-button';
 
-interface ContactFormValues {
+interface CareerFormValues {
   nameSurname: string;
   email: string;
-  message: string;
+  motivationalLetter: string;
   readPrivacy: boolean;
 }
 
-export function ContactForm({ style }: { style?: CSSProperties }) {
+export function CareerForm() {
   return (
     <Formik
       initialValues={{
         nameSurname: '',
         email: '',
-        message: '',
+        motivationalLetter: '',
         readPrivacy: false,
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
       validate={(values) => {
-        const errors: FormikErrors<ContactFormValues> = {};
+        const errors: FormikErrors<CareerFormValues> = {};
         if (!values.nameSurname) {
           errors.nameSurname = requiredFieldErrorText;
         }
@@ -41,11 +39,17 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
           errors.email = '*Nevalidan e-mail';
         }
 
-        if (!values.message) {
-          errors.message = requiredFieldErrorText;
+        if (!values.motivationalLetter) {
+          errors.motivationalLetter = requiredFieldErrorText;
         }
 
         return errors;
+      }}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 400);
       }}
     >
       {({
@@ -59,13 +63,13 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
         values,
       }) => (
         <form
+          onSubmit={handleSubmit}
           style={{
-            ...style,
             display: 'flex',
             flexDirection: 'column',
             gap: '1rem',
+            width: '70%', // TODO!
           }}
-          onSubmit={handleSubmit}
         >
           <TextField
             label="Ime i prezime"
@@ -77,7 +81,6 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-
           <TextField
             label="E-mail"
             name="email"
@@ -90,19 +93,27 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
             }
             onChange={handleChange}
             onBlur={handleBlur}
+            inputProps={{
+              maxLength: formInputLimits.email.maxLength,
+            }}
           />
 
           <TextField
             multiline
             rows={6}
             label="Poruka"
-            name="message"
+            name="motivationalLetter"
             variant="outlined"
-            value={values.message}
-            error={Boolean(touched.message && errors.message)}
-            helperText={errors.message || requiredFieldErrorText}
+            value={values.motivationalLetter}
+            error={Boolean(
+              touched.motivationalLetter && errors.motivationalLetter,
+            )}
+            helperText={errors.motivationalLetter || requiredFieldErrorText}
             onChange={handleChange}
             onBlur={handleBlur}
+            inputProps={{
+              maxLength: formInputLimits.motivationalLetter.maxLength,
+            }}
           />
 
           <FormControlLabel
@@ -123,6 +134,10 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
               </p>
             }
           />
+
+          <RoundBtn onClick={() => alert('TODO - CV adding')}>
+            Dodajte CV
+          </RoundBtn>
 
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}

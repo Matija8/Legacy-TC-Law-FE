@@ -5,7 +5,7 @@ import { RoundBtn } from 'components/round-btn';
 import { requiredFieldErrorText, validationRegexes } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import Link from 'next/link';
-import { RoundSubmittingBtn } from './round-submitting-button';
+import { RoundSubmittingBtn } from '../round-submitting-button';
 
 interface NewsletterFormValues {
   nameSurname: string;

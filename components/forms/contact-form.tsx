@@ -1,34 +1,36 @@
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
-import { RoundBtn } from 'components/round-btn';
-import {
-  formInputLimits,
-  requiredFieldErrorText,
-  validationRegexes,
-} from 'data/constants';
+import { requiredFieldErrorText, validationRegexes } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import Link from 'next/link';
-import { RoundSubmittingBtn } from './round-submitting-button';
+import { CSSProperties } from 'react';
+import { RoundSubmittingBtn } from '../round-submitting-button';
 
-interface CareerFormValues {
+interface ContactFormValues {
   nameSurname: string;
   email: string;
-  motivationalLetter: string;
+  message: string;
   readPrivacy: boolean;
 }
 
-export function CareerForm() {
+export function ContactForm({ style }: { style?: CSSProperties }) {
   return (
     <Formik
       initialValues={{
         nameSurname: '',
         email: '',
-        motivationalLetter: '',
+        message: '',
         readPrivacy: false,
       }}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 400);
+      }}
       validate={(values) => {
-        const errors: FormikErrors<CareerFormValues> = {};
+        const errors: FormikErrors<ContactFormValues> = {};
         if (!values.nameSurname) {
           errors.nameSurname = requiredFieldErrorText;
         }
@@ -39,17 +41,11 @@ export function CareerForm() {
           errors.email = '*Nevalidan e-mail';
         }
 
-        if (!values.motivationalLetter) {
-          errors.motivationalLetter = requiredFieldErrorText;
+        if (!values.message) {
+          errors.message = requiredFieldErrorText;
         }
 
         return errors;
-      }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
       }}
     >
       {({
@@ -63,13 +59,13 @@ export function CareerForm() {
         values,
       }) => (
         <form
-          onSubmit={handleSubmit}
           style={{
+            ...style,
             display: 'flex',
             flexDirection: 'column',
             gap: '1rem',
-            width: '70%', // TODO!
           }}
+          onSubmit={handleSubmit}
         >
           <TextField
             label="Ime i prezime"
@@ -81,6 +77,7 @@ export function CareerForm() {
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
           <TextField
             label="E-mail"
             name="email"
@@ -93,27 +90,19 @@ export function CareerForm() {
             }
             onChange={handleChange}
             onBlur={handleBlur}
-            inputProps={{
-              maxLength: formInputLimits.email.maxLength,
-            }}
           />
 
           <TextField
             multiline
             rows={6}
             label="Poruka"
-            name="motivationalLetter"
+            name="message"
             variant="outlined"
-            value={values.motivationalLetter}
-            error={Boolean(
-              touched.motivationalLetter && errors.motivationalLetter,
-            )}
-            helperText={errors.motivationalLetter || requiredFieldErrorText}
+            value={values.message}
+            error={Boolean(touched.message && errors.message)}
+            helperText={errors.message || requiredFieldErrorText}
             onChange={handleChange}
             onBlur={handleBlur}
-            inputProps={{
-              maxLength: formInputLimits.motivationalLetter.maxLength,
-            }}
           />
 
           <FormControlLabel
@@ -134,10 +123,6 @@ export function CareerForm() {
               </p>
             }
           />
-
-          <RoundBtn onClick={() => alert('TODO - CV adding')}>
-            Dodajte CV
-          </RoundBtn>
 
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}

@@ -1,5 +1,5 @@
 import { EmployeeCarousel } from 'components/carousel';
-import { ContactForm } from 'components/contact-form';
+import { ContactForm } from 'components/forms/contact-form';
 import { FrontHead } from 'components/frontpage-head';
 import { GoogleMap } from 'components/google-map';
 import { WorkAreaGrid } from 'components/work-area-grid';

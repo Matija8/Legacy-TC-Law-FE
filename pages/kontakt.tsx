@@ -1,5 +1,4 @@
-import { ContactForm } from 'components/contact-form';
-import { ContactGroup } from 'components/contact-group';
+import { ContactForm } from 'components/forms/contact-form';
 import { GoogleMap } from 'components/google-map';
 import { TcLawPage } from 'components/_page';
 import { NextPage } from 'next';

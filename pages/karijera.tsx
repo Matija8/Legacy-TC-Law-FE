@@ -1,4 +1,4 @@
-import { CareerForm } from 'components/career-form';
+import { CareerForm } from 'components/forms/career-form';
 import { TcLawPage } from 'components/_page';
 import { NextPage } from 'next';
 
