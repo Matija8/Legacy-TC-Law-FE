@@ -8,6 +8,7 @@ import {
   validationRegexes,
 } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
+import { useFilePicker } from 'hooks/use-file-picker-hook';
 import Link from 'next/link';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
@@ -19,6 +20,7 @@ interface CareerFormValues {
 }
 
 export function CareerForm() {
+  const { onOpen } = useFilePicker();
   return (
     <Formik
       initialValues={{
@@ -135,9 +137,7 @@ export function CareerForm() {
             }
           />
 
-          <RoundBtn onClick={() => alert('TODO - CV adding')}>
-            Dodajte CV
-          </RoundBtn>
+          <RoundBtn onClick={onOpen}>Dodajte CV</RoundBtn>
 
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}
