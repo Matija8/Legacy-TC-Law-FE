@@ -23,6 +23,7 @@ $maxWidth: 1440px;
 
 .main {
   @include container-padding;
+  width: 100%;
   padding-top: 2rem;
   padding-bottom: 4rem;
   flex-grow: 1;
