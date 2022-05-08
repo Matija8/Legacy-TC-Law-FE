@@ -13,9 +13,10 @@ export function EmployeeCarousel() {
   const carouselOuterRef = useRef<HTMLDivElement>(null);
   const [width] = useSize(carouselOuterRef);
   const [fstLawyerShownIndex, setFstLawyerShownIdx] = useState(0);
+  const itemCount = lawyers.length;
 
   const take = (() => {
-    const maxTakePossible = Math.min(3, lawyers.length);
+    const maxTakePossible = Math.min(3, itemCount);
     const prefferedTake = Math.floor((width - 20) / 250);
     return clamp(1, prefferedTake, maxTakePossible);
   })();
@@ -31,14 +32,18 @@ export function EmployeeCarousel() {
   // New
   // Render whole array, just keep display: none on the hidden
 
+  const renderLRButtons = take < itemCount;
+
   return (
     <section className={styles.outer} ref={carouselOuterRef}>
-      <LButton
-        disabled={fstLawyerShownIndex < 1}
-        onClick={() =>
-          setFstLawyerShownIdx(Math.max(0, fstLawyerShownIndex - 1))
-        }
-      />
+      {renderLRButtons && (
+        <LButton
+          disabled={fstLawyerShownIndex < 1}
+          onClick={() =>
+            setFstLawyerShownIdx(Math.max(0, fstLawyerShownIndex - 1))
+          }
+        />
+      )}
       <div className={styles.carousel}>
         {lawyers.map((lawyer, idx) => (
           // Render all employees, even hidden, to avoid jank
@@ -49,14 +54,16 @@ export function EmployeeCarousel() {
           />
         ))}
       </div>
-      <RButton
-        disabled={fstLawyerShownIndex >= lawyers.length - take}
-        onClick={() =>
-          setFstLawyerShownIdx(
-            Math.min(lawyers.length - take, fstLawyerShownIndex + 1),
-          )
-        }
-      />
+      {renderLRButtons && (
+        <RButton
+          disabled={fstLawyerShownIndex >= lawyers.length - take}
+          onClick={() =>
+            setFstLawyerShownIdx(
+              Math.min(lawyers.length - take, fstLawyerShownIndex + 1),
+            )
+          }
+        />
+      )}
     </section>
   );
 }
