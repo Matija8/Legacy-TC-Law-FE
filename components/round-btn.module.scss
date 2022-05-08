@@ -1,0 +1,28 @@
+@use 'styles/colors.scss' as colors;
+
+.round-btn {
+  background-color: colors.$red1;
+  padding: 12px 32px;
+  font-size: 0.9em;
+  color: white;
+  border-radius: 30px;
+  min-width: 180px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1px;
+  cursor: pointer;
+
+  outline: none;
+  border: 0;
+}
+
+.round-btn-disabled {
+  color: #838383;
+  background-color: #cccccc;
+}
+
+.animated-btn {
+  transition: all 0.1s linear;
+}

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { ButtonHTMLAttributes, CSSProperties } from 'react';
-import { gColors } from 'styles/style-constants';
+import roundBtnStyles from './round-btn.module.scss';
 
 export function RoundBtn({
   disabled = false,
@@ -23,11 +23,9 @@ export function RoundBtn({
 }) {
   return (
     <button
-      className={classNames({
-        'mail-btn': true,
-        [className]: true,
-        'mail-btn-disabled': disabled,
-        'animated-btn': !disabled && !animationDisabled,
+      className={classNames(roundBtnStyles['round-btn'], className, {
+        [roundBtnStyles['round-btn-disabled']]: disabled,
+        [roundBtnStyles['animated-btn']]: !disabled && !animationDisabled,
       })}
       disabled={disabled}
       onClick={() => !disabled && onClick?.()}
@@ -36,33 +34,6 @@ export function RoundBtn({
     >
       <style jsx>
         {`
-          .mail-btn {
-            background-color: ${gColors.red1};
-            padding: 12px 32px;
-            font-size: 0.9em;
-            color: white;
-            border-radius: 30px;
-            min-width: 180px;
-            width: fit-content;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 1px;
-            cursor: pointer;
-
-            outline: none;
-            border: 0;
-          }
-
-          .animated-btn {
-            transition: all 0.1s linear;
-          }
-
-          .mail-btn-disabled {
-            color: #838383;
-            background-color: #cccccc;
-          }
-
           .mail-btn:hover {
             ${options.hoverEffects && !disabled ? 'opacity: 0.9' : ''};
           }
