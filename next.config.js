@@ -1,8 +1,15 @@
 /** @type {import('next').NextConfig} */
 
-const isDevEnv = process.env.NODE_ENV === 'development';
-// On github pages use '/TC-law' as basePath
-const basePath = isDevEnv ? '' : '/TC-law';
+// const isDevEnv = process.env.NODE_ENV === 'development';
+
+const basePath = (() => {
+  const deployEnv = process.env.DEPLOY_ENV;
+  if (deployEnv === 'github-pages-env') {
+    console.log('Github pages environment active!');
+    return '/TC-law';
+  }
+  return '';
+})();
 
 module.exports = {
   reactStrictMode: true,
