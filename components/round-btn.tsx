@@ -26,24 +26,15 @@ export function RoundBtn({
       className={classNames(roundBtnStyles['round-btn'], className, {
         [roundBtnStyles['round-btn-disabled']]: disabled,
         [roundBtnStyles['animated-btn']]: !disabled && !animationDisabled,
+        [roundBtnStyles['hover-opacity-btn']]:
+          !disabled && options.hoverEffects,
+        [roundBtnStyles['animated-btn']]: !disabled && options.translate,
       })}
       disabled={disabled}
       onClick={() => !disabled && onClick?.()}
       style={style}
       type={type}
     >
-      <style jsx>
-        {`
-          .mail-btn:hover {
-            ${options.hoverEffects && !disabled ? 'opacity: 0.9' : ''};
-          }
-
-          .animated-btn:active {
-            box-shadow: none;
-            ${options.translate ? 'transform: translateY(1px)' : ''};
-          }
-        `}
-      </style>
       {children}
     </button>
   );

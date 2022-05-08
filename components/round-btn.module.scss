@@ -26,3 +26,11 @@
 .animated-btn {
   transition: all 0.1s linear;
 }
+
+.animated-btn:active {
+  transform: translateY(1px);
+}
+
+.hover-opacity-btn:hover {
+  opacity: 0.9;
+}
