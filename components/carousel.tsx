@@ -52,21 +52,7 @@ function LButton({
   disabled: boolean;
   onClick: () => void;
 }) {
-  return (
-    <div className={styles['lr-arrow-container']}>
-      <button
-        aria-label="Go to previous carousel image"
-        aria-disabled={disabled}
-        className={classNames({
-          [styles['lr-arrow']]: true,
-          [styles.disabled]: disabled,
-        })}
-        onClick={() => !disabled && onClick()}
-      >
-        <Icons.Left size={lrIconSize} />
-      </button>
-    </div>
-  );
+  return <LRButton disabled={disabled} onClick={onClick} isRight={false} />;
 }
 
 function RButton({
@@ -76,48 +62,39 @@ function RButton({
   disabled: boolean;
   onClick: () => void;
 }) {
+  return <LRButton disabled={disabled} onClick={onClick} isRight={true} />;
+}
+
+function LRButton({
+  disabled,
+  onClick,
+  isRight,
+}: {
+  disabled: boolean;
+  onClick: () => void;
+  isRight: boolean;
+}) {
   return (
     <div className={styles['lr-arrow-container']}>
       <button
-        aria-label="Go to next carousel image"
+        aria-label={
+          isRight
+            ? 'Go to next carousel image'
+            : 'Go to previous carousel image'
+        }
         aria-disabled={disabled}
-        className={classNames({
-          [styles['lr-arrow']]: true,
+        className={classNames(styles['lr-arrow'], {
           [styles.disabled]: disabled,
         })}
-        onClick={() => !disabled && onClick()}
+        disabled={disabled}
+        onClick={onClick}
       >
-        <Icons.Right size={lrIconSize} />
+        {isRight ? (
+          <Icons.Right size={lrIconSize} />
+        ) : (
+          <Icons.Left size={lrIconSize} />
+        )}
       </button>
     </div>
   );
 }
-
-// TODO
-// function LRButton({
-//   disabled,
-//   onClick,
-//   ArrowIcon,
-//   ariaLabel,
-// }: {
-//   disabled: boolean;
-//   onClick: () => void;
-//   ArrowIcon: typeof Icons.Left;
-//   ariaLabel: string;
-// }) {
-//   return (
-//     <div className={styles['lr-arrow-container']}>
-//       <button
-//         aria-label={ariaLabel}
-//         aria-disabled={disabled}
-//         className={classNames({
-//           [styles['lr-arrow']]: true,
-//           [styles.disabled]: disabled,
-//         })}
-//         onClick={() => !disabled && onClick()}
-//       >
-//         <ArrowIcon />
-//       </button>
-//     </div>
-//   );
-// }
