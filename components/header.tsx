@@ -130,8 +130,7 @@ function WorkAreasMenu({ closeMainMenu }: { closeMainMenu: () => void }) {
         Oblasti rada
       </NavItem>
       <ul
-        className={classNames({
-          [styles.submenu]: true,
+        className={classNames(styles.submenu, {
           [styles['submenu-sub-list-closed']]: !sublistOpen,
         })}
       >
