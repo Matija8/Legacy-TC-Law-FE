@@ -15,7 +15,9 @@
     "gh-deploy": "npm run gh-predeploy && gh-pages -d out --dotfiles",
     "rm-packages": "rm -rf node_modules && rm -f yarn.lock && rm -f package-lock.json",
     "install:npm": "npm i && npm i -D",
-    "install:yarn": "yarn"
+    "install:yarn": "yarn",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -38,15 +40,25 @@
     "sass": "^1.45.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-interactions": "^6.4.22",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/react": "^6.4.22",
+    "@storybook/testing-library": "^0.0.11",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@types/node": "17.0.0",
     "@types/react": "^18.0.8",
+    "babel-loader": "^8.2.5",
     "eslint": "8.5.0",
     "eslint-config-next": "12.0.7",
+    "eslint-plugin-storybook": "^0.5.11",
     "gh-pages": "^3.2.3",
     "jest": "^27.5.1",
     "open-cli": "^7.0.1",
+    "storybook-addon-sass-postcss": "^0.1.1",
     "typescript": "4.5.4"
   }
 }

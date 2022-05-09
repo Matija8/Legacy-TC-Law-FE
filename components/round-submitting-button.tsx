@@ -14,7 +14,6 @@ export function RoundSubmittingBtn({
     <RoundBtn
       type="submit"
       disabled={disabled || isSubmitting}
-      animationDisabled={isSubmitting}
       // https://stackoverflow.com/questions/61557815/react-formik-onsubmit-async-called-twice
       // onClick={() => {
       //   if (!isSubmitting && !disabled) {

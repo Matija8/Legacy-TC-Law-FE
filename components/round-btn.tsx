@@ -6,17 +6,17 @@ export function RoundBtn({
   disabled = false,
   className = '',
   children,
-  options = { hoverEffects: true, translate: true },
+  translate = true,
+  hoverEffects = true,
   onClick,
   style,
-  animationDisabled,
   type = 'button',
 }: {
   disabled?: boolean;
-  animationDisabled?: boolean;
   className?: string;
   children: React.ReactNode;
-  options?: { hoverEffects: boolean; translate: boolean };
+  translate?: boolean;
+  hoverEffects?: boolean;
   onClick?: () => void;
   style?: CSSProperties;
   type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
@@ -25,10 +25,8 @@ export function RoundBtn({
     <button
       className={classNames(roundBtnStyles['round-btn'], className, {
         [roundBtnStyles['round-btn-disabled']]: disabled,
-        [roundBtnStyles['animated-btn']]: !disabled && !animationDisabled,
-        [roundBtnStyles['hover-opacity-btn']]:
-          !disabled && options.hoverEffects,
-        [roundBtnStyles['animated-btn']]: !disabled && options.translate,
+        [roundBtnStyles['animated-btn']]: !disabled && translate,
+        [roundBtnStyles['hover-opacity-btn']]: !disabled && hoverEffects,
       })}
       disabled={disabled}
       onClick={() => !disabled && onClick?.()}

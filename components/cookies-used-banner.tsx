@@ -62,7 +62,8 @@ export function CookiesAreUsedBanner() {
         </Link>
       </p>
       <RoundBtn
-        options={{ hoverEffects: false, translate: false }}
+        hoverEffects={false}
+        translate={false}
         onClick={() => {
           localStorage.setItem(cookiesAcceptedStorageKey, 'true');
           setCookiesAccepted(true);
