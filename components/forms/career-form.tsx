@@ -10,6 +10,8 @@ import {
 import { Formik, FormikErrors } from 'formik';
 import { useFilePicker } from 'hooks/use-file-picker-hook';
 import Link from 'next/link';
+import { useState } from 'react';
+import { FiTrash } from 'react-icons/fi';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
 interface CareerFormValues {
@@ -20,7 +22,8 @@ interface CareerFormValues {
 }
 
 export function CareerForm() {
-  const { onOpen } = useFilePicker();
+  const [cv, setCv] = useState<File | undefined>(undefined);
+  const { onOpen } = useFilePicker((f) => setCv(f));
   return (
     <Formik
       initialValues={{
@@ -137,7 +140,26 @@ export function CareerForm() {
             }
           />
 
-          <RoundBtn onClick={onOpen}>Dodajte CV</RoundBtn>
+          {cv ? (
+            <section>
+              <p>Učitan CV: {cv.name}</p>
+              <div style={{ display: 'flex' }}>
+                <RoundBtn onClick={onOpen}>Promenite CV</RoundBtn>
+                <RoundBtn onClick={() => setCv(undefined)}>
+                  {<FiTrash />} Uklonite CV
+                </RoundBtn>
+              </div>
+            </section>
+          ) : (
+            <section>
+              <div style={{ display: 'flex', alignItems: 'baseline' }}>
+                <RoundBtn onClick={onOpen}>Dodajte CV</RoundBtn>
+                <span style={{ marginLeft: '0.5rem' }}>
+                  (format .pdf, .docx ili .jpg veličine do 3 Mb)
+                </span>
+              </div>
+            </section>
+          )}
 
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}
