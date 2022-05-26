@@ -40,10 +40,7 @@ const newsPage: NextPage = () => {
         </p>
       </section>
 
-      <section
-        id="Koje-podatke-prikupljamo-i-obradjujemo"
-
-      >
+      <section id="Koje-podatke-prikupljamo-i-obradjujemo">
         <h3>Koje podatke o ličnosti prikupljamo i obrađujemo</h3>
 
         <p>
@@ -296,10 +293,7 @@ const newsPage: NextPage = () => {
         </p>
       </section>
 
-      <section
-        id="Otkrivanje-i-prenos-vasih-podataka"
-
-      >
+      <section id="Otkrivanje-i-prenos-vasih-podataka">
         <h3>Otkrivanje i prenos vaših podataka o ličnosti</h3>
         <p>
           Mi poštujemo vaše podatke o ličnosti i ne otkrivamo ih drugim licima
