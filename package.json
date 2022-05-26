@@ -18,7 +18,8 @@
     "install:npm": "npm i && npm i -D",
     "install:yarn": "yarn",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -57,6 +58,7 @@
     "eslint-config-next": "12.0.7",
     "eslint-plugin-storybook": "^0.5.11",
     "gh-pages": "^3.2.3",
+    "husky": "^8.0.1",
     "jest": "^27.5.1",
     "open-cli": "^7.0.1",
     "storybook-addon-sass-postcss": "^0.1.1",
