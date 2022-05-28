@@ -78,11 +78,17 @@ function NewsArticleCard({ article }: { article: NewsArticle }) {
       </CardContent>
       {/* <div style={{ display: 'flex', flexGrow: 1 }}></div> */}
       <CardActions style={{ marginTop: 'auto', padding: '0 1rem 1rem 1rem' }}>
-        <Link href={`/novosti/${article.id}`}>
-          <a>Čitaj dalje...</a>
-        </Link>
+        <ReadMoreLink article={article} />
       </CardActions>
     </Card>
+  );
+}
+
+export function ReadMoreLink({ article }: { article: NewsArticle }) {
+  return (
+    <Link href={`/novosti/${article.id}`}>
+      <a>Čitaj dalje...</a>
+    </Link>
   );
 }
 

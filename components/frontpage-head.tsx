@@ -1,5 +1,6 @@
 import { useWindowDimensions } from 'hooks/use-window-dimensions-hook';
 import { NewsArticle } from 'model/news-model';
+import { ReadMoreLink } from 'pages/novosti';
 import { gColors } from 'styles/style-constants';
 import { NewsUtil } from '../util/news-util';
 import { Markdown } from './markdown';
@@ -60,6 +61,7 @@ function NewsArticleCard({ article }: { article: NewsArticle }) {
     <div>
       <h3 style={{ marginTop: 0 }}>{title}</h3>
       <Markdown>{body}</Markdown>
+      <ReadMoreLink article={article} />
     </div>
   );
 }
