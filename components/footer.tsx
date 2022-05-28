@@ -86,7 +86,7 @@ export function Footer() {
         </section>
       </section>
 
-      <section className="footer-bottom-3">
+      <section className="footer-bottom-3" style={{ alignItems: 'baseline' }}>
         <div style={{ display: 'flex', gap: '3px' }}>
           <Link href="/politika-privatnosti">
             <a>Politika privatnosti</a>
