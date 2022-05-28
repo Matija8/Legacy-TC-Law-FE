@@ -18,6 +18,8 @@ export function FrontHead({ newsArticles }: { newsArticles: NewsArticle[] }) {
         .root {
           display: flex;
           gap: 3rem;
+          margin-top: 3rem;
+          margin-bottom: 5rem;
         }
       `}</style>
       <div>
