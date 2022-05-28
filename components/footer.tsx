@@ -57,7 +57,7 @@ export function Footer() {
 
       <hr className="red-horizontal-ruler" />
 
-      <section className="footer-bottom-3">
+      <section className="footer-bottom-3" style={{ marginBottom: '1rem' }}>
         <section className="footer-left">
           <ContactGroup />
         </section>
@@ -84,6 +84,19 @@ export function Footer() {
           <h4 style={{ margin: '1rem 0 0.3rem' }}>Prijavite se na novosti</h4>
           <NewsletterForm />
         </section>
+      </section>
+
+      <section className="footer-bottom-3">
+        <div style={{ display: 'flex', gap: '3px' }}>
+          <Link href="/politika-privatnosti">
+            <a>Politika privatnosti</a>
+          </Link>
+          <span>|</span>
+          <Link href="/uslovi-koriscenja">
+            <a>Uslovi korišćenja</a>
+          </Link>
+        </div>
+        <p>@Trifunovic&Co</p>
       </section>
     </footer>
   );
