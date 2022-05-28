@@ -40,9 +40,15 @@ function Keyword({
   children: React.ReactNode;
 }) {
   return (
-    <h2 style={{ marginTop: 0, ...(isRed && { color: gColors.red1 }) }}>
+    <h1
+      style={{
+        fontSize: '2.5rem',
+        marginTop: 0,
+        ...(isRed && { color: gColors.red1 }),
+      }}
+    >
       {children}
-    </h2>
+    </h1>
   );
 }
 
