@@ -10,14 +10,20 @@ const cookiesAcceptedStorageKey = 'cookie_notice_accepted';
 const areCookiesAccepted = () =>
   Boolean(localStorage.getItem(cookiesAcceptedStorageKey));
 
-export function CookiesAreUsedBanner() {
+// TODO: Make pure component for testing (storybook) & Impure for use
+// TODO: Remove alwaysShow
+export function CookiesAreUsedBanner({
+  alwaysShow = false,
+}: {
+  alwaysShow?: boolean;
+}) {
   const [cookiesAccepted, setCookiesAccepted] = useState(true);
   useEffect(() => {
     setCookiesAccepted(areCookiesAccepted());
   }, []);
 
   // TODO: Animations?
-  if (cookiesAccepted) {
+  if (cookiesAccepted && !alwaysShow) {
     return <></>;
   }
 
