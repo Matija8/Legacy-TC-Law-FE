@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { breakPointTablet } from 'styles/breakpoints';
-import { gColors } from 'styles/style-constants';
+// TODO: Storybook typescript global import paths don't work
+// Change ../styles to styles to see that global imports fail.
+import { breakPointTablet } from '../styles/breakpoints';
+import { gColors } from '../styles/style-constants';
 import { RoundBtn } from './round-btn';
 
 const cookiesAcceptedStorageKey = 'cookie_notice_accepted';
