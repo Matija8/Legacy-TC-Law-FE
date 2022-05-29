@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         {/* https://fonts.google.com/specimen/Montserrat#standard-styles */}
         {/* https://nextjs.org/docs/messages/google-font-display */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -15,7 +15,7 @@ export default function Document() {
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat&display=optional"
           rel="stylesheet"
-        />
+        /> */}
       </Head>
       <body>
         <Main />
