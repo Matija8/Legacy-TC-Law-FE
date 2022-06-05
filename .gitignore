@@ -39,3 +39,4 @@ yarn-error.log*
 # Matija
 yarn.lock
 package-lock.json
+tc-law*.zip
