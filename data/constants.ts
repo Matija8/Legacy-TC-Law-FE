@@ -32,3 +32,6 @@ export const formInputLimits = {
     maxLength: 4000,
   },
 };
+
+// Place your key in the .env.local file
+export const gRecaptchaClientSiteKey = process.env.RECAPTCHA_CLIENT_SITE_KEY;
