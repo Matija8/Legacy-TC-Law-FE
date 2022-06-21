@@ -5,12 +5,12 @@ import { RoundBtn } from 'components/round-btn';
 import { requiredFieldErrorText, validationRegexes } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import Link from 'next/link';
+import { httpPost } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
 interface NewsletterFormValues {
   nameSurname: string;
   email: string;
-  motivationalLetter: string;
   readPrivacy: boolean;
 }
 
@@ -46,7 +46,10 @@ export function NewsletterForm() {
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+          httpPost('mail/newsletterForm', {
+            nameSurname: values.nameSurname,
+            email: values.email,
+          });
           setSubmitting(false);
         }, 400);
       }}
