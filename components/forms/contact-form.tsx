@@ -5,6 +5,7 @@ import { requiredFieldErrorText, validationRegexes } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
+import { httpPost } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
 interface ContactFormValues {
@@ -25,7 +26,11 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+          httpPost('mail/contactForm', {
+            nameSurname: values.nameSurname,
+            email: values.email,
+            message: values.message,
+          });
           setSubmitting(false);
         }, 400);
       }}
