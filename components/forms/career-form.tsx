@@ -54,8 +54,9 @@ export function CareerForm() {
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           httpPost('mail/careerForm', {
-            ...values,
-            readPrivacy: String(values.readPrivacy),
+            nameSurname: values.nameSurname,
+            email: values.email,
+            motivationalLetter: values.motivationalLetter,
           });
           setSubmitting(false);
         }, 400);
