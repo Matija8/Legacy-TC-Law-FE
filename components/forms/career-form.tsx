@@ -12,6 +12,7 @@ import { useFilePicker } from 'hooks/use-file-picker-hook';
 import Link from 'next/link';
 import { useState } from 'react';
 import { FiTrash } from 'react-icons/fi';
+import { httpFetch } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
 interface CareerFormValues {
@@ -52,7 +53,17 @@ export function CareerForm() {
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+          const body = new FormData();
+          httpFetch('mail/careerForm', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+              ...values,
+              readPrivacy: String(values.readPrivacy),
+            }),
+          });
           setSubmitting(false);
         }, 400);
       }}
