@@ -26,5 +26,5 @@ async function httpFetch(input: string, init?: RequestInit) {
     alert(JSON.stringify({ url: String(url), init }));
     return;
   }
-  return await fetch(url, init);
+  return await fetch(String(url), init);
 }
