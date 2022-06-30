@@ -1,0 +1,22 @@
+Storybook was removed because it had problems being installed by npm.
+
+Here are the previous devDependencies:
+
+ "devDependencies": {
+
+    "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-interactions": "^6.4.22",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/react": "^6.4.22",
+    "@storybook/testing-library": "^0.0.11",
+
+    "storybook-addon-sass-postcss": "^0.1.1",
+  }
+
+
+TODO:
+
+Nextjs addon for storybook
+https://storybook.js.org/addons/storybook-addon-next
+yarn add --dev storybook-addon-next
