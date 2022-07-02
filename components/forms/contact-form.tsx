@@ -1,11 +1,7 @@
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
 import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy-checkbox';
 import { requiredFieldErrorText, validationRegexes } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
-import Link from 'next/link';
-import { CSSProperties } from 'react';
 import { FormUtil } from 'util/form-util';
 import { httpPost } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
@@ -24,19 +20,35 @@ const initialValues: ContactFormValues = {
   readPrivacy: false,
 };
 
-export function ContactForm({ style }: { style?: CSSProperties }) {
+interface FormProps {
+  // style?: CSSProperties;
+  onSubmitSuccess?: () => void;
+  onSubmitError?: (err: unknown) => void;
+}
+
+export function ContactForm({ onSubmitSuccess, onSubmitError }: FormProps) {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          httpPost('mail/contactForm', {
+      onSubmit={async (values, { resetForm }) => {
+        // await FormUtil.sleep(2000); // Test submitting btn state.
+        try {
+          await httpPost('mail/contactForm', {
             nameSurname: values.nameSurname,
             email: values.email,
             message: values.message,
           });
-          setSubmitting(false);
-        }, 400);
+          onSubmitSuccess?.();
+          // resetForm(); // This will reset the form completely
+          resetForm({
+            values: {
+              ...values,
+              message: '',
+            },
+          });
+        } catch (err) {
+          onSubmitError?.(err);
+        }
       }}
       validate={(values) => {
         const errors: FormikErrors<ContactFormValues> = {};
@@ -69,7 +81,7 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
       }) => (
         <form
           style={{
-            ...style,
+            // ...style,
             display: 'flex',
             flexDirection: 'column',
             gap: '1rem',

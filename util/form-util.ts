@@ -19,4 +19,9 @@ export namespace FormUtil {
     }
     return true;
   }
+
+  export async function sleep(ms: number) {
+    // https://stackoverflow.com/questions/33289726/combination-of-async-function-await-settimeout
+    return new Promise((res) => setTimeout(res, ms));
+  }
 }
