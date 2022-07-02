@@ -67,7 +67,7 @@ export function CareerForm(props: FormProps) {
             nameSurname: values.nameSurname,
             email: values.email,
             motivationalLetter: values.motivationalLetter,
-            useTest: useTestMail,
+            useTestMail,
           });
           resetForm();
         },

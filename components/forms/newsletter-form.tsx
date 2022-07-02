@@ -1,7 +1,11 @@
 import TextField from '@mui/material/TextField';
 import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy-checkbox';
 import { useSnackbar } from 'contexts/snackbar-context';
-import { requiredFieldErrorText, validationRegexes } from 'data/constants';
+import {
+  requiredFieldErrorText,
+  useTestMail,
+  validationRegexes,
+} from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import { FormUtil } from 'util/form-util';
 import { httpPost } from 'util/http-util';
@@ -52,6 +56,7 @@ export function NewsletterForm(props: FormProps) {
           await httpPost('mail/newsletterForm', {
             nameSurname: values.nameSurname,
             email: values.email,
+            useTestMail,
           });
           resetForm();
         },

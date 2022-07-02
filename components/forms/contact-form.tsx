@@ -4,6 +4,7 @@ import { useSnackbar } from 'contexts/snackbar-context';
 import {
   requiredCheckboxText,
   requiredFieldErrorText,
+  useTestMail,
   validationRegexes,
 } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
@@ -39,6 +40,7 @@ export function ContactForm(props: FormProps) {
             nameSurname: values.nameSurname,
             email: values.email,
             message: values.message,
+            useTestMail,
           });
           resetForm({
             values: {
