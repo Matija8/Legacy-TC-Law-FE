@@ -1,4 +1,4 @@
-import { CareerForm } from 'components/forms/career-form';
+import { SnackWrappedCareerForm } from 'components/forms/career-form';
 import { TcLawPage } from 'components/_page';
 import { NextPage } from 'next';
 
@@ -29,7 +29,7 @@ const careerPage: NextPage = () => {
         motivaciono pismo.
       </p>
 
-      <CareerForm />
+      <SnackWrappedCareerForm />
     </TcLawPage>
   );
 };

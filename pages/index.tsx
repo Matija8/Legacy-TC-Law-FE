@@ -1,5 +1,5 @@
 import { EmployeeCarousel } from 'components/carousel';
-import { ContactForm } from 'components/forms/contact-form';
+import { SnackWrappedContactForm } from 'components/forms/contact-form';
 import { FrontHead } from 'components/frontpage-head';
 import { GoogleMap } from 'components/google-map';
 import { WorkAreaGrid } from 'components/work-area-grid';
@@ -58,7 +58,7 @@ const Home: NextPage<Props> = ({ newsArticles }: Props) => {
         <h2 className="heading-underlined">Kontakt</h2>
 
         <div className={contactStyles.contact}>
-          <ContactForm />
+          <SnackWrappedContactForm />
           <GoogleMap />
         </div>
       </section>

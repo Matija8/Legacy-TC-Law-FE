@@ -1,5 +1,6 @@
 import TextField from '@mui/material/TextField';
 import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy-checkbox';
+import { useSnackbar } from 'contexts/snackbar-context';
 import { requiredFieldErrorText, validationRegexes } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import { FormUtil } from 'util/form-util';
@@ -116,5 +117,15 @@ export function NewsletterForm(props: FormProps) {
         </form>
       )}
     </Formik>
+  );
+}
+
+export function SnackWrappedNewsletterForm() {
+  const addSnack = useSnackbar();
+  return (
+    <NewsletterForm
+      onSubmitSuccess={() => addSnack('Prijava na novosti uspešno izvršena!')}
+      onSubmitError={() => addSnack('Greška pri prijavi na novosti!')}
+    />
   );
 }

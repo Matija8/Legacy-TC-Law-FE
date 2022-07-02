@@ -1,6 +1,7 @@
 import TextField from '@mui/material/TextField';
 import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy-checkbox';
 import { RoundBtn } from 'components/round-btn';
+import { useSnackbar } from 'contexts/snackbar-context';
 import {
   formInputLimits,
   requiredCheckboxText,
@@ -168,5 +169,15 @@ export function CareerForm(props: FormProps) {
         </form>
       )}
     </Formik>
+  );
+}
+
+export function SnackWrappedCareerForm() {
+  const addSnack = useSnackbar();
+  return (
+    <CareerForm
+      onSubmitSuccess={() => addSnack('Prijava uspešno podneta!')}
+      onSubmitError={() => addSnack('Greška pri prijavi!')}
+    />
   );
 }

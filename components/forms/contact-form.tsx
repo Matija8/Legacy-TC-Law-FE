@@ -1,5 +1,6 @@
 import TextField from '@mui/material/TextField';
 import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy-checkbox';
+import { useSnackbar } from 'contexts/snackbar-context';
 import {
   requiredCheckboxText,
   requiredFieldErrorText,
@@ -140,5 +141,17 @@ export function ContactForm(props: FormProps) {
         </form>
       )}
     </Formik>
+  );
+}
+
+export function SnackWrappedContactForm() {
+  const addSnack = useSnackbar();
+  return (
+    <ContactForm
+      onSubmitSuccess={() => addSnack('Slanje poruke uspešno izvršeno!')}
+      onSubmitError={() =>
+        addSnack('Greška pri slanju poruke kroz kontakt formu!')
+      }
+    />
   );
 }
