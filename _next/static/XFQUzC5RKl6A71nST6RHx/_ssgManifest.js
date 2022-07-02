@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002F","\u002Fnas-tim\u002F[employeePagePath]","\u002Fnovosti","\u002Fnovosti\u002F[newsArticleId]","\u002Foblasti-rada\u002F[workDomainId]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
