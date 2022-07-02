@@ -27,6 +27,8 @@ export const gTextConstants = {
   officeEmail: 'office@tclaw.rs',
 };
 
+export const useTestMail = process.env.NODE_ENV === 'development' ? 'true' : '';
+
 export const formInputLimits = {
   email: {
     maxLength: 320,

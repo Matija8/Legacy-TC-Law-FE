@@ -6,6 +6,7 @@ import {
   formInputLimits,
   requiredCheckboxText,
   requiredFieldErrorText,
+  useTestMail,
   validationRegexes,
 } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
@@ -66,6 +67,7 @@ export function CareerForm(props: FormProps) {
             nameSurname: values.nameSurname,
             email: values.email,
             motivationalLetter: values.motivationalLetter,
+            useTest: useTestMail,
           });
           resetForm();
         },
@@ -136,6 +138,7 @@ export function CareerForm(props: FormProps) {
             }}
           />
 
+          {/* T*DO: CHECKBOX RESET BUG!?? */}
           <PrivacyPolicyCheckbox
             value={values.readPrivacy}
             onChange={handleChange}
