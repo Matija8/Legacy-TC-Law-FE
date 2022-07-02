@@ -1,3 +1,6 @@
+// TODO:
+// You don't need this anymore. Remove it when the time is right.
+
 // https://stackoverflow.com/questions/70673800/scss-modules-not-properly-loading-in-storybook-for-my-nextjs-app
 // Copied from https://github.com/storybookjs/presets/blob/master/packages/preset-scss/index.js
 function wrapLoader(loader, options) {
