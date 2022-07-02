@@ -54,9 +54,6 @@ const NewsPage = ({
   );
 };
 
-// T*DO: Bug
-// Warning: Expected server HTML to contain a matching <div> in <section>.
-
 function NewsArticleCard({ article }: { article: NewsArticle }) {
   const { title, body } = NewsUtil.getArticlePreview(article);
   const workDomain = WorkDomainUtil.findWorkDomainById(article.domain);
@@ -72,8 +69,7 @@ function NewsArticleCard({ article }: { article: NewsArticle }) {
     >
       <CardContent>
         <div>
-          {/* T*DO */}
-          {workDomain && <WorkDomainTag wd={workDomain} />}
+          {!!workDomain && <WorkDomainTag wd={workDomain} />}
           <h3>{title}</h3>
           {/* <p>{body}</p> */}
           <Markdown>{body}</Markdown>
