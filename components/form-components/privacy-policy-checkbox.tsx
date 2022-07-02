@@ -4,10 +4,15 @@ import Link from 'next/link';
 import { CSSProperties } from 'react';
 
 // https://mui.com/material-ui/react-checkbox/#formgroup
+// https://mui.com/material-ui/api/checkbox/
+
+// TODO: Checkbox required message
+// https://stackoverflow.com/questions/38852823/how-to-change-checkbox-required-message
 
 interface Props {
   value: boolean;
   onChange: Parameters<typeof Checkbox>[0]['onChange'];
+  // error?: string; // TODO
 }
 
 export function PrivacyPolicyCheckbox({ value, onChange }: Props) {

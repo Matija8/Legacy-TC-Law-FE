@@ -11,6 +11,9 @@ export const validationRegexes = {
 
 export const requiredFieldErrorText = '*neophodno polje';
 
+// TODO: Use this
+export const requiredCheckboxText = '*neophodno je štiklirati ovu kućicu';
+
 // TODO
 export const pageTitles = {
   nasTim: '',
