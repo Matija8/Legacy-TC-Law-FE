@@ -3,6 +3,7 @@ import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy
 import { RoundBtn } from 'components/round-btn';
 import {
   formInputLimits,
+  requiredCheckboxText,
   requiredFieldErrorText,
   validationRegexes,
 } from 'data/constants';
@@ -28,7 +29,9 @@ const initialValues: CareerFormValues = {
   readPrivacy: false,
 };
 
-export function CareerForm() {
+interface FormProps extends FormUtil.FormSubmitProps {}
+
+export function CareerForm(props: FormProps) {
   const [cv, setCv] = useState<File | undefined>(undefined);
   const { onOpen } = useFilePicker((f) => setCv(f));
   return (
@@ -50,26 +53,31 @@ export function CareerForm() {
           errors.motivationalLetter = requiredFieldErrorText;
         }
 
+        if (!values.readPrivacy) {
+          errors.readPrivacy = requiredCheckboxText;
+        }
+
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          httpPost('mail/careerForm', {
+      onSubmit={FormUtil.FormikOnSubmitWrapper(
+        async (values, { resetForm }) => {
+          await httpPost('mail/careerForm', {
             nameSurname: values.nameSurname,
             email: values.email,
             motivationalLetter: values.motivationalLetter,
           });
-          setSubmitting(false);
-        }, 400);
-      }}
+          resetForm();
+        },
+        props,
+      )}
     >
       {({
+        // submitForm,
         errors,
         handleBlur,
         handleChange,
         handleSubmit,
         isSubmitting,
-        submitForm,
         touched,
         values,
       }) => (

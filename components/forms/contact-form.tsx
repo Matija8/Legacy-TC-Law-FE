@@ -1,6 +1,10 @@
 import TextField from '@mui/material/TextField';
 import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy-checkbox';
-import { requiredFieldErrorText, validationRegexes } from 'data/constants';
+import {
+  requiredCheckboxText,
+  requiredFieldErrorText,
+  validationRegexes,
+} from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import { FormUtil } from 'util/form-util';
 import { httpPost } from 'util/http-util';
@@ -20,36 +24,30 @@ const initialValues: ContactFormValues = {
   readPrivacy: false,
 };
 
-interface FormProps {
+interface FormProps extends FormUtil.FormSubmitProps {
   // style?: CSSProperties;
-  onSubmitSuccess?: () => void;
-  onSubmitError?: (err: unknown) => void;
 }
 
-export function ContactForm({ onSubmitSuccess, onSubmitError }: FormProps) {
+export function ContactForm(props: FormProps) {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={async (values, { resetForm }) => {
-        // await FormUtil.sleep(2000); // Test submitting btn state.
-        try {
+      onSubmit={FormUtil.FormikOnSubmitWrapper(
+        async (values, { resetForm }) => {
           await httpPost('mail/contactForm', {
             nameSurname: values.nameSurname,
             email: values.email,
             message: values.message,
           });
-          onSubmitSuccess?.();
-          // resetForm(); // This will reset the form completely
           resetForm({
             values: {
               ...values,
               message: '',
             },
           });
-        } catch (err) {
-          onSubmitError?.(err);
-        }
-      }}
+        },
+        props,
+      )}
       validate={(values) => {
         const errors: FormikErrors<ContactFormValues> = {};
         if (!values.nameSurname) {
@@ -66,16 +64,20 @@ export function ContactForm({ onSubmitSuccess, onSubmitError }: FormProps) {
           errors.message = requiredFieldErrorText;
         }
 
+        if (!values.readPrivacy) {
+          errors.readPrivacy = requiredCheckboxText;
+        }
+
         return errors;
       }}
     >
       {({
+        // submitForm,
         errors,
         handleBlur,
         handleChange,
         handleSubmit,
         isSubmitting,
-        submitForm,
         touched,
         values,
       }) => (

@@ -20,7 +20,9 @@ const initialValues: NewsletterFormValues = {
 
 const textFieldVariant = 'standard';
 
-export function NewsletterForm() {
+interface FormProps extends FormUtil.FormSubmitProps {}
+
+export function NewsletterForm(props: FormProps) {
   return (
     <Formik
       initialValues={initialValues}
@@ -44,23 +46,24 @@ export function NewsletterForm() {
 
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          httpPost('mail/newsletterForm', {
+      onSubmit={FormUtil.FormikOnSubmitWrapper(
+        async (values, { resetForm }) => {
+          await httpPost('mail/newsletterForm', {
             nameSurname: values.nameSurname,
             email: values.email,
           });
-          setSubmitting(false);
-        }, 400);
-      }}
+          resetForm();
+        },
+        props,
+      )}
     >
       {({
+        // submitForm,
         errors,
         handleBlur,
         handleChange,
         handleSubmit,
         isSubmitting,
-        submitForm,
         touched,
         values,
       }) => (
