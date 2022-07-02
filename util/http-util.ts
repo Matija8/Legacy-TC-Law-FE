@@ -14,6 +14,8 @@ export async function httpPost(
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
+      // https://stackoverflow.com/questions/37269808/react-js-uncaught-in-promise-syntaxerror-unexpected-token-in-json-at-posit
+      Accept: 'application/json',
     },
     body: new URLSearchParams(body),
   });
@@ -24,7 +26,17 @@ async function httpFetch(input: string, init?: RequestInit) {
   const debuggingFetch = false;
   if (process.env.NODE_ENV === 'development' && debuggingFetch) {
     alert(JSON.stringify({ url: String(url), init }));
-    return;
+    throw Error('Testing http fetch');
   }
-  return await fetch(String(url), init);
+  const res = await fetch(String(url), init);
+  // const resJson = await res.json();
+  if (!res.ok) {
+    // https://github.com/whatwg/fetch/issues/18#issuecomment-605629519
+    // const err = resJson?.err || 'HTTP error';
+    const err = 'HTTP error';
+    throw Error(err);
+  }
+  return res;
+  // // https://kentcdodds.com/blog/using-fetch-with-type-script
+  // return resJson.data as T;
 }

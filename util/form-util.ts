@@ -55,6 +55,8 @@ export namespace FormUtil {
         await callback(values, formikHelpers);
         onSubmitSuccess?.();
       } catch (err) {
+        console.error('FormikOnSubmitWrapper Error');
+        console.error(err);
         onSubmitError?.(err);
       }
     };

@@ -54,6 +54,9 @@ const NewsPage = ({
   );
 };
 
+// T*DO: Bug
+// Warning: Expected server HTML to contain a matching <div> in <section>.
+
 function NewsArticleCard({ article }: { article: NewsArticle }) {
   const { title, body } = NewsUtil.getArticlePreview(article);
   const workDomain = WorkDomainUtil.findWorkDomainById(article.domain);
