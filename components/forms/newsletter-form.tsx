@@ -1,10 +1,10 @@
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
-import { RoundBtn } from 'components/round-btn';
 import { requiredFieldErrorText, validationRegexes } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import Link from 'next/link';
+import { FormUtil } from 'util/form-util';
 import { httpPost } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
@@ -123,7 +123,7 @@ export function NewsletterForm() {
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}
             text={'Prijavite se'}
-            disabled={Object.keys(errors).length > 0}
+            disabled={!FormUtil.isSubmitBtnEnabled(touched, errors)}
           />
         </form>
       )}

@@ -5,6 +5,7 @@ import { requiredFieldErrorText, validationRegexes } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
+import { FormUtil } from 'util/form-util';
 import { httpPost } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
@@ -131,7 +132,7 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
 
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}
-            disabled={Object.keys(errors).length > 0}
+            disabled={!FormUtil.isSubmitBtnEnabled(touched, errors)}
           />
         </form>
       )}

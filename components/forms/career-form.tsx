@@ -12,6 +12,7 @@ import { useFilePicker } from 'hooks/use-file-picker-hook';
 import Link from 'next/link';
 import { useState } from 'react';
 import { FiTrash } from 'react-icons/fi';
+import { FormUtil } from 'util/form-util';
 import { httpPost } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
@@ -168,7 +169,7 @@ export function CareerForm() {
 
           <RoundSubmittingBtn
             isSubmitting={isSubmitting}
-            disabled={Object.keys(errors).length > 0}
+            disabled={!FormUtil.isSubmitBtnEnabled(touched, errors)}
           />
         </form>
       )}
