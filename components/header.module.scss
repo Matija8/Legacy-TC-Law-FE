@@ -19,6 +19,10 @@ $breakpointNarrowDesktop: 1350px;
   z-index: 2;
 }
 
+.header a {
+  text-decoration: none;
+}
+
 .header-main {
   display: flex;
   flex-direction: column;

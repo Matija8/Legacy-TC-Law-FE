@@ -1,6 +1,5 @@
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
+import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy-checkbox';
 import { RoundBtn } from 'components/round-btn';
 import {
   formInputLimits,
@@ -9,7 +8,6 @@ import {
 } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import { useFilePicker } from 'hooks/use-file-picker-hook';
-import Link from 'next/link';
 import { useState } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { FormUtil } from 'util/form-util';
@@ -23,17 +21,19 @@ interface CareerFormValues {
   readPrivacy: boolean;
 }
 
+const initialValues: CareerFormValues = {
+  nameSurname: '',
+  email: '',
+  motivationalLetter: '',
+  readPrivacy: false,
+};
+
 export function CareerForm() {
   const [cv, setCv] = useState<File | undefined>(undefined);
   const { onOpen } = useFilePicker((f) => setCv(f));
   return (
     <Formik
-      initialValues={{
-        nameSurname: '',
-        email: '',
-        motivationalLetter: '',
-        readPrivacy: false,
-      }}
+      initialValues={initialValues}
       validate={(values) => {
         const errors: FormikErrors<CareerFormValues> = {};
         if (!values.nameSurname) {
@@ -127,23 +127,9 @@ export function CareerForm() {
             }}
           />
 
-          <FormControlLabel
-            control={
-              <Checkbox
-                value={values.readPrivacy}
-                onChange={handleChange}
-                required
-              />
-            }
-            name="readPrivacy"
-            label={
-              <p style={{ margin: 0 }}>
-                Potvrđujem da sam pročitao i da sam saglasan sa{' '}
-                <Link href="/politika-privatnosti">
-                  <a style={{ textAlign: 'initial' }}>Politikom privatnosti</a>
-                </Link>
-              </p>
-            }
+          <PrivacyPolicyCheckbox
+            value={values.readPrivacy}
+            onChange={handleChange}
           />
 
           {cv ? (

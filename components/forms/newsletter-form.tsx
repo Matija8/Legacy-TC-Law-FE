@@ -1,9 +1,7 @@
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
+import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy-checkbox';
 import { requiredFieldErrorText, validationRegexes } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
-import Link from 'next/link';
 import { FormUtil } from 'util/form-util';
 import { httpPost } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
@@ -14,16 +12,18 @@ interface NewsletterFormValues {
   readPrivacy: boolean;
 }
 
+const initialValues: NewsletterFormValues = {
+  nameSurname: '',
+  email: '',
+  readPrivacy: false,
+};
+
 const textFieldVariant = 'standard';
 
 export function NewsletterForm() {
   return (
     <Formik
-      initialValues={{
-        nameSurname: '',
-        email: '',
-        readPrivacy: false,
-      }}
+      initialValues={initialValues}
       validate={(values) => {
         const errors: FormikErrors<NewsletterFormValues> = {};
         if (!values.nameSurname) {
@@ -100,24 +100,9 @@ export function NewsletterForm() {
             />
           </div>
 
-          {/* TODO: privacy error */}
-          <FormControlLabel
-            control={
-              <Checkbox
-                value={values.readPrivacy}
-                onChange={handleChange}
-                required
-              />
-            }
-            name="readPrivacy"
-            label={
-              <p style={{ margin: 0, textAlign: 'initial' }}>
-                Potvrđujem da sam pročitao i da sam saglasan sa{' '}
-                <Link href="/politika-privatnosti">
-                  <a style={{ whiteSpace: 'nowrap' }}>Politikom privatnosti</a>
-                </Link>
-              </p>
-            }
+          <PrivacyPolicyCheckbox
+            value={values.readPrivacy}
+            onChange={handleChange}
           />
 
           <RoundSubmittingBtn

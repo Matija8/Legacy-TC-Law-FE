@@ -1,6 +1,7 @@
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
+import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy-checkbox';
 import { requiredFieldErrorText, validationRegexes } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import Link from 'next/link';
@@ -16,15 +17,17 @@ interface ContactFormValues {
   readPrivacy: boolean;
 }
 
+const initialValues: ContactFormValues = {
+  nameSurname: '',
+  email: '',
+  message: '',
+  readPrivacy: false,
+};
+
 export function ContactForm({ style }: { style?: CSSProperties }) {
   return (
     <Formik
-      initialValues={{
-        nameSurname: '',
-        email: '',
-        message: '',
-        readPrivacy: false,
-      }}
+      initialValues={initialValues}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           httpPost('mail/contactForm', {
@@ -111,23 +114,9 @@ export function ContactForm({ style }: { style?: CSSProperties }) {
             onBlur={handleBlur}
           />
 
-          <FormControlLabel
-            control={
-              <Checkbox
-                value={values.readPrivacy}
-                onChange={handleChange}
-                required
-              />
-            }
-            name="readPrivacy"
-            label={
-              <p style={{ margin: 0 }}>
-                Potvrđujem da sam pročitao i da sam saglasan sa{' '}
-                <Link href="/politika-privatnosti">
-                  <a style={{ textAlign: 'initial' }}>Politikom privatnosti</a>
-                </Link>
-              </p>
-            }
+          <PrivacyPolicyCheckbox
+            value={values.readPrivacy}
+            onChange={handleChange}
           />
 
           <RoundSubmittingBtn
