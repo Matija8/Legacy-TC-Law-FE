@@ -14,6 +14,7 @@ const basePath = (() => {
 module.exports = {
   reactStrictMode: true,
   env: {
+    // https://nextjs.org/docs/api-reference/next.config.js/environment-variables
     BASE_PATH: basePath,
   },
   basePath,
