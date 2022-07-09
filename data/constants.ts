@@ -38,5 +38,12 @@ export const formInputLimits = {
   },
 };
 
-// Place your key in the .env.local file
-export const gRecaptchaClientSiteKey = process.env.RECAPTCHA_CLIENT_SITE_KEY;
+export const gRecaptchaKeys = (() => {
+  // https://developers.google.com/recaptcha/docs/faq#id-like-to-run-automated-tests-with-recaptcha.-what-should-i-do
+  const clientSiteTestKey = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
+  return {
+    clientSiteTestKey,
+    // Place your key in the .env.local file
+    clientSiteKey: process.env.RECAPTCHA_CLIENT_SITE_KEY || clientSiteTestKey,
+  };
+})();

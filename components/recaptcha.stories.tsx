@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ReCaptcha } from './recaptcha';
-import { gRecaptchaClientSiteKey } from '../data/constants';
+import { gRecaptchaKeys } from '../data/constants';
 
 export default {
   title: 'ReCaptcha',
@@ -18,4 +18,4 @@ const Template: ComponentStory<typeof ReCaptcha> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { sitekey: gRecaptchaClientSiteKey };
+Default.args = { sitekey: gRecaptchaKeys.clientSiteTestKey };
