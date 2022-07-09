@@ -1,3 +1,4 @@
+import { envVars } from 'data/constants';
 import Head from 'next/head';
 
 export function SiteHead({ title }: { title: string }) {
@@ -5,7 +6,7 @@ export function SiteHead({ title }: { title: string }) {
     <Head>
       {/* <title>Trifunovic & Co Law Office - {title}</title> */}
       <title>{title ? `${title} - TCL` : 'TCL'}</title>
-      <link rel="icon" href={`${process.env.basePath}/favicon.png`} />
+      <link rel="icon" href={`${envVars.BASE_PATH}/favicon.png`} />
       <meta
         name="description"
         content={

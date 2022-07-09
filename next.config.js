@@ -14,7 +14,7 @@ const basePath = (() => {
 module.exports = {
   reactStrictMode: true,
   env: {
-    basePath,
+    BASE_PATH: basePath,
   },
   basePath,
 };

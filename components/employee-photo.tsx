@@ -1,4 +1,5 @@
 import { XImage } from 'components/image';
+import { envVars } from 'data/constants';
 import { Employee } from 'data/employees';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
@@ -10,7 +11,7 @@ export function EmployeePhoto({ employee }: { employee: Employee }) {
   return (
     <XImage
       className={styles.photo}
-      src={`${process.env.basePath}/team/${memberPhotoId}.jpg`}
+      src={`${envVars.BASE_PATH}/team/${memberPhotoId}.jpg`}
       alt={`${name} ${surname} ${title} photo`}
     />
   );

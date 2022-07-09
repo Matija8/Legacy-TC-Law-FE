@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { gLinks, gTextConstants } from 'data/constants';
+import { envVars, gLinks, gTextConstants } from 'data/constants';
 import { workAreas } from 'data/oblasti-rada';
 import Hamburger from 'hamburger-react';
 import Link from 'next/link';
@@ -37,7 +37,7 @@ export function Header() {
           <XImage
             // TODO: Align in mobile layout
             // className={styles['hide-narrow-desktop']}
-            src={`${process.env.basePath}/logo.png`}
+            src={`${envVars.BASE_PATH}/logo.png`}
             style={{
               maxHeight: '95px',
               height: '10vw',
@@ -54,7 +54,7 @@ export function Header() {
           <Link href="/">
             <a>
               <XImage
-                src={`${process.env.basePath}/banner.png`}
+                src={`${envVars.BASE_PATH}/banner.png`}
                 height={'50px'}
                 alt="Company banner"
               />
@@ -247,7 +247,7 @@ function ChangeLanguage() {
       }}
     >
       <XImage
-        src={`${process.env.basePath}/countries/uk.svg`}
+        src={`${envVars.BASE_PATH}/countries/uk.svg`}
         alt="Change language"
       />
     </div>

@@ -4,6 +4,12 @@ export const gLinks = {
   maps: `https://maps.google.com/maps?q=Kneza%20Milo%C5%A1a%2010&t=m&z=14&output=embed&iwloc=near`, // TODO
 };
 
+export const envVars = {
+  BASE_PATH: process.env.basePath || '',
+  NODE_ENV: process.env.NODE_ENV,
+  RECAPTCHA_CLIENT_SITE_KEY: process.env.RECAPTCHA_CLIENT_SITE_KEY,
+};
+
 export const validationRegexes = {
   email:
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
@@ -27,7 +33,7 @@ export const gTextConstants = {
   officeEmail: 'office@tclaw.rs',
 };
 
-export const useTestMail = process.env.NODE_ENV === 'development' ? 'true' : '';
+export const useTestMail = envVars.NODE_ENV === 'development' ? 'true' : '';
 
 export const formInputLimits = {
   email: {
@@ -44,6 +50,6 @@ export const gRecaptchaKeys = (() => {
   return {
     clientSiteTestKey,
     // Place your key in the .env.local file
-    clientSiteKey: process.env.RECAPTCHA_CLIENT_SITE_KEY || clientSiteTestKey,
+    clientSiteKey: envVars.RECAPTCHA_CLIENT_SITE_KEY || clientSiteTestKey,
   };
 })();

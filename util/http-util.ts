@@ -1,3 +1,5 @@
+import { envVars } from 'data/constants';
+
 const apiBase = (() => {
   if (false) {
     // TODO: Get from env
@@ -24,7 +26,7 @@ export async function httpPost(
 async function httpFetch(input: string, init?: RequestInit) {
   const url = new URL(input.startsWith('/') ? input.slice(1) : input, apiBase);
   const debuggingFetch = false;
-  if (process.env.NODE_ENV === 'development' && debuggingFetch) {
+  if (envVars.NODE_ENV === 'development' && debuggingFetch) {
     alert(JSON.stringify({ url: String(url), init }));
     throw Error('Testing http fetch');
   }
