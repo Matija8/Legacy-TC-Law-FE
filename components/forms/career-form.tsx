@@ -1,5 +1,10 @@
 import TextField from '@mui/material/TextField';
 import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy-checkbox';
+import {
+  getRecaptchaToken,
+  ReCaptcha,
+  useRecaptchaRef,
+} from 'components/recaptcha';
 import { RoundBtn } from 'components/round-btn';
 import { useSnackbar } from 'contexts/snackbar-context';
 import {
@@ -36,6 +41,8 @@ interface FormProps extends FormUtil.FormSubmitProps {}
 export function CareerForm(props: FormProps) {
   const [cv, setCv] = useState<File | undefined>(undefined);
   const { onOpen } = useFilePicker((f) => setCv(f));
+  const reCaptchaRef = useRecaptchaRef();
+
   return (
     <Formik
       initialValues={initialValues}
@@ -63,6 +70,11 @@ export function CareerForm(props: FormProps) {
       }}
       onSubmit={FormUtil.FormikOnSubmitWrapper(
         async (values, { resetForm }) => {
+          const token = await getRecaptchaToken(reCaptchaRef);
+
+          // TODO: Send recaptcha token to server
+          console.log(`*$`, { token }); //T*DO
+
           await httpPost('mail/careerForm', {
             nameSurname: values.nameSurname,
             email: values.email,
@@ -169,6 +181,8 @@ export function CareerForm(props: FormProps) {
             isSubmitting={isSubmitting}
             disabled={!FormUtil.isSubmitBtnEnabled(touched, errors)}
           />
+
+          <ReCaptcha ref={reCaptchaRef} />
         </form>
       )}
     </Formik>

@@ -1,10 +1,52 @@
+import { gRecaptchaKeys } from 'data/constants';
+import {
+  forwardRef,
+  LegacyRef,
+  MutableRefObject,
+  RefObject,
+  useRef,
+} from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-function onChange(value: string | null) {
-  console.log('Captcha value:', value);
+// Leigh Halliday - Using reCAPTCHA in React and Node
+// https://www.youtube.com/watch?v=vrbyaOoZ-4Q
+// https://github.com/leighhalliday/react-hook-form-demo/blob/master/pages/index.tsx
+
+// Ref notes
+// https://reactjs.org/docs/refs-and-the-dom.html
+// https://reactjs.org/docs/forwarding-refs.html
+// https://reactjs.org/docs/hooks-reference.html#useref
+// https://stackoverflow.com/questions/53561913/react-forwarding-multiple-refs
+// https://stackoverflow.com/questions/66963289/useref-typescript-not-assignable-to-type-legacyrefhtmldivelement
+
+interface Props {
+  sitekey?: string;
 }
 
-export function ReCaptcha({ sitekey }: { sitekey: string }) {
-  // https://github.com/dozoisch/react-google-recaptcha
-  return <ReCAPTCHA sitekey={sitekey} onChange={onChange} />;
+export const ReCaptcha = forwardRef<ReCAPTCHA, Props>(
+  ({ sitekey }, reCaptchaRef) => {
+    // https://github.com/dozoisch/react-google-recaptcha
+    return (
+      <ReCAPTCHA
+        sitekey={sitekey || gRecaptchaKeys.clientSiteKey}
+        size="invisible"
+        // onChange={(val) => console.log('Captcha value:', val)}
+        ref={reCaptchaRef as LegacyRef<ReCAPTCHA>}
+      />
+    );
+  },
+);
+
+ReCaptcha.displayName = 'ReCaptcha';
+
+export async function getRecaptchaToken(reCaptchaRef: RefObject<ReCAPTCHA>) {
+  if (!reCaptchaRef?.current) {
+    console.error('TODO recaptcha ref');
+    return null;
+  }
+  const token = await reCaptchaRef.current.executeAsync();
+  reCaptchaRef.current.reset();
+  return token;
 }
+
+export const useRecaptchaRef = () => useRef<ReCAPTCHA>(null);
