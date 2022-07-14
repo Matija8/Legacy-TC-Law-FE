@@ -1,11 +1,5 @@
 import { gRecaptchaKeys } from 'data/constants';
-import {
-  forwardRef,
-  LegacyRef,
-  MutableRefObject,
-  RefObject,
-  useRef,
-} from 'react';
+import { forwardRef, LegacyRef, RefObject, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 // Leigh Halliday - Using reCAPTCHA in React and Node
@@ -40,11 +34,26 @@ export const ReCaptcha = forwardRef<ReCAPTCHA, Props>(
 ReCaptcha.displayName = 'ReCaptcha';
 
 export async function getRecaptchaToken(reCaptchaRef: RefObject<ReCAPTCHA>) {
-  if (!reCaptchaRef?.current) {
-    console.error('TODO recaptcha ref');
+  const token = await getRecaptchaTokenSafe(reCaptchaRef);
+  if (!token) {
+    throw Error('Error: ReCaptcha token is falsy!?');
+  }
+  return token;
+}
+
+async function getRecaptchaTokenSafe(reCaptchaRef: RefObject<ReCAPTCHA>) {
+  if (!reCaptchaRef?.current || !reCaptchaRef?.current?.executeAsync) {
+    console.error('Recaptcha ref has an invalid "current" field?!');
     return null;
   }
-  const token = await reCaptchaRef.current.executeAsync();
+  const token = await reCaptchaRef.current.executeAsync?.();
+  if (typeof token !== 'string' || token?.length < 5) {
+    console.error(
+      'Recaptcha executeAsync returned an invalid token?!\n' +
+        `Token: ${token}`,
+    );
+    return null;
+  }
   reCaptchaRef.current.reset();
   return token;
 }

@@ -70,16 +70,17 @@ export function CareerForm(props: FormProps) {
       }}
       onSubmit={FormUtil.FormikOnSubmitWrapper(
         async (values, { resetForm }) => {
-          const token = await getRecaptchaToken(reCaptchaRef);
+          const recaptchaToken = await getRecaptchaToken(reCaptchaRef);
 
           // TODO: Send recaptcha token to server
-          console.log(`*$`, { token }); //T*DO
+          console.log(`*$`, { recaptchaToken }); //T*DO
 
           await httpPost('mail/careerForm', {
             nameSurname: values.nameSurname,
             email: values.email,
             motivationalLetter: values.motivationalLetter,
             useTestMail,
+            recaptchaToken,
           });
           resetForm();
         },
