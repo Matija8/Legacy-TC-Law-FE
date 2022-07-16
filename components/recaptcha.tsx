@@ -6,6 +6,10 @@ import ReCAPTCHA from 'react-google-recaptcha';
 // https://www.youtube.com/watch?v=vrbyaOoZ-4Q
 // https://github.com/leighhalliday/react-hook-form-demo/blob/master/pages/index.tsx
 
+// Testing reCAPTCHA:
+// https://stackoverflow.com/questions/48431361/force-google-recaptcha-challenge
+// https://developers.google.com/recaptcha/docs/faq#id-like-to-run-automated-tests-with-recaptcha.-what-should-i-do
+
 // Ref notes
 // https://reactjs.org/docs/refs-and-the-dom.html
 // https://reactjs.org/docs/forwarding-refs.html
