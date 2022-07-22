@@ -15,7 +15,10 @@ import {
   validationRegexes,
 } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
-import { useFilePicker } from 'hooks/use-file-picker-hook';
+import {
+  useFilePicker,
+  validateFileLessThanMib,
+} from 'hooks/use-file-picker-hook';
 import { useState } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { FormUtil } from 'util/form-util';
@@ -40,7 +43,7 @@ interface FormProps extends FormUtil.FormSubmitProps {}
 
 export function CareerForm(props: FormProps) {
   const [cv, setCv] = useState<File | undefined>(undefined);
-  const { onOpen } = useFilePicker((f) => setCv(f));
+  const { onOpen } = useFilePicker((f) => setCv(f), validateCv);
   const reCaptchaRef = useRecaptchaRef();
 
   return (
@@ -198,4 +201,8 @@ export function SnackWrappedCareerForm() {
       onSubmitError={() => addSnack('Greška pri prijavi!')}
     />
   );
+}
+
+function validateCv(cv: File) {
+  return validateFileLessThanMib(cv, 2);
 }
