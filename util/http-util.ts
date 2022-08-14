@@ -5,8 +5,10 @@ const apiBase = (() => {
     // TODO: Get from env
     return 'TODO';
   }
-  return 'http://localhost:1212/';
+  // return 'http://localhost:1212/';
+  return 'http://localhost:1212/api/';
 })();
+console.assert(apiBase.endsWith('/'));
 
 export async function httpPost(
   url: string,
