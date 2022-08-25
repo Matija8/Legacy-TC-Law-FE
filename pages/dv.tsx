@@ -2,6 +2,7 @@ import homeStyles from 'styles/Home.module.scss';
 import { NextPage } from 'next';
 
 const DeploymentVersionDebugPage: NextPage = () => {
+  // This is a good sanity check after a deploy
   const version = 1;
   return (
     <div className={homeStyles['root-container']}>

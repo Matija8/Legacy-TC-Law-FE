@@ -2,10 +2,10 @@
 # coding: UTF-8
 
 script_dir=$(realpath $(dirname "$0"))
+cd "$script_dir/.."
 
 function main {
     printf "Starting clean operation...\n\n"
-    cd "$script_dir/.."
     # pwd
 
     rm -rf .next
