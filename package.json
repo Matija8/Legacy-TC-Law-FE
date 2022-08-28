@@ -16,7 +16,6 @@
     "gh-deploy": "bash ./scripts/gh_deploy.sh",
     "gh-deploy:next-export": "cross-env DEPLOY_ENV=github-pages-env npm run next:b:export",
     "gh-deploy:save-out-dir-to-pages": "gh-pages -d out --dotfiles",
-    "zip:all": "zip -r tc-law-bundle.zip .",
     "zip:out": "cd ./out && zip -r ../tc-law-out.zip ./*",
     "zip:out:wrapped": "zip -r tc-law-out.zip ./out",
     "zip:out:full": "npm run next:b:export && npm run zip:out",
