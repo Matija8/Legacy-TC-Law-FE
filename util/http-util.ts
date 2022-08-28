@@ -1,14 +1,7 @@
 import { envVars } from 'data/constants';
 
-const apiBase = (() => {
-  if (false) {
-    // TODO: Get from env
-    return 'TODO';
-  }
-  // return 'http://localhost:1212/';
-  return 'http://localhost:1212/api/';
-})();
-console.assert(apiBase.endsWith('/'));
+const { API_BASE } = envVars;
+console.assert(API_BASE.endsWith('/'));
 
 export async function httpPost(
   url: string,
@@ -26,7 +19,7 @@ export async function httpPost(
 }
 
 async function httpFetch(input: string, init?: RequestInit) {
-  const url = new URL(input.startsWith('/') ? input.slice(1) : input, apiBase);
+  const url = new URL(input.startsWith('/') ? input.slice(1) : input, API_BASE);
   const debuggingFetch = false;
   if (envVars.NODE_ENV === 'development' && debuggingFetch) {
     alert(JSON.stringify({ url: String(url), init }));
