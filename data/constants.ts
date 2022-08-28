@@ -8,7 +8,7 @@ export const envVars = {
   BASE_PATH: process.env.BASE_PATH || '',
   NODE_ENV: process.env.NODE_ENV,
   RECAPTCHA_CLIENT_SITE_KEY: process.env.RECAPTCHA_CLIENT_SITE_KEY,
-  API_BASE: process.env.API_BASE,
+  API_BASE: process.env.API_BASE ?? '',
 };
 
 if (!envVars.API_BASE) {

@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 
 const DeploymentVersionDebugPage: NextPage = () => {
   // This is a good sanity check after a deploy
-  const version = 1;
+  const version = 2;
   return (
     <div className={homeStyles['root-container']}>
       <div
