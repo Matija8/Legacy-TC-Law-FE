@@ -17,6 +17,16 @@ export async function httpPost(
     body: new URLSearchParams(body),
   });
 }
+export async function httpPostWFile(url: string, body: BodyInit) {
+  return await httpFetch(url, {
+    method: 'POST',
+    headers: {
+      // Don't set content type header!?
+      // https://muffinman.io/blog/uploading-files-using-fetch-multipart-form-data/
+    },
+    body,
+  });
+}
 
 async function httpFetch(input: string, init?: RequestInit) {
   const url = new URL(input.startsWith('/') ? input.slice(1) : input, API_BASE);

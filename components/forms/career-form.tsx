@@ -22,7 +22,7 @@ import {
 import { useState } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { FormUtil } from 'util/form-util';
-import { httpPost } from 'util/http-util';
+import { httpPost, httpPostWFile } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
 interface CareerFormValues {
@@ -78,13 +78,16 @@ export function CareerForm(props: FormProps) {
           // TODO: Send recaptcha token to server
           console.log(`*$`, { recaptchaToken }); //T*DO
 
-          await httpPost('mail/careerForm', {
+          const data = new FormData();
+          Object.entries({
             nameSurname: values.nameSurname,
             email: values.email,
             motivationalLetter: values.motivationalLetter,
+            cv,
             useTestMail,
             recaptchaToken,
-          });
+          }).forEach(([k, v]) => v && data.append(k, v));
+          await httpPostWFile('mail/careerForm', data);
           resetForm();
         },
         props,
