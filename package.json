@@ -14,6 +14,8 @@
     "next:export": "next export",
     "next:b:start": "next build && next start",
     "next:b:export": "next build && next export",
+    "b": "npm run bundle",
+    "bundle": "bash ./scripts/bundle.sh",
     "gh-deploy": "bash ./scripts/gh_deploy.sh",
     "gh-deploy:next-export": "cross-env DEPLOY_ENV=github-pages-env npm run next:b:export",
     "gh-deploy:save-out-dir-to-pages": "gh-pages -d out --dotfiles",
