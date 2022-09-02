@@ -22,7 +22,7 @@ import {
 import { useState } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { FormUtil } from 'util/form-util';
-import { httpPost, httpPostWFile } from 'util/http-util';
+import { httpPostWFile } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
 interface CareerFormValues {
@@ -106,6 +106,7 @@ export function CareerForm(props: FormProps) {
             flexDirection: 'column',
             gap: '1rem',
             width: '70%', // TODO!
+            minWidth: 'min(100%, 600px)',
           }}
         >
           {/* {(() => {
