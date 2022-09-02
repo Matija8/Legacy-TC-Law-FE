@@ -1,41 +1,14 @@
-import { useWindowDimensions } from 'hooks/use-window-dimensions-hook';
 import { NewsArticle } from 'model/news-model';
 import { ReadMoreLink } from 'pages/novosti';
-import { useEffect, useState } from 'react';
 import { gColors } from 'styles/style-constants';
-import { clamp } from 'util/helpers';
 import { NewsUtil } from '../util/news-util';
+import styles from './frontpage-head.module.scss';
 import { Markdown } from './markdown';
 
 export function FrontHead({ newsArticles }: { newsArticles: NewsArticle[] }) {
-  const { windowWidth } = useWindowDimensions();
-  // TODO: Use css breakpoints?
-
-  const [articlesShownCount, setArShownCount] = useState(0);
-
-  useEffect(() => {
-    // You have to set articlesShownCount based on window width
-    // inside a useEffect. Otherwise you'll get a hydration error.
-    // https://nextjs.org/docs/messages/react-hydration-error
-    let newArShownCount = (windowWidth - 200) / 400;
-    newArShownCount = clamp(0, 3, newArShownCount);
-    setArShownCount(newArShownCount);
-  }, [windowWidth]);
-
-  newsArticles = newsArticles.slice(0, articlesShownCount);
+  newsArticles = newsArticles.slice(0, 3);
   return (
-    <section className="root">
-      <style jsx>{`
-        .root > div {
-          flex: 1;
-        }
-        .root {
-          display: flex;
-          gap: 3rem;
-          margin-top: 3rem;
-          margin-bottom: 5rem;
-        }
-      `}</style>
+    <section className={styles.root}>
       <div>
         <Keyword>Stručnost.</Keyword>
         <Keyword isRed>Efikasnost.</Keyword>

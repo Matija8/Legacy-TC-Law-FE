@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  height: 300px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.root > div {
+  // https://stackoverflow.com/questions/43547430/how-can-i-completely-hide-elements-that-overflow-their-container-vertically
+  // https://stackoverflow.com/questions/29074195/how-to-specify-a-flex-item-to-be-of-certain-minimum-width
+  flex: 1 0 220px; // flex-basis = min-width
+  max-width: 350px;
+  height: 300px;
+}
+
+.root > div:first-child {
+  flex-basis: fit-content;
+}
