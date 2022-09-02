@@ -4,7 +4,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  @media (min-width: breakpoints.$breakpointTablet) {
+  @media (min-width: 1000px) {
+    // @media (min-width: breakpoints.$breakpointTablet) {
     grid-template-columns: 50fr 60fr;
     gap: 2rem;
   }
