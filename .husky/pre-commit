@@ -3,3 +3,4 @@
 
 # npm run format
 npm run test
+# npm run ts:check # Check TypeScript types validity - takes about 10s

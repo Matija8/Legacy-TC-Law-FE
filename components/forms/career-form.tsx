@@ -74,10 +74,6 @@ export function CareerForm(props: FormProps) {
       onSubmit={FormUtil.FormikOnSubmitWrapper(
         async (values, { resetForm }) => {
           const recaptchaToken = await getRecaptchaToken(reCaptchaRef);
-
-          // TODO: Send recaptcha token to server
-          console.log(`*$`, { recaptchaToken }); //T*DO
-
           const data = new FormData();
           Object.entries({
             nameSurname: values.nameSurname,
@@ -112,6 +108,10 @@ export function CareerForm(props: FormProps) {
             width: '70%', // TODO!
           }}
         >
+          {/* {(() => {
+            // Use this pattern to debug Formik
+            return null;
+          })()} */}
           <TextField
             label="Ime i prezime"
             name="nameSurname"
@@ -157,10 +157,11 @@ export function CareerForm(props: FormProps) {
             }}
           />
 
-          {/* T*DO: CHECKBOX RESET BUG!?? */}
           <PrivacyPolicyCheckbox
+            name="readPrivacy"
             value={values.readPrivacy}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
 
           {cv ? (

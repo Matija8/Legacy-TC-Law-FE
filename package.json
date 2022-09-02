@@ -8,6 +8,7 @@
     "format": "prettier --write .",
     "test": "jest",
     "test:watch": "jest --watch",
+    "ts:check": "tsc --noEmit --incremental",
     "next:build": "next build",
     "next:start": "next start",
     "next:export": "next export",

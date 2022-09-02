@@ -9,17 +9,42 @@ import { CSSProperties } from 'react';
 // TODO: Checkbox required message
 // https://stackoverflow.com/questions/38852823/how-to-change-checkbox-required-message
 
+type CheckboxProps = Parameters<typeof Checkbox>[0];
+
 interface Props {
+  // You need the name field for Formik's onChange
+  // https://formik.org/docs/api/formik#handlechange-e-reactchangeeventany--void
+  name: string;
   value: boolean;
-  onChange: Parameters<typeof Checkbox>[0]['onChange'];
+  onChange: CheckboxProps['onChange'];
+  // You need onBlur for Formik touched
+  // https://github.com/jaredpalmer/formik/issues/2091
+  onBlur: CheckboxProps['onBlur'];
   // error?: string; // TODO
 }
 
-export function PrivacyPolicyCheckbox({ value, onChange }: Props) {
-  // TODO: privacy error
+export function PrivacyPolicyCheckbox({
+  name,
+  value,
+  onChange,
+  onBlur,
+}: Props) {
+  // TODO: Show privacy error text if touched
+  const checkbox = (
+    <Checkbox
+      name={name}
+      value={value}
+      checked={value}
+      // You need `checked`, or you won't reset on form submit!
+      // https://stackoverflow.com/questions/70165035/how-to-use-material-ui-checkbox-with-formik
+      onChange={onChange}
+      onBlur={onBlur}
+      required
+    />
+  );
   return (
     <FormControlLabel
-      control={<Checkbox value={value} onChange={onChange} required />}
+      control={checkbox}
       name="readPrivacy"
       label={
         <p style={{ margin: 0 }}>

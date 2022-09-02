@@ -110,8 +110,10 @@ export function NewsletterForm(props: FormProps) {
           </div>
 
           <PrivacyPolicyCheckbox
+            name="readPrivacy"
             value={values.readPrivacy}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
 
           <RoundSubmittingBtn

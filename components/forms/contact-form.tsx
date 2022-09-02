@@ -132,8 +132,10 @@ export function ContactForm(props: FormProps) {
           />
 
           <PrivacyPolicyCheckbox
+            name="readPrivacy"
             value={values.readPrivacy}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
 
           <RoundSubmittingBtn
