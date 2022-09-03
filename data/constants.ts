@@ -11,19 +11,7 @@ export const envVars = {
   API_BASE: process.env.API_BASE ?? '',
 };
 
-if (!envVars.API_BASE) {
-  throw Error(`Invalid API_BASE: ${envVars.API_BASE}`);
-}
-
-export const validationRegexes = {
-  email:
-    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-};
-
 export const requiredFieldErrorText = '*neophodno polje';
-
-// TODO: Use this
-export const requiredCheckboxText = '*neophodno je štiklirati ovu kućicu';
 
 // TODO
 export const pageTitles = {
@@ -40,6 +28,7 @@ export const gTextConstants = {
 
 export const useTestMail = envVars.NODE_ENV === 'development' ? 'true' : '';
 
+// TODO: Move to formValidationUtil?
 export const formInputLimits = {
   email: {
     maxLength: 320,

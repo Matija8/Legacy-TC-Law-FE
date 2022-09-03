@@ -29,13 +29,3 @@ export function useFilePicker(
     onOpen,
   };
 }
-
-export function validateFileLessThanMib(file: File, nMib: number) {
-  // https://stackoverflow.com/questions/3717793/javascript-file-upload-size-validation
-  if (typeof file?.size !== 'number') {
-    console.warn('File size missing!', file);
-    return false;
-  }
-  const fileSizeInMib = file?.size / 1024 / 1024; // in MiB
-  return fileSizeInMib < nMib;
-}

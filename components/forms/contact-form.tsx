@@ -2,13 +2,13 @@ import TextField from '@mui/material/TextField';
 import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy-checkbox';
 import { useSnackbar } from 'contexts/snackbar-context';
 import {
-  requiredCheckboxText,
   requiredFieldErrorText,
   useTestMail,
-  validationRegexes,
 } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import { FormUtil } from 'util/form-util';
+import { validationErrorMessages, validators } from 'util/form-validation-util';
+import { formikValidators } from 'util/formik-validation-util';
 import { httpPost } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
@@ -51,24 +51,16 @@ export function ContactForm(props: FormProps) {
         },
         props,
       )}
+      // TODO: Write tests for contact form validator func?
+      // TODO: Move to formikValidators?
       validate={(values) => {
         const errors: FormikErrors<ContactFormValues> = {};
-        if (!values.nameSurname) {
-          errors.nameSurname = requiredFieldErrorText;
-        }
-
-        if (!values.email) {
-          errors.email = requiredFieldErrorText;
-        } else if (!validationRegexes.email.test(values.email)) {
-          errors.email = '*Nevalidan e-mail';
-        }
+        formikValidators.nameSurname(values, errors);
+        formikValidators.email(values, errors);
+        formikValidators.readPrivacy(values, errors);
 
         if (!values.message) {
           errors.message = requiredFieldErrorText;
-        }
-
-        if (!values.readPrivacy) {
-          errors.readPrivacy = requiredCheckboxText;
         }
 
         return errors;

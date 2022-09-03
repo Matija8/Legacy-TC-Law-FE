@@ -1,13 +1,10 @@
 import TextField from '@mui/material/TextField';
 import { PrivacyPolicyCheckbox } from 'components/form-components/privacy-policy-checkbox';
 import { useSnackbar } from 'contexts/snackbar-context';
-import {
-  requiredFieldErrorText,
-  useTestMail,
-  validationRegexes,
-} from 'data/constants';
+import { requiredFieldErrorText, useTestMail } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
 import { FormUtil } from 'util/form-util';
+import { formikValidators } from 'util/formik-validation-util';
 import { httpPost } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
@@ -33,22 +30,9 @@ export function NewsletterForm(props: FormProps) {
       initialValues={initialValues}
       validate={(values) => {
         const errors: FormikErrors<NewsletterFormValues> = {};
-        if (!values.nameSurname) {
-          errors.nameSurname = requiredFieldErrorText;
-        }
-
-        if (!values.email) {
-          errors.email = requiredFieldErrorText;
-        } else if (!validationRegexes.email.test(values.email)) {
-          errors.email = '*Nevalidan e-mail';
-        }
-
-        if (!values.readPrivacy) {
-          // TODO
-          errors.readPrivacy =
-            'Morate biti saglasni sa politikom privatnosti da bi ste se prijavili na novosti';
-        }
-
+        formikValidators.nameSurname(values, errors);
+        formikValidators.email(values, errors);
+        formikValidators.readPrivacy(values, errors);
         return errors;
       }}
       onSubmit={FormUtil.FormikOnSubmitWrapper(

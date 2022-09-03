@@ -1,7 +1,12 @@
 import { envVars } from 'data/constants';
 
 const { API_BASE } = envVars;
-console.assert(API_BASE.endsWith('/'));
+
+if (typeof envVars.API_BASE !== 'string' || !envVars.API_BASE.endsWith('/')) {
+  // This will fail on bundling step.
+  // it shouldn't reach prod.
+  throw Error(`Invalid API_BASE: ${envVars.API_BASE}`);
+}
 
 export async function httpPost(
   url: string,

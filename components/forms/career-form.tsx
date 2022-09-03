@@ -9,19 +9,16 @@ import { RoundBtn } from 'components/round-btn';
 import { useSnackbar } from 'contexts/snackbar-context';
 import {
   formInputLimits,
-  requiredCheckboxText,
   requiredFieldErrorText,
   useTestMail,
-  validationRegexes,
 } from 'data/constants';
 import { Formik, FormikErrors } from 'formik';
-import {
-  useFilePicker,
-  validateFileLessThanMib,
-} from 'hooks/use-file-picker-hook';
+import { useFilePicker } from 'hooks/use-file-picker-hook';
 import { useState } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { FormUtil } from 'util/form-util';
+import { validationErrorMessages, validators } from 'util/form-validation-util';
+import { formikValidators } from 'util/formik-validation-util';
 import { httpPostWFile } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
 
@@ -43,7 +40,7 @@ interface FormProps extends FormUtil.FormSubmitProps {}
 
 export function CareerForm(props: FormProps) {
   const [cv, setCv] = useState<File | undefined>(undefined);
-  const { onOpen } = useFilePicker((f) => setCv(f), validateCv);
+  const { onOpen } = useFilePicker((f) => setCv(f), validators.validateCv);
   const reCaptchaRef = useRecaptchaRef();
 
   return (
@@ -51,22 +48,12 @@ export function CareerForm(props: FormProps) {
       initialValues={initialValues}
       validate={(values) => {
         const errors: FormikErrors<CareerFormValues> = {};
-        if (!values.nameSurname) {
-          errors.nameSurname = requiredFieldErrorText;
-        }
-
-        if (!values.email) {
-          errors.email = requiredFieldErrorText;
-        } else if (!validationRegexes.email.test(values.email)) {
-          errors.email = '*Nevalidan e-mail';
-        }
+        formikValidators.nameSurname(values, errors);
+        formikValidators.email(values, errors);
+        formikValidators.readPrivacy(values, errors);
 
         if (!values.motivationalLetter) {
           errors.motivationalLetter = requiredFieldErrorText;
-        }
-
-        if (!values.readPrivacy) {
-          errors.readPrivacy = requiredCheckboxText;
         }
 
         return errors;
@@ -206,8 +193,4 @@ export function SnackWrappedCareerForm() {
       onSubmitError={() => addSnack('Greška pri prijavi!')}
     />
   );
-}
-
-function validateCv(cv: File) {
-  return validateFileLessThanMib(cv, 2);
 }
