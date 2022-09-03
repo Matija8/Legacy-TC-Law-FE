@@ -7,7 +7,7 @@ const BASE_PATH = (() => {
   const deployEnv = process.env.DEPLOY_ENV;
   if (deployEnv === 'github-pages-env') {
     console.log('Github pages environment active!');
-    return '/TC-law';
+    return '/Legacy-TC-Law-FE';
   }
   return '';
 })();
