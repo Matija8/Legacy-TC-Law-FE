@@ -17,7 +17,7 @@ import { useFilePicker } from 'hooks/use-file-picker-hook';
 import { useState } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { FormUtil } from 'util/form-util';
-import { validationErrorMessages, validators } from 'util/form-validation-util';
+import { validators } from 'util/form-validation-util';
 import { formikValidators } from 'util/formik-validation-util';
 import { httpPostWFile } from 'util/http-util';
 import { RoundSubmittingBtn } from '../round-submitting-button';
@@ -38,7 +38,7 @@ const initialValues: CareerFormValues = {
 
 interface FormProps extends FormUtil.FormSubmitProps {}
 
-export function CareerForm(props: FormProps) {
+function CareerForm(props: FormProps) {
   const [cv, setCv] = useState<File | undefined>(undefined);
   const { onOpen } = useFilePicker((f) => setCv(f), validators.validateCv);
   const reCaptchaRef = useRecaptchaRef();

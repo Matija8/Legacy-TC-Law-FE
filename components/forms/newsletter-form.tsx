@@ -24,7 +24,7 @@ const textFieldVariant = 'standard';
 
 interface FormProps extends FormUtil.FormSubmitProps {}
 
-export function NewsletterForm(props: FormProps) {
+function NewsletterForm(props: FormProps) {
   return (
     <Formik
       initialValues={initialValues}
