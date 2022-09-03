@@ -1,13 +1,16 @@
 # TC-Law Front End🖼
 
-### This repo is no longer active
+### This repo is no longer active💀
 
 I have decided to continue working on this project in a private repo.
-I have lots of deployment specific node.js code there that I prefer to keep private.
+This repo holds the FE part of the project up to this time.
+The BE for this project contains lots of deployment specific node.js code that I prefer to keep private.
+It makes more sense to join the FE and BE into a single private repo, to be able to share zod validation and other stuff.
+For that reason I have abandoned this repo🤷.
 
 ## Environments🏞
 
-- [GitHub Pages Dev Environment](https://matija8.github.io/TC-law/)
+- [GitHub Pages Dev Environment](https://matija8.github.io/Legacy-TC-Law-FE/)
 
 ## Local Setup🛠
 
