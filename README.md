@@ -1,5 +1,10 @@
 # TC-Law Front End🖼
 
+### This repo is no longer active
+
+I have decided to continue working on this project in a private repo.
+I have lots of deployment specific node.js code there that I prefer to keep private.
+
 ## Environments🏞
 
 - [GitHub Pages Dev Environment](https://matija8.github.io/TC-law/)
